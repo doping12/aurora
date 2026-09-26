@@ -89,6 +89,7 @@ data class SongDto(
     val path: String? = null,
     val created: String? = null,
     val playCount: Int = 0,
+    val size: Long = 0,
 )
 
 data class MusicFoldersDto(val musicFolder: List<MusicFolderDto> = emptyList())

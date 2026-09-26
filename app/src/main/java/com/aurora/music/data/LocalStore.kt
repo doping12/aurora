@@ -81,6 +81,15 @@ class LocalStore(context: Context) {
         persist()
     }
 
+    fun upsertPlaylist(id: String, title: String, subtitle: String, trackIds: List<String>) = synchronized(lock) {
+        val playlist = LocalPlaylist(id, title, subtitle, trackIds.distinct())
+        val current = state.playlists.orEmpty()
+        state = state.copy(playlists = if (current.any { it.id == id }) {
+            current.map { if (it.id == id) playlist else it }
+        } else current + playlist)
+        persist()
+    }
+
     fun exportJson(): String = gson.toJson(state)
     fun importJson(json: String) = synchronized(lock) {
         runCatching { gson.fromJson(json, object : TypeToken<LocalState>() {}.type) as? LocalState }.getOrNull()?.let {

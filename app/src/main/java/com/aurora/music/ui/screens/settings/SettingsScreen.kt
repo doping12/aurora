@@ -48,6 +48,7 @@ import androidx.compose.material.icons.filled.SwitchAccount
 import androidx.compose.material.icons.filled.TouchApp
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Sync
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -82,6 +83,7 @@ fun SettingsScreen(
     onOpenSonic: () -> Unit,
     onOpenSources: () -> Unit,
     onOpenDownloads: () -> Unit,
+    onOpenNavidromeSync: () -> Unit,
     onOpenAppearance: () -> Unit,
     onOpenLanguage: () -> Unit,
     onOpenGestures: () -> Unit,
@@ -163,6 +165,8 @@ fun SettingsScreen(
                     SettingsDestinationRow(Icons.Filled.MergeType, SettingsDestinations.sources, onClick = onOpenSources)
                     SettingsRowDivider()
                     SettingsDestinationRow(Icons.Filled.Download, SettingsDestinations.storage, appString(R.string.text_downloaded_quality_and_offline_files_4bd602, (downloads.size)), onClick = onOpenDownloads)
+                    SettingsRowDivider()
+                    SettingsDestinationRow(Icons.Filled.Sync, SettingsDestinations.navidromeSync, onClick = onOpenNavidromeSync)
                     SettingsRowDivider()
                     SettingsDestinationRow(Icons.Filled.AutoAwesome, SettingsDestinations.analysis, onClick = onOpenSonic)
                 }

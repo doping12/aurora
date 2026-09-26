@@ -12,7 +12,7 @@ import java.net.URLEncoder
 import java.security.MessageDigest
 import java.util.concurrent.TimeUnit
 
-class SubsonicClient(val session: Session) {
+class SubsonicClient(val session: Session, val clientName: String = CLIENT_NAME) {
 
     private val baseUrl: String = session.server.trimEnd('/')
 
@@ -21,7 +21,7 @@ class SubsonicClient(val session: Session) {
         "t" to session.token,
         "s" to session.salt,
         "v" to API_VERSION,
-        "c" to CLIENT_NAME,
+        "c" to clientName,
         "f" to "json",
     )
 
@@ -52,6 +52,14 @@ class SubsonicClient(val session: Session) {
         if (coverArt.isNullOrBlank()) return ""
         return "$baseUrl/rest/getCoverArt.view?id=${enc(coverArt)}&size=$size&${authQuery()}"
     }
+
+    fun originalCoverArtUrl(coverArt: String?): String {
+        if (coverArt.isNullOrBlank()) return ""
+        return "$baseUrl/rest/getCoverArt.view?id=${enc(coverArt)}&${authQuery()}"
+    }
+
+    fun downloadUrl(songId: String): String =
+        "$baseUrl/rest/download.view?id=${enc(songId)}&${authQuery()}"
 
     // format "raw" serves the original untouched file true lossless
     fun streamUrl(songId: String, maxBitrate: Int = 0, format: String? = null): String {

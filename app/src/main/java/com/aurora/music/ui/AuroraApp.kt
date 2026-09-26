@@ -890,6 +890,7 @@ fun AuroraApp() {
                             onOpenSonic = { navController.navigate(Routes.SETTINGS_SONIC) },
                             onOpenSources = { navController.navigate(Routes.SETTINGS_SOURCES) },
                             onOpenDownloads = { navController.navigate(Routes.SETTINGS_STORAGE) },
+                            onOpenNavidromeSync = { navController.navigate(Routes.SETTINGS_NAVIDROME_SYNC) },
                             onOpenAppearance = { navController.navigate(Routes.SETTINGS_APPEARANCE) },
                             onOpenLanguage = { navController.navigate(Routes.SETTINGS_LANGUAGE) },
                             onOpenGestures = { navController.navigate(Routes.SETTINGS_GESTURES) },
@@ -1086,6 +1087,9 @@ fun AuroraApp() {
                     }
                     composable(Routes.SETTINGS_STORAGE) {
                         com.aurora.music.ui.screens.settings.StorageSettingsScreen(contentPadding = inner, onBack = { navController.popBackStack() })
+                    }
+                    composable(Routes.SETTINGS_NAVIDROME_SYNC) {
+                        com.aurora.music.ui.screens.settings.NavidromeSyncScreen(contentPadding = inner, onBack = { navController.popBackStack() })
                     }
                     composable(Routes.SETTINGS_ABOUT) {
                         com.aurora.music.ui.screens.settings.AboutSettingsScreen(contentPadding = inner, onBack = { navController.popBackStack() })

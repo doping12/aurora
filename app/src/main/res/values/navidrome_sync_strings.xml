@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="navidrome_sync_title">Navidrome sync</string>
+    <string name="navidrome_sync_destination_description">Sync Navidrome playlists to a folder</string>
+    <string name="navidrome_sync_account">Account</string>
+    <string name="navidrome_sync_automatic_account">Automatic (active Navidrome account)</string>
+    <string name="navidrome_sync_destination">Destination folder</string>
+    <string name="navidrome_sync_not_set">Not set</string>
+    <string name="navidrome_sync_choose_folder">Choose folder</string>
+    <string name="navidrome_sync_sync_mode">Sync mode</string>
+    <string name="navidrome_sync_manual">Manual</string>
+    <string name="navidrome_sync_automatic">Automatic</string>
+    <string name="navidrome_sync_automatic_unavailable">Automatic sync when Aurora is opened on Wi-Fi is not available yet. Use manual sync.</string>
+    <string name="navidrome_sync_playlists">Playlists</string>
+    <string name="navidrome_sync_refresh">Refresh</string>
+    <string name="navidrome_sync_loading">Loading…</string>
+    <string name="navidrome_sync_refresh_failed">Could not load Navidrome playlists.</string>
+    <string name="navidrome_sync_song_count">%d songs</string>
+    <string name="navidrome_sync_internal_storage">Internal storage</string>
+    <string name="navidrome_sync_sync">Sync</string>
+    <string name="navidrome_sync_sync_now">Sync now</string>
+    <string name="navidrome_sync_cancel">Cancel</string>
+    <string name="navidrome_sync_folder_permission_failed">Could not grant access to that folder. The previous destination was kept.</string>
+    <string name="navidrome_sync_nothing_selected">Select at least one playlist before syncing.</string>
+    <string name="navidrome_sync_all_playlists_missing">All selected playlists are missing on the server. No files were changed.</string>
+    <string name="navidrome_sync_mirror_subtitle">Navidrome sync</string>
+    <string name="navidrome_sync_downloading">Downloading</string>
+    <string name="navidrome_sync_fetching">Fetching playlists</string>
+    <string name="navidrome_sync_preparing">Preparing</string>
+    <string name="navidrome_sync_covers">Downloading artwork</string>
+    <string name="navidrome_sync_playlists_phase">Writing playlists</string>
+    <string name="navidrome_sync_cleanup">Cleaning up</string>
+    <string name="navidrome_sync_library">Updating library</string>
+    <string name="navidrome_sync_finished_summary">Downloaded %d · Up to date %d · Deleted %d · Failed %d</string>
+    <string name="navidrome_sync_finished_at">Finished %s</string>
+    <string name="navidrome_sync_warnings">Warnings</string>
+    <string name="navidrome_sync_advanced">Advanced</string>
+    <string name="navidrome_sync_server_root_path">Server music folder</string>
+    <string name="navidrome_sync_server_root_path_description">Optional absolute path on the server. If empty, the last two directories and file name are kept.</string>
+    <string name="navidrome_sync_tag_paths">Navidrome is reporting tag-based paths. In Navidrome, open Settings → Players, find AuroraSync, and enable “Report Real Path” (or start Navidrome with ND_SUBSONIC_DEFAULTREPORTREALPATH=true). Original file names will be used on the next sync.</string>
+    <string name="navidrome_sync_download_failed">Could not download %s: %s</string>
+    <string name="navidrome_sync_cover_failed">Could not download artwork for %s.</string>
+    <string name="navidrome_sync_mirror_unsupported">Playlist mirroring is unavailable for this storage provider.</string>
+    <string name="navidrome_sync_mirror_unavailable">Aurora library permission or scan is unavailable.</string>
+    <string name="navidrome_sync_not_configured">Choose a destination folder first.</string>
+    <string name="navidrome_sync_no_account">No Navidrome account is available.</string>
+    <string name="navidrome_sync_account_unavailable">The selected Navidrome account is unavailable.</string>
+    <string name="navidrome_sync_permission_lost">Destination folder permission is no longer available.</string>
+    <string name="navidrome_sync_server_error">Navidrome request failed: %s</string>
+    <string name="navidrome_sync_unexpected">Sync failed: %s</string>
+</resources>

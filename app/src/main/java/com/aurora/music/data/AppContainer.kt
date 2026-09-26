@@ -64,6 +64,7 @@ class AppContainer(context: Context) {
     val localLibrary = LocalLibrary(appContext, gainProvider = { path -> replayGainStore.gainsFor(path) },
         separatorsProvider = { settingsStore.artistSeparators.first() })
     private val localStore = LocalStore(appContext)
+    val navidromeSync = com.aurora.music.data.sync.NavidromeSyncManager(appContext, settingsStore, localLibrary, localStore)
 
     val replayGainScanner = ReplayGainScanner(localLibrary, replayGainStore)
 
