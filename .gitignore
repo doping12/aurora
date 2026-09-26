@@ -13,3 +13,8 @@ local.properties
 .idea/
 *.iml
 .DS_Store
+
+# Local agent instructions (may contain personal information; never publish)
+AGENTS.md
+CLAUDE.md
+.claude/
