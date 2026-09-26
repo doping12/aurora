@@ -82,4 +82,5 @@
     <string name="setup_done">Done</string>
     <string name="setup_finish">Finish setup</string>
     <string name="setup_finish_for_now">Finish for now</string>
+    <string name="playback_history_sync_failed">Could not sync playback history with your music server.</string>
 </resources>
