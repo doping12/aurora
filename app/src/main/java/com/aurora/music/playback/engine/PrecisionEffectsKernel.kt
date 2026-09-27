@@ -23,6 +23,10 @@ class PrecisionEffectsKernel(val format: AudioStreamFormat) {
     private val yL1 = DoubleArray(n); private val yL2 = DoubleArray(n)
     private val xR1 = DoubleArray(n); private val xR2 = DoubleArray(n)
     private val yR1 = DoubleArray(n); private val yR2 = DoubleArray(n)
+    private val live = BooleanArray(n)
+    private var rawL1 = 0.0; private var rawL2 = 0.0
+    private var rawR1 = 0.0; private var rawR2 = 0.0
+    private var lastCoefficients: PrecisionDspCoefficients? = null
     private val ringL = DoubleArray(DspCoeffBuilder.MAX_CROSSFEED_DELAY + 1)
     private val ringR = DoubleArray(DspCoeffBuilder.MAX_CROSSFEED_DELAY + 1)
     private val delayL = DoubleArray(DspCoeffBuilder.MAX_CHANNEL_DELAY + 1)
@@ -42,12 +46,16 @@ class PrecisionEffectsKernel(val format: AudioStreamFormat) {
             preamp = c.preampLin; balanceL = c.balL; balanceR = c.balR; width = c.width
             smoothingInitialized = true
         }
+        if (processEqualizer && c !== lastCoefficients) {
+            syncEqualizerState(c)
+            lastCoefficients = c
+        }
         val satK = 1.0 + 5.0 * c.satDrive
         val delayOn = c.delayL > 0 || c.delayR > 0
         var position = 0
         while (position < block.sampleCount) {
-            var left = if (processEqualizer) cascade(block.samples[position], c, xL1, xL2, yL1, yL2) else block.samples[position]
-            var right = if (processEqualizer) cascade(block.samples[position + 1], c, xR1, xR2, yR1, yR2) else block.samples[position + 1]
+            var left = if (processEqualizer) cascade(block.samples[position], c, xL1, xL2, yL1, yL2, true) else block.samples[position]
+            var right = if (processEqualizer) cascade(block.samples[position + 1], c, xR1, xR2, yR1, yR2, false) else block.samples[position + 1]
             preamp = c.preampLin + (preamp - c.preampLin) * smoothCoefficient
             balanceL = c.balL + (balanceL - c.balL) * smoothCoefficient
             balanceR = c.balR + (balanceR - c.balR) * smoothCoefficient
@@ -100,22 +108,71 @@ class PrecisionEffectsKernel(val format: AudioStreamFormat) {
 
     // Retain direct-form I state layout so live coefficient changes preserve the existing history.
     private fun cascade(input: Double, c: PrecisionDspCoefficients, x1: DoubleArray, x2: DoubleArray,
-                        y1: DoubleArray, y2: DoubleArray): Double {
+                        y1: DoubleArray, y2: DoubleArray, leftChannel: Boolean): Double {
+        if (leftChannel) {
+            rawL2 = rawL1; rawL1 = input
+        } else {
+            rawR2 = rawR1; rawR1 = input
+        }
         var sample = input
-        var i = 0
-        while (i < n) {
+        var active = 0
+        while (active < c.activeSections.size) {
+            val i = c.activeSections[active]
             val b = c.filter(i)
             val output = b.b0 * sample + b.b1 * x1[i] + b.b2 * x2[i] - b.a1 * y1[i] - b.a2 * y2[i]
             x2[i] = x1[i]; x1[i] = sample; y2[i] = y1[i]; y1[i] = output
             sample = output
-            i++
+            active++
         }
         return sample
+    }
+
+    /** Reconcile direct-form-I histories at a coefficient-bank boundary without processing audio. */
+    private fun syncEqualizerState(c: PrecisionDspCoefficients) {
+        var upstreamL1 = rawL1; var upstreamL2 = rawL2
+        var upstreamR1 = rawR1; var upstreamR2 = rawR2
+        var i = 0
+        while (i < n) {
+            val wasLive = live[i]
+            val active = isActive(c, i)
+            if (wasLive) {
+                upstreamL1 = yL1[i]; upstreamL2 = yL2[i]
+                upstreamR1 = yR1[i]; upstreamR2 = yR2[i]
+            } else if (active) {
+                xL1[i] = upstreamL1; xL2[i] = upstreamL2
+                yL1[i] = upstreamL1; yL2[i] = upstreamL2
+                xR1[i] = upstreamR1; xR2[i] = upstreamR2
+                yR1[i] = upstreamR1; yR2[i] = upstreamR2
+            }
+            live[i] = active
+            if (active && !wasLive) {
+                upstreamL1 = yL1[i]; upstreamL2 = yL2[i]
+                upstreamR1 = yR1[i]; upstreamR2 = yR2[i]
+            }
+            i++
+        }
+    }
+
+    private fun isActive(c: PrecisionDspCoefficients, index: Int): Boolean {
+        var low = 0
+        var high = c.activeSections.size - 1
+        while (low <= high) {
+            val middle = (low + high) ushr 1
+            when {
+                c.activeSections[middle] < index -> low = middle + 1
+                c.activeSections[middle] > index -> high = middle - 1
+                else -> return true
+            }
+        }
+        return false
     }
 
     fun reset() {
         xL1.fill(0.0); xL2.fill(0.0); yL1.fill(0.0); yL2.fill(0.0)
         xR1.fill(0.0); xR2.fill(0.0); yR1.fill(0.0); yR2.fill(0.0)
+        live.fill(false)
+        rawL1 = 0.0; rawL2 = 0.0; rawR1 = 0.0; rawR2 = 0.0
+        lastCoefficients = null
         ringL.fill(0.0); ringR.fill(0.0); delayL.fill(0.0); delayR.fill(0.0)
         crossfeedWrite = 0; delayWrite = 0; crossfeedLpfL = 0.0; crossfeedLpfR = 0.0
         limiterGain = 1.0; compressorGain = 1.0; smoothingInitialized = false
@@ -126,6 +183,9 @@ class PrecisionEffectsKernel(val format: AudioStreamFormat) {
         require(format == other.format)
         other.xL1.copyInto(xL1); other.xL2.copyInto(xL2); other.yL1.copyInto(yL1); other.yL2.copyInto(yL2)
         other.xR1.copyInto(xR1); other.xR2.copyInto(xR2); other.yR1.copyInto(yR1); other.yR2.copyInto(yR2)
+        other.live.copyInto(live)
+        rawL1 = other.rawL1; rawL2 = other.rawL2; rawR1 = other.rawR1; rawR2 = other.rawR2
+        lastCoefficients = other.lastCoefficients
         other.ringL.copyInto(ringL); other.ringR.copyInto(ringR)
         other.delayL.copyInto(delayL); other.delayR.copyInto(delayR)
         crossfeedWrite = other.crossfeedWrite; delayWrite = other.delayWrite

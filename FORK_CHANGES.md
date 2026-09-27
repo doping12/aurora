@@ -16,6 +16,10 @@ Upstream commit `85dcf21` ("Youtube Music listening history, playback state/prog
 
 Effect: playback state/progress reporting to servers does nothing in this fork; everything else, including playback, is unaffected. Replace these files with upstream's real implementation once it is published.
 
+### `daily` build type
+
+`bash gradlew :app:assembleDaily` builds a non-debuggable APK (Java and JNI) with the same application id and the standard debug signing key. It replaces an installed debug build with `adb install -r` without losing app data, while running the per-sample audio code at full speed (debuggable builds are several times slower there; see `fix/dsp-screen-off-underrun`). Library modules fall back to their `release` variants. Use it for everyday listening; keep `assembleDebug` for debugging.
+
 ### Repository hygiene
 
 - Root `.gitignore` for Gradle/Android build outputs, `local.properties` and IDE files.
@@ -61,3 +65,16 @@ Copies selected Navidrome playlists and the audio files they reference to a fold
 - Debug builds only: `NavidromeSyncDebugReceiver` lets adb drive the sync (protected by the `DUMP` permission, so only adb can use it).
 
 **End-to-end test harness**: `tools/navidrome-sync-test/` starts a throwaway Navidrome on port 4534 with all data under the repository, generates tiny test tracks, and runs four scenarios on a device or emulator: new sync; playlist update and deletion; server-side rename and content change; removal of a whole album. The transfer itself always goes over the network (adb is used only for control and verification). See its `README.md`.
+
+## fix/dsp-screen-off-underrun
+
+### Custom DSP: skip identity EQ sections
+
+With DSP mode *Custom*, playback became choppy/slow as soon as the screen turned off (seen on an Xperia 10 VI, Android 16, wired headphones). With the screen off the playback thread is kept on the little CPU cores, and the Custom DSP could no longer keep up: AudioFlinger reported continuous underruns, and a profile of the playback thread showed most of its time in `PrecisionEffectsKernel.cascade`.
+
+The kernel ran all 79 biquad slots (31 graphic + 12 parametric × 4 sections) per channel and sample, even though unused slots are identity filters (a 10-band graphic EQ uses 10). Now:
+
+- `PrecisionDspCoefficients` precomputes the non-identity sections (value comparison, so gain-0 graphic bands stay active).
+- `PrecisionEffectsKernel` processes only those. When a coefficient change activates a skipped section, its filter history is seeded from the signal that entered it, so the output matches the previous all-slots processing exactly (covered by unit tests against a reference all-slots cascade).
+
+Note: debuggable builds (`assembleDebug`) are several times slower in this per-sample Kotlin code (ART does not inline in debuggable mode). On the test device a debuggable build still underran with the screen off even after this change, while a non-debuggable build using the same code had no underruns and about 10–20 % playback-thread CPU. For daily listening, use a non-debuggable build.
