@@ -25,9 +25,19 @@ class PrecisionDspCoefficients internal constructor(
     val compAtt: Double, val compRel: Double,
 ) {
     val nBiquads: Int get() = bank.size
+    /** Bank indices whose coefficients are not an exact value-level identity. */
+    internal val activeSections: IntArray = IntArray(bank.count { !isIdentity(it) }).also { active ->
+        var next = 0
+        bank.forEachIndexed { index, coefficient ->
+            if (!isIdentity(coefficient)) active[next++] = index
+        }
+    }
     /** Biquad values are immutable binary64 objects, including shelves and identity slots. */
     fun filter(index: Int): BiquadCoefficients = bank[index]
 }
+
+private fun isIdentity(c: BiquadCoefficients): Boolean =
+    c.b0 == 1.0 && c.b1 == 0.0 && c.b2 == 0.0 && c.a1 == 0.0 && c.a2 == 0.0
 
 /**
  * The same parameter model, 31 graphic + 12 parametric slots and RBJ formulas as DspCoeffBuilder.

@@ -1,5 +1,6 @@
 package com.aurora.music.playback.engine
 
+import com.aurora.music.data.FilterType
 import com.aurora.music.playback.DspBand
 import com.aurora.music.playback.DspCoeffBuilder
 import com.aurora.music.playback.DspParams
@@ -48,6 +49,68 @@ class PrecisionEffectsKernelTest {
         val original = frozen.filter(0)
         p.graphic[0] = 12f; p.graphicFreqs[0] = 6_000f
         assertEquals(original, frozen.filter(0))
+    }
+
+    @Test fun identitySectionsAreInactiveButGainZeroGraphicSectionsRemainActive() {
+        val identity = PrecisionDspCoeffBuilder.build(neutral, format.sampleRate)
+        assertTrue(identity.activeSections.isEmpty())
+
+        val zeroGain = PrecisionDspCoeffBuilder.build(neutral.copy(
+            graphic = floatArrayOf(0f), graphicFreqs = floatArrayOf(1_000f)), format.sampleRate)
+        assertTrue(0 in zeroGain.activeSections)
+        assertNotEquals(BiquadCoefficients.IDENTITY, zeroGain.filter(0))
+
+        // This is a distinct object with identity values, so the check must be value-based.
+        val customIdentity = PrecisionDspCoeffBuilder.build(neutral.copy(parametric = listOf(
+            DspBand(1_000f, 0f, 1f, FilterType.CUSTOM_BIQUAD.code,
+                coefficients = listOf(1.0, 0.0, 0.0, 0.0, 0.0)))), format.sampleRate)
+        assertFalse(31 in customIdentity.activeSections)
+    }
+
+    @Test fun activeCascadeMatchesTheIndependentOldAllSectionReference() {
+        val p = neutral.copy(graphic = floatArrayOf(2f, -3f, 1f),
+            graphicFreqs = floatArrayOf(180f, 1_100f, 6_000f))
+        val input = DoubleArray(2_000) { sin(it * 0.071) * (0.2 + (it % 11) * 0.01) }
+        assertArrayEquals(referenceSegments(listOf(input to p)), processSegments(listOf(input to p)), 1e-12)
+    }
+
+    @Test fun activatingDeactivatingAndReactivatingASectionPreservesOldHistorySemantics() {
+        val base = neutral.copy(graphic = floatArrayOf(1.5f), graphicFreqs = floatArrayOf(700f))
+        val active = base.copy(parametric = listOf(DspBand(2_700f, 4f, 0.9f)))
+        val inactive = base.copy(parametric = listOf(DspBand(2_700f, 0f, 0.9f, enabled = false)))
+        val segments = listOf(base, active, inactive, active).mapIndexed { segment, p ->
+            DoubleArray(700) { i ->
+                val sample = i + segment * 700
+                if (sample % 17 == 0) 0.4 else sin(sample * 0.037) * 0.25
+            } to p
+        }
+        assertArrayEquals(referenceSegments(segments), processSegments(segments), 1e-12)
+    }
+
+    @Test fun copyStateFromKeepsActivationStateForAChangedCoefficientBank() {
+        val base = neutral.copy(graphic = floatArrayOf(1.5f), graphicFreqs = floatArrayOf(700f))
+        val changed = base.copy(parametric = listOf(DspBand(2_700f, 4f, 0.9f)))
+        val first = DoubleArray(900) { sin(it * 0.037) * 0.3 }
+        val second = DoubleArray(900) { cos(it * 0.023) * 0.2 }
+        val source = PrecisionEffectsKernel(format)
+        processInto(source, first, base)
+        val replacement = PrecisionEffectsKernel(format)
+        replacement.copyStateFrom(source)
+        val actual = processInto(replacement, second, changed)
+        val expected = referenceSegments(listOf(first to base, second to changed)).copyOfRange(first.size, first.size + second.size)
+        assertArrayEquals(expected, actual, 1e-12)
+    }
+
+    @Test fun resetMakesSubsequentProcessingMatchAFreshKernel() {
+        val p = neutral.copy(graphic = floatArrayOf(2f), graphicFreqs = floatArrayOf(900f),
+            parametric = listOf(DspBand(3_100f, -3f, 0.8f)))
+        val kernel = PrecisionEffectsKernel(format)
+        processInto(kernel, DoubleArray(500) { sin(it * 0.11) }, p)
+        kernel.reset()
+        val input = DoubleArray(800) { cos(it * 0.043) * 0.2 }
+        val actual = processInto(kernel, input, p)
+        val fresh = processInto(PrecisionEffectsKernel(format), input, p)
+        assertArrayEquals(fresh, actual, 0.0)
     }
 
     @Test fun quietSamplesAndHeadroomAreNotQuantizedOrClippedInsideTheEffectsKernel() {
@@ -253,6 +316,58 @@ class PrecisionEffectsKernelTest {
             kernel.process(block, coefficients)
             block.samples.copyInto(result, offset, 0, count)
             offset += count
+        }
+        return result
+    }
+
+    private fun processSegments(segments: List<Pair<DoubleArray, DspParams>>): DoubleArray {
+        val result = DoubleArray(segments.sumOf { it.first.size })
+        val kernel = PrecisionEffectsKernel(format)
+        var offset = 0
+        segments.forEach { (samples, p) ->
+            val actual = processInto(kernel, samples, p)
+            actual.copyInto(result, offset)
+            offset += actual.size
+        }
+        return result
+    }
+
+    private fun processInto(kernel: PrecisionEffectsKernel, samples: DoubleArray, p: DspParams): DoubleArray {
+        val block = AudioBlock(format, samples.size / 2)
+        samples.copyInto(block.samples)
+        block.begin(samples.size / 2)
+        kernel.process(block, PrecisionDspCoeffBuilder.build(p, format.sampleRate))
+        return block.samples.copyOf()
+    }
+
+    /** Direct-form-I reference for the pre-change implementation, including every bank slot. */
+    private fun referenceSegments(segments: List<Pair<DoubleArray, DspParams>>): DoubleArray {
+        val result = DoubleArray(segments.sumOf { it.first.size })
+        val xL1 = DoubleArray(DspCoeffBuilder.TOTAL_BIQUADS); val xL2 = DoubleArray(DspCoeffBuilder.TOTAL_BIQUADS)
+        val yL1 = DoubleArray(DspCoeffBuilder.TOTAL_BIQUADS); val yL2 = DoubleArray(DspCoeffBuilder.TOTAL_BIQUADS)
+        val xR1 = DoubleArray(DspCoeffBuilder.TOTAL_BIQUADS); val xR2 = DoubleArray(DspCoeffBuilder.TOTAL_BIQUADS)
+        val yR1 = DoubleArray(DspCoeffBuilder.TOTAL_BIQUADS); val yR2 = DoubleArray(DspCoeffBuilder.TOTAL_BIQUADS)
+        var offset = 0
+        segments.forEach { (samples, p) ->
+            val coefficients = PrecisionDspCoeffBuilder.build(p, format.sampleRate)
+            var position = 0
+            while (position < samples.size) {
+                var left = samples[position]
+                var right = samples[position + 1]
+                var i = 0
+                while (i < coefficients.nBiquads) {
+                    val b = coefficients.filter(i)
+                    val leftOutput = b.b0 * left + b.b1 * xL1[i] + b.b2 * xL2[i] - b.a1 * yL1[i] - b.a2 * yL2[i]
+                    xL2[i] = xL1[i]; xL1[i] = left; yL2[i] = yL1[i]; yL1[i] = leftOutput; left = leftOutput
+                    val rightOutput = b.b0 * right + b.b1 * xR1[i] + b.b2 * xR2[i] - b.a1 * yR1[i] - b.a2 * yR2[i]
+                    xR2[i] = xR1[i]; xR1[i] = right; yR2[i] = yR1[i]; yR1[i] = rightOutput; right = rightOutput
+                    i++
+                }
+                result[offset + position] = left
+                result[offset + position + 1] = right
+                position += 2
+            }
+            offset += samples.size
         }
         return result
     }
