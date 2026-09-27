@@ -48,6 +48,14 @@ android {
     }
 
     buildTypes {
+        // Non-debuggable everyday build, debug-signed so it replaces the debug install without losing data.
+        create("daily") {
+            initWith(getByName("debug"))
+            isDebuggable = false
+            isJniDebuggable = false
+            signingConfig = signingConfigs.getByName("debug")
+            matchingFallbacks += listOf("release")
+        }
         release {
             isMinifyEnabled = false
             signingConfig = signingConfigs.getByName("release")

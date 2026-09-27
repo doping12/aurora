@@ -16,6 +16,10 @@ Upstream commit `85dcf21` ("Youtube Music listening history, playback state/prog
 
 Effect: playback state/progress reporting to servers does nothing in this fork; everything else, including playback, is unaffected. Replace these files with upstream's real implementation once it is published.
 
+### `daily` build type
+
+`bash gradlew :app:assembleDaily` builds a non-debuggable APK (Java and JNI) with the same application id and the standard debug signing key. It replaces an installed debug build with `adb install -r` without losing app data, while running the per-sample audio code at full speed (debuggable builds are several times slower there; see `fix/dsp-screen-off-underrun`). Library modules fall back to their `release` variants. Use it for everyday listening; keep `assembleDebug` for debugging.
+
 ### Repository hygiene
 
 - Root `.gitignore` for Gradle/Android build outputs, `local.properties` and IDE files.
