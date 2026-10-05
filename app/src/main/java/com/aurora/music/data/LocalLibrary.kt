@@ -205,6 +205,7 @@ class LocalLibrary(
                         replayGainAlbum = rg?.second ?: 0f,
                         genre = if (genreCol >= 0) c.getString(genreCol).orEmpty() else "",
                         dateAddedSec = added,
+                        releaseYear = year,
                     )
                 }
             }
@@ -231,6 +232,7 @@ class LocalLibrary(
                 bitDepth = 1,
                 bitrateKbps = file.source.bitRate * file.source.channels / 1000,
                 genre = tags.genre?.toString()?.takeIf(String::isNotBlank) ?: song.genre,
+                releaseYear = (tags.releaseYear ?: tags.recordingYear)?.takeIf { it > 0 } ?: song.releaseYear,
             )
             albumDateAdded[albumId] = maxOf(albumDateAdded[albumId] ?: 0, song.dateAddedSec)
             (tags.releaseYear ?: tags.recordingYear)?.takeIf { it > 0 }?.let { albumYear[albumId] = it }

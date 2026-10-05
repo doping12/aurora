@@ -47,6 +47,9 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Shuffle
 import androidx.compose.material.icons.filled.GraphicEq
+import androidx.compose.material.icons.filled.ArrowDownward
+import androidx.compose.material.icons.filled.ArrowUpward
+import androidx.compose.material.icons.filled.SwapVert
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.DropdownMenu
@@ -59,6 +62,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -74,6 +78,7 @@ import com.aurora.music.ui.components.Artwork
 import com.aurora.music.ui.components.Eyebrow
 import com.aurora.music.ui.components.SectionHeader
 import com.aurora.music.ui.components.SongRow
+import com.aurora.music.ui.components.LazyListScrollbar
 import com.aurora.music.viewmodel.DetailUiState
 import kotlinx.coroutines.launch
 
@@ -116,6 +121,8 @@ fun DetailScreen(
     var query by remember { mutableStateOf("") }
     var searchOpen by remember { mutableStateOf(false) }
     var genreFilter by remember(state.data?.info) { mutableStateOf<String?>(null) }
+    var detailSortName by rememberSaveable { mutableStateOf(DetailSort.ORIGINAL.name) }
+    var detailSortDescending by rememberSaveable { mutableStateOf(false) }
     val searchFocus = remember { androidx.compose.ui.focus.FocusRequester() }
     val data = state.data
 
@@ -134,6 +141,8 @@ fun DetailScreen(
 
     val info = data.info
     val tracks = data.tracks
+    val detailSort = DetailSort.entries.firstOrNull { it.name == detailSortName } ?: DetailSort.ORIGINAL
+    val sortedTracks = sortDetailTracks(tracks, detailSort, detailSortDescending)
     // artists often lack a server image fall back to enriched wiki photo
     val effectiveArt = info.artUrl.ifBlank { artistInfo?.imageUrl.orEmpty() }
     val accent by com.aurora.music.util.rememberDominantColor(effectiveArt, info.accent)
@@ -148,8 +157,9 @@ fun DetailScreen(
         }
     }
 
+    Box(Modifier.fillMaxSize()) {
     LazyColumn(
-        Modifier.fillMaxWidth(),
+        Modifier.fillMaxSize(),
         state = listState,
         contentPadding = PaddingValues(bottom = contentPadding.calculateBottomPadding() + 24.dp),
     ) {
@@ -194,9 +204,9 @@ fun DetailScreen(
                         Icon(Icons.Filled.MoreVert, appString(R.string.text_more_4bab2d), tint = headerForeground, modifier = Modifier.size(40.dp).clip(CircleShape).clickable { headerMenu = true }.padding(8.dp))
                         val isPlaylist = info.typeLabel.equals("Playlist", true)
                         DropdownMenu(expanded = headerMenu, onDismissRequest = { headerMenu = false }) {
-                            DropdownMenuItem(text = { Text(appString(R.string.text_play_5d12bd)) }, enabled = tracks.isNotEmpty(), onClick = { headerMenu = false; onPlayAll(tracks, 0) }, leadingIcon = { Icon(Icons.Filled.PlayArrow, null) })
-                            DropdownMenuItem(text = { Text(appString(R.string.text_shuffle_5b772b)) }, enabled = tracks.isNotEmpty(), onClick = { headerMenu = false; onShufflePlay(tracks) }, leadingIcon = { Icon(Icons.Filled.Shuffle, null) })
-                            DropdownMenuItem(text = { Text(appString(R.string.text_add_all_to_queue_6cb104)) }, enabled = tracks.isNotEmpty(), onClick = { headerMenu = false; tracks.forEach { onAddToQueue(it) } }, leadingIcon = { Icon(Icons.AutoMirrored.Filled.QueueMusic, null) })
+                            DropdownMenuItem(text = { Text(appString(R.string.text_play_5d12bd)) }, enabled = sortedTracks.isNotEmpty(), onClick = { headerMenu = false; onPlayAll(sortedTracks, 0) }, leadingIcon = { Icon(Icons.Filled.PlayArrow, null) })
+                            DropdownMenuItem(text = { Text(appString(R.string.text_shuffle_5b772b)) }, enabled = sortedTracks.isNotEmpty(), onClick = { headerMenu = false; onShufflePlay(sortedTracks) }, leadingIcon = { Icon(Icons.Filled.Shuffle, null) })
+                            DropdownMenuItem(text = { Text(appString(R.string.text_add_all_to_queue_6cb104)) }, enabled = sortedTracks.isNotEmpty(), onClick = { headerMenu = false; sortedTracks.forEach { onAddToQueue(it) } }, leadingIcon = { Icon(Icons.AutoMirrored.Filled.QueueMusic, null) })
                             DropdownMenuItem(
                                 text = { Text(if (isPinned) appString(R.string.text_unpin_from_library_5b3f2e) else appString(R.string.text_pin_to_library_7b01e2)) },
                                 onClick = { headerMenu = false; onTogglePin() },
@@ -232,7 +242,7 @@ fun DetailScreen(
                     Modifier
                         .clip(RoundedCornerShape(50))
                         .background(Brush.horizontalGradient(listOf(accent, accent.copy(alpha = 0.78f))))
-                        .clickable(enabled = tracks.isNotEmpty()) { onPlayAll(tracks, 0) }
+                        .clickable(enabled = sortedTracks.isNotEmpty()) { onPlayAll(sortedTracks, 0) }
                         .padding(horizontal = 28.dp, vertical = 13.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
@@ -244,7 +254,7 @@ fun DetailScreen(
                 Icon(
                     Icons.Filled.Shuffle, appString(R.string.text_shuffle_5b772b),
                     tint = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.size(46.dp).clip(CircleShape).clickable(enabled = tracks.isNotEmpty()) { onShufflePlay(tracks) }.padding(11.dp),
+                    modifier = Modifier.size(46.dp).clip(CircleShape).clickable(enabled = sortedTracks.isNotEmpty()) { onShufflePlay(sortedTracks) }.padding(11.dp),
                 )
                 androidx.compose.material3.TextButton(onClick = onMix, enabled = tracks.isNotEmpty()) {
                     Icon(Icons.Filled.GraphicEq, null, Modifier.size(18.dp))
@@ -320,6 +330,37 @@ fun DetailScreen(
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.weight(1f),
                 )
+                if (tracks.size > 1) {
+                    var sortMenu by remember { mutableStateOf(false) }
+                    Box {
+                        Icon(
+                            Icons.Filled.SwapVert,
+                            appString(R.string.detail_sort_button_desc),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.size(40.dp).clip(CircleShape).clickable { sortMenu = true }.padding(8.dp),
+                        )
+                        DropdownMenu(expanded = sortMenu, onDismissRequest = { sortMenu = false }) {
+                            DetailSort.entries.forEach { option ->
+                                DropdownMenuItem(
+                                    text = { Text(detailSortLabel(option)) },
+                                    onClick = {
+                                        if (option == detailSort) detailSortDescending = !detailSortDescending
+                                        else {
+                                            detailSortName = option.name
+                                            detailSortDescending = option == DetailSort.DATE_ADDED
+                                        }
+                                        sortMenu = false
+                                    },
+                                    trailingIcon = {
+                                        if (option == detailSort) {
+                                            Icon(if (detailSortDescending) Icons.Filled.ArrowDownward else Icons.Filled.ArrowUpward, null)
+                                        }
+                                    },
+                                )
+                            }
+                        }
+                    }
+                }
                 if (tracks.size > 5) {
                     Icon(
                         if (searchOpen) Icons.Filled.Close else Icons.Filled.Search,
@@ -361,7 +402,7 @@ fun DetailScreen(
 
         // playlists mix genres so offer chips for the ones actually present
         val isSongMix = info.typeLabel.equals("Playlist", true) || info.typeLabel.equals("Smart playlist", true) || info.typeLabel.equals("Liked", true)
-        val genres = if (isSongMix) tracks.mapNotNull { t -> t.genre.trim().takeIf { it.isNotBlank() } }.distinctBy { it.lowercase() }.sortedBy { it.lowercase() } else emptyList()
+        val genres = if (isSongMix) sortedTracks.mapNotNull { t -> t.genre.trim().takeIf { it.isNotBlank() } }.distinctBy { it.lowercase() }.sortedBy { it.lowercase() } else emptyList()
         if (genres.size > 1) {
             item {
                 androidx.compose.foundation.lazy.LazyRow(
@@ -388,7 +429,7 @@ fun DetailScreen(
             }
         }
 
-        val genreShown = genreFilter?.let { g -> tracks.filter { it.genre.equals(g, true) } } ?: tracks
+        val genreShown = genreFilter?.let { g -> sortedTracks.filter { it.genre.equals(g, true) } } ?: sortedTracks
         val shown = if (query.isBlank() || !searchOpen) genreShown
             else genreShown.filter { it.title.contains(query, true) || it.artist.contains(query, true) }
 
@@ -421,6 +462,13 @@ fun DetailScreen(
             }
         }
     }
+    LazyListScrollbar(
+        state = listState,
+        modifier = Modifier.fillMaxSize(),
+        topPadding = topInset,
+        bottomPadding = contentPadding.calculateBottomPadding() + 24.dp,
+    )
+    }
 
     if (showEdit) {
         EditPlaylistDialog(
@@ -430,6 +478,15 @@ fun DetailScreen(
             onDismiss = { showEdit = false },
         )
     }
+}
+
+private fun detailSortLabel(sort: DetailSort): String = when (sort) {
+    DetailSort.ORIGINAL -> appString(R.string.detail_sort_original)
+    DetailSort.NAME -> appString(R.string.detail_sort_name)
+    DetailSort.RELEASE_DATE -> appString(R.string.detail_sort_release_date)
+    DetailSort.ARTIST -> appString(R.string.detail_sort_artist)
+    DetailSort.ALBUM -> appString(R.string.detail_sort_album)
+    DetailSort.DATE_ADDED -> appString(R.string.detail_sort_date_added)
 }
 
 @OptIn(ExperimentalLayoutApi::class)

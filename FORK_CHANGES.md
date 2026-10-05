@@ -78,3 +78,9 @@ The kernel ran all 79 biquad slots (31 graphic + 12 parametric × 4 sections) pe
 - `PrecisionEffectsKernel` processes only those. When a coefficient change activates a skipped section, its filter history is seeded from the signal that entered it, so the output matches the previous all-slots processing exactly (covered by unit tests against a reference all-slots cascade).
 
 Note: debuggable builds (`assembleDebug`) are several times slower in this per-sample Kotlin code (ART does not inline in debuggable mode). On the test device a debuggable build still underran with the screen off even after this change, while a non-debuggable build using the same code had no underruns and about 10–20 % playback-thread CPU. For daily listening, use a non-debuggable build.
+
+## feature/scroll-sort
+
+Added themed, draggable, auto-hiding scrollbars to the library song/list/grid views, the all-library overview, and detail track lists. The scrollbar reflects approximate list position, stays above bottom content padding, and moves left when the A–Z rail is present.
+
+Detail screens now offer original order, name, release date, artist, album, and date-added sorting, with reversible directions. Name sorting groups symbols, digits, Latin, kana, and other scripts (folding kana and normalizing case); release-date sorting uses the new `Song.releaseYear`, populated only for Subsonic/Navidrome, Jellyfin, and local files.
