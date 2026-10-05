@@ -19,13 +19,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -111,7 +111,14 @@ private fun ScrollbarOverlay(
     val scope = rememberCoroutineScope()
     val density = LocalDensity.current
     val thumbColor = MaterialTheme.colorScheme.onSurface
-    val alpha by animateFloatAsState(if (visible && metrics.hasRange) 0.56f else 0f, label = "scrollbarAlpha")
+    val alpha by animateFloatAsState(
+        if (interacting) 0.8f else if (visible && metrics.hasRange) 0.56f else 0f,
+        label = "scrollbarAlpha",
+    )
+    val latestMetrics = rememberUpdatedState(metrics)
+    val latestTopPadding = rememberUpdatedState(topPadding)
+    val latestBottomPadding = rememberUpdatedState(bottomPadding)
+    val latestOnScrollTo = rememberUpdatedState(onScrollTo)
 
     LaunchedEffect(metrics.hasRange, isScrolling, interacting) {
         if (!metrics.hasRange) {
@@ -131,29 +138,59 @@ private fun ScrollbarOverlay(
                 .fillMaxHeight()
                 .width(28.dp)
                 .alpha(alpha)
-                .pointerInput(metrics, metrics.hasRange) {
-                    if (!metrics.hasRange) return@pointerInput
+                .pointerInput(Unit) {
                     awaitEachGesture {
                         val down = awaitFirstDown(requireUnconsumed = false)
-                        val trackTop = topPadding.toPx()
-                        val trackHeight = (size.height - trackTop - bottomPadding.toPx()).coerceAtLeast(1f)
-                        val thumbHeight = thumbHeight(trackHeight, 32.dp.toPx(), metrics)
-                        var thumbTop = trackTop + (trackHeight - thumbHeight) * metrics.fraction
-                        if (down.position.y !in thumbTop..(thumbTop + thumbHeight)) return@awaitEachGesture
+                        val currentMetrics = latestMetrics.value
+                        if (!currentMetrics.hasRange) return@awaitEachGesture
+
+                        val trackTop = latestTopPadding.value.toPx()
+                        val trackHeight = (size.height - trackTop - latestBottomPadding.value.toPx())
+                            .coerceAtLeast(1f)
+                        val thumbHeight = thumbHeight(trackHeight, 32.dp.toPx(), currentMetrics)
+                        val thumbTop = trackTop + (trackHeight - thumbHeight) * currentMetrics.fraction
+                        val hitSlop = 16.dp.toPx()
+                        if (down.position.y !in (thumbTop - hitSlop)..(thumbTop + thumbHeight + hitSlop)) {
+                            return@awaitEachGesture
+                        }
+
+                        var currentThumbTop = thumbTop
+                        val grabOffset = if (down.position.y in thumbTop..(thumbTop + thumbHeight)) {
+                            down.position.y - thumbTop
+                        } else {
+                            thumbHeight / 2f
+                        }
+                        var lastTarget: Int? = null
                         interacting = true
                         down.consume()
-                        drag(down.id) { change ->
-                            change.consume()
-                            thumbTop = (thumbTop + change.positionChange().y)
-                                .coerceIn(trackTop, trackTop + trackHeight - thumbHeight)
-                            val fraction = if (trackHeight == thumbHeight) 0f
-                                else (thumbTop - trackTop) / (trackHeight - thumbHeight)
-                            val target = (fraction * metrics.maxIndex).roundToInt()
-                                .coerceIn(0, metrics.maxIndex)
-                            scope.launch { onScrollTo(target) }
+                        try {
+                            drag(down.id) { change ->
+                                val dragMetrics = latestMetrics.value
+                                val dragTrackTop = latestTopPadding.value.toPx()
+                                val dragTrackHeight =
+                                    (size.height - dragTrackTop - latestBottomPadding.value.toPx())
+                                        .coerceAtLeast(1f)
+                                val dragThumbHeight = thumbHeight(dragTrackHeight, 32.dp.toPx(), dragMetrics)
+                                currentThumbTop = (change.position.y - grabOffset)
+                                    .coerceIn(
+                                        dragTrackTop,
+                                        dragTrackTop + dragTrackHeight - dragThumbHeight,
+                                    )
+                                val fraction = if (dragTrackHeight == dragThumbHeight) 0f
+                                    else (currentThumbTop - dragTrackTop) /
+                                        (dragTrackHeight - dragThumbHeight)
+                                val target = (fraction * dragMetrics.maxIndex).roundToInt()
+                                    .coerceIn(0, dragMetrics.maxIndex)
+                                change.consume()
+                                if (target != lastTarget) {
+                                    lastTarget = target
+                                    scope.launch { latestOnScrollTo.value(target) }
+                                }
+                            }
+                        } finally {
+                            interacting = false
+                            visible = true
                         }
-                        interacting = false
-                        visible = true
                     }
                 },
         ) {
@@ -164,7 +201,7 @@ private fun ScrollbarOverlay(
             drawRoundRect(
                 color = thumbColor,
                 topLeft = Offset(size.width - with(density) { 4.dp.toPx() }, thumbTop),
-                size = Size(with(density) { 3.dp.toPx() }, thumbHeight),
+                size = Size(with(density) { 4.dp.toPx() }, thumbHeight),
                 cornerRadius = androidx.compose.ui.geometry.CornerRadius(with(density) { 2.dp.toPx() }),
             )
         }
