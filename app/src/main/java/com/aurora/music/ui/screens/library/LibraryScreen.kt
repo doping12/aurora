@@ -33,6 +33,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -96,6 +97,8 @@ import com.aurora.music.model.LibrarySort
 import com.aurora.music.model.Song
 import com.aurora.music.ui.components.Artwork
 import com.aurora.music.ui.components.SongRow
+import com.aurora.music.ui.components.LazyGridScrollbar
+import com.aurora.music.ui.components.LazyListScrollbar
 import com.aurora.music.util.accentFor
 import com.aurora.music.viewmodel.LibraryUiState
 import kotlinx.coroutines.launch
@@ -376,7 +379,9 @@ private fun AllOverview(
     onOpenRadio: () -> Unit,
     onOpenPodcasts: () -> Unit,
 ) {
-    LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = bottom)) {
+    val listState = rememberLazyListState()
+    Box(Modifier.fillMaxSize()) {
+    LazyColumn(Modifier.fillMaxSize(), state = listState, contentPadding = PaddingValues(bottom = bottom)) {
         // quick access tiles
         item {
             val tiles = buildList {
@@ -459,6 +464,8 @@ private fun AllOverview(
                 }
             }
         }
+    }
+    LazyListScrollbar(state = listState, modifier = Modifier.fillMaxSize(), bottomPadding = bottom)
     }
 }
 
@@ -674,6 +681,12 @@ private fun SongsTab(
                 }
             }
         }
+        LazyListScrollbar(
+            state = listState,
+            modifier = Modifier.fillMaxSize(),
+            bottomPadding = bottom,
+            endPadding = if (sort == LibrarySort.ALPHABETICAL && songs.size > 30) 24.dp else 0.dp,
+        )
         if (sort == LibrarySort.ALPHABETICAL && songs.size > 30) {
             AlphabetRail(
                 modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight().padding(bottom = bottom),
@@ -704,6 +717,12 @@ private fun RowsContent(
             LazyColumn(Modifier.fillMaxSize().padding(horizontal = 8.dp), state = listState, contentPadding = PaddingValues(bottom = bottom)) {
                 items(rows.size) { i -> LibListItem(rows[i], actions) { onOpen(rows[i]) } }
             }
+            LazyListScrollbar(
+                state = listState,
+                modifier = Modifier.fillMaxSize(),
+                bottomPadding = bottom,
+                endPadding = if (sort == LibrarySort.ALPHABETICAL && rows.size > 30) 24.dp else 0.dp,
+            )
             if (sort == LibrarySort.ALPHABETICAL && rows.size > 30) {
                 AlphabetRail(
                     modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight().padding(bottom = bottom),
@@ -714,15 +733,20 @@ private fun RowsContent(
             }
         }
     } else {
-        LazyVerticalGrid(
-            columns = if (com.aurora.music.ui.layout.LocalWindowLayout.current.useNavigationRail)
-                GridCells.Adaptive((360f / libColumns).coerceAtLeast(120f).dp) else GridCells.Fixed(libColumns),
-            modifier = Modifier.fillMaxSize().padding(horizontal = 12.dp),
-            contentPadding = PaddingValues(bottom = bottom),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            items(rows.size) { i -> LibGridItem(rows[i], actions) { onOpen(rows[i]) } }
+        val gridState = rememberLazyGridState()
+        Box(Modifier.fillMaxSize()) {
+            LazyVerticalGrid(
+                columns = if (com.aurora.music.ui.layout.LocalWindowLayout.current.useNavigationRail)
+                    GridCells.Adaptive((360f / libColumns).coerceAtLeast(120f).dp) else GridCells.Fixed(libColumns),
+                state = gridState,
+                modifier = Modifier.fillMaxSize().padding(horizontal = 12.dp),
+                contentPadding = PaddingValues(bottom = bottom),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                items(rows.size) { i -> LibGridItem(rows[i], actions) { onOpen(rows[i]) } }
+            }
+            LazyGridScrollbar(state = gridState, modifier = Modifier.fillMaxSize(), bottomPadding = bottom)
         }
     }
 }

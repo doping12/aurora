@@ -57,6 +57,7 @@ class SubsonicBackend(
             genre = genre ?: "",
             playCount = playCount,
             dateAddedSec = com.aurora.music.util.parseIsoEpochSec(created),
+            releaseYear = year,
         )
         return localize(base)
     }

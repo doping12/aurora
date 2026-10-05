@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="detail_sort_original" formatted="false">Original order</string>
+    <string name="detail_sort_name" formatted="false">Name</string>
+    <string name="detail_sort_release_date" formatted="false">Release date</string>
+    <string name="detail_sort_artist" formatted="false">Artist name</string>
+    <string name="detail_sort_album" formatted="false">Album name</string>
+    <string name="detail_sort_date_added" formatted="false">Date added</string>
+    <string name="detail_sort_button_desc" formatted="false">Sort tracks</string>
+    <string name="scrollbar_desc" formatted="false">Scroll bar</string>
+</resources>

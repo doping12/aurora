@@ -61,6 +61,7 @@ class JellyfinBackend(
             genre = Genres?.firstOrNull().orEmpty(),
             playCount = UserData?.PlayCount ?: 0,
             dateAddedSec = com.aurora.music.util.parseIsoEpochSec(DateCreated),
+            releaseYear = ProductionYear ?: 0,
         )
         return localize(base)
     }
