@@ -84,3 +84,17 @@ Note: debuggable builds (`assembleDebug`) are several times slower in this per-s
 Added themed, draggable, auto-hiding scrollbars to the library song/list/grid views, the all-library overview, and detail track lists. The scrollbar reflects approximate list position, stays above bottom content padding, and moves left when the A–Z rail is present.
 
 Detail screens now offer original order, name, release date, artist, album, and date-added sorting, with reversible directions. Name sorting groups symbols, digits, Latin, kana, and other scripts (folding kana and normalizing case); release-date sorting uses the new `Song.releaseYear`, populated only for Subsonic/Navidrome, Jellyfin, and local files.
+
+## feature/playlist-cover
+
+### Custom playlist cover
+
+By default a playlist's cover is the artwork of its first track (or whatever the server reports). The *Edit playlist* dialog in the detail screen now has a cover section where you can pick:
+
+- the cover of any track in the playlist,
+- an image from the device (downscaled to 768 px JPEG), or
+- *Use default* to go back to the original behaviour.
+
+The choice is applied when you press *Save*. The override is stored only in the app (`PlaylistCoverStore`: `playlist_covers.json` plus images under `files/playlist-covers/`, keyed by server id + playlist id), so it works with every backend and nothing is sent to the server. It is shown in the detail header, Library, Home, search results and the "add to playlist" sheet, and is removed when the playlist is deleted.
+
+Limitations: overrides are not included in backups, are not synced to other devices (including Navidrome sync), and pinned shortcuts keep the cover captured when they were pinned.

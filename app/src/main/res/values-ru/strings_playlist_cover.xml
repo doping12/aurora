@@ -1,0 +1,7 @@
+<resources>
+    <string name="playlist_cover">Обложка плейлиста</string>
+    <string name="playlist_cover_from_tracks">Выбрать из треков</string>
+    <string name="playlist_cover_pick_image">Выбрать изображение</string>
+    <string name="playlist_cover_default">Использовать обложку по умолчанию</string>
+    <string name="playlist_cover_import_failed">Не удалось сохранить обложку плейлиста. Попробуйте ещё раз.</string>
+</resources>

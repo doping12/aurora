@@ -1,0 +1,7 @@
+<resources>
+    <string name="playlist_cover">Playlist cover</string>
+    <string name="playlist_cover_from_tracks">Choose from tracks</string>
+    <string name="playlist_cover_pick_image">Choose image</string>
+    <string name="playlist_cover_default">Use default</string>
+    <string name="playlist_cover_import_failed">Could not save the playlist cover. Please try again.</string>
+</resources>

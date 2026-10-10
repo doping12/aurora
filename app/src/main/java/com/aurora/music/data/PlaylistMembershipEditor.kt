@@ -10,6 +10,7 @@ class PlaylistMembershipEditor internal constructor(
     private val songId: String,
     private val isActive: () -> Boolean = { true },
     private val onChanged: (String) -> Unit = {},
+    private val transform: (Playlist) -> Playlist = { it },
 ) {
     private val writes = Mutex()
     private var allowedIds: Set<String> = emptySet()
@@ -20,7 +21,7 @@ class PlaylistMembershipEditor internal constructor(
         changedIds.clear()
     }
 
-    suspend fun playlists(): List<Playlist> = backend.playlistsForSong(songId).also {
+    suspend fun playlists(): List<Playlist> = backend.playlistsForSong(songId).map(transform).also {
         allowedIds = it.map { playlist -> playlist.id }.toSet()
     }
 

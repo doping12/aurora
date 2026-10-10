@@ -825,6 +825,15 @@ fun AuroraApp() {
                                     if (updated) detailVM.reload(kind, id)
                                 }
                             },
+                            onSetPlaylistCover = { change ->
+                                when (change) {
+                                    com.aurora.music.ui.screens.detail.PlaylistCoverChange.Keep -> Unit
+                                    com.aurora.music.ui.screens.detail.PlaylistCoverChange.Default -> container.repository.clearPlaylistCover(id)
+                                    is com.aurora.music.ui.screens.detail.PlaylistCoverChange.Url -> container.repository.setPlaylistCoverFromUrl(id, change.value)
+                                    is com.aurora.music.ui.screens.detail.PlaylistCoverChange.Image -> container.repository.setPlaylistCoverFromImage(id, change.uri)
+                                }
+                                detailVM.reload(kind, id)
+                            },
                             onDeletePlaylist = {
                                 scope.launch {
                                     if (playlistMutation { container.repository.deletePlaylist(id) }) navController.popBackStack()
