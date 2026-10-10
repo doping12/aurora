@@ -127,7 +127,8 @@ class PcmLevelMeter {
             val result = PcmLevels(publishedRate, publishedChannels, publishedWindow, publishedFrames,
                 publishedPeakL, publishedPeakR, sqrt(publishedSumL / max(1, publishedWindow)),
                 sqrt(publishedSumR / max(1, publishedWindow)), publishedFullScale, publishedInvalid,
-                publishedTimeUs.takeUnless { it == C.TIME_UNSET }, publishedAt)
+                publishedTimeUs.takeUnless { it == C.TIME_UNSET }, publishedAt,
+                publishedSumL / max(1, publishedWindow), publishedSumR / max(1, publishedWindow))
             if (revision == stamp) return result.takeIf { it.framesSinceReset > 0 }
         }
         return null

@@ -1,0 +1,3 @@
+<resources>
+    <string name="auto_volume_description" formatted="false">Использует теги ReplayGain, если они есть, иначе измеряет первые секунды каждой композиции и снижает громкость громких записей до общего уровня. Только ослабление.</string>
+</resources>

@@ -156,7 +156,7 @@ data class AudioPrefs(
     val bassBoost: Int = 0,
     val virtualizer: Int = 0,
     val loudnessGain: Int = 0,
-    val replayGain: Int = 0,                // 0 off 1 track 2 album
+    val replayGain: Int = 0,                // 0 off 1 track 2 album 3 auto
     val dspMode: Int = DspMode.SYSTEM,
     val dspGraphicBands: List<Float> = emptyList(),
     val dspParametric: List<ParamBand> = emptyList(),

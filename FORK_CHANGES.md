@@ -118,3 +118,15 @@ Applied to: shuffle play, turning shuffle on in an existing queue, songs appende
 Audio could become choppy/distorted with the screen off (both Bluetooth and wired). The app declared `WAKE_LOCK` but never asked ExoPlayer to hold a wake lock, so the CPU (and, for streams, the Wi-Fi radio) could power-save between decode/feed cycles. The playback players now use `setWakeMode`: `WAKE_MODE_NETWORK` (CPU + Wi-Fi lock) for streamed items (`http`, `https`, `aurora-yt`, `aurora-extension`) and `WAKE_MODE_LOCAL` (CPU lock) for local files, updated on every media-item change. ExoPlayer holds the locks only while playing. Code: `playback/WakeModes.kt`, `PlaybackService`, `MixPlayer`.
 
 This is separate from the Custom-DSP CPU fix in `fix/dsp-screen-off-underrun`; underruns are still reported in the signal-path screen, which can be used to check whether glitches remain.
+
+## feature/auto-volume
+
+### "Auto" volume leveling
+
+Settings → Loudness → Volume leveling has a fourth option, **Auto**, next to Off / Track / Album. It uses the track's ReplayGain tag when there is one (same as Track). For tracks without tags (most streamed tracks, local files that were never scanned) it measures the loudness itself and lowers loud tracks toward a common level:
+
+- While the track plays, the PCM level meter's ~100 ms blocks are averaged (silence below −60 dBFS ignored). After 3 s there is an estimate (plain RMS in dBFS, no K-weighting); the first 20 s are used.
+- Gain = −18 dBFS − estimate, attenuation only (never boosts, so no clipping), applied through the existing player-volume path and slewed at no more than 2 dB per second.
+- The estimate is cached per track (`AutoLevelStore`, `auto_levels.json`, up to 5,000 entries) once at least 10 s were measured, so the next play is leveled from the first second.
+
+Limits: Auto only estimates on the Android PCM paths with a level meter (16-bit, or the Custom DSP float path); with native USB output (player volume is ignored) it has no effect, and MixPlayer / network output use tags only. Quiet tracks are not boosted. Code: `playback/LoudnessEstimator.kt`, `data/AutoLevelStore.kt`, `PlaybackService.updateAutoLevel`.
