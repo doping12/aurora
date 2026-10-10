@@ -1,5 +1,8 @@
 package com.aurora.music.ui.screens.detail
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import com.aurora.music.localization.localizedMediaType
 
 import com.aurora.music.localization.appString
@@ -25,6 +28,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
@@ -77,6 +82,13 @@ import com.aurora.music.ui.components.SongRow
 import com.aurora.music.viewmodel.DetailUiState
 import kotlinx.coroutines.launch
 
+sealed interface PlaylistCoverChange {
+    data object Keep : PlaylistCoverChange
+    data object Default : PlaylistCoverChange
+    data class Url(val value: String) : PlaylistCoverChange
+    data class Image(val uri: Uri) : PlaylistCoverChange
+}
+
 @Composable
 fun DetailScreen(
     contentPadding: PaddingValues,
@@ -100,6 +112,7 @@ fun DetailScreen(
     onDownloadAll: () -> Unit,
     onRemoveDownloads: () -> Unit,
     onEditPlaylist: suspend (String, String) -> Boolean,
+    onSetPlaylistCover: suspend (PlaylistCoverChange) -> Unit = {},
     onDeletePlaylist: () -> Unit,
     onLoadMore: () -> Unit = {},
     onMix: () -> Unit = {},
@@ -426,7 +439,11 @@ fun DetailScreen(
         EditPlaylistDialog(
             initialName = info.title,
             initialDesc = info.editableDescription ?: info.subtitle,
+            currentCover = info.artUrl,
+            defaultCover = data.tracks.firstOrNull { it.artworkUrl.isNotBlank() }?.artworkUrl.orEmpty(),
+            trackCovers = data.tracks.map { it.artworkUrl }.filter { it.isNotBlank() }.distinct(),
             onSave = onEditPlaylist,
+            onSetCover = onSetPlaylistCover,
             onDismiss = { showEdit = false },
         )
     }
@@ -479,17 +496,61 @@ private fun ArtistAbout(info: com.aurora.music.data.remote.ArtistInfo, accent: C
 }
 
 @Composable
-private fun EditPlaylistDialog(initialName: String, initialDesc: String, onSave: suspend (String, String) -> Boolean, onDismiss: () -> Unit) {
+private fun EditPlaylistDialog(
+    initialName: String,
+    initialDesc: String,
+    currentCover: String,
+    defaultCover: String,
+    trackCovers: List<String>,
+    onSave: suspend (String, String) -> Boolean,
+    onSetCover: suspend (PlaylistCoverChange) -> Unit,
+    onDismiss: () -> Unit,
+) {
     var name by remember { mutableStateOf(initialName) }
     var desc by remember { mutableStateOf(initialDesc) }
+    var coverChange by remember { mutableStateOf<PlaylistCoverChange>(PlaylistCoverChange.Keep) }
     var saving by remember { mutableStateOf(false) }
     var failed by remember { mutableStateOf(false) }
+    var coverFailed by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
+    val imagePicker = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        if (uri != null) { coverChange = PlaylistCoverChange.Image(uri); coverFailed = false }
+    }
     androidx.compose.material3.AlertDialog(
         onDismissRequest = { if (!saving) onDismiss() },
         title = { Text(appString(R.string.text_edit_playlist_1528d5), fontWeight = FontWeight.Bold) },
         text = {
-            Column {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                Text(appString(R.string.playlist_cover), style = MaterialTheme.typography.titleSmall)
+                Spacer(Modifier.height(8.dp))
+                val preview = when (val change = coverChange) {
+                    PlaylistCoverChange.Keep -> currentCover
+                    PlaylistCoverChange.Default -> defaultCover
+                    is PlaylistCoverChange.Url -> change.value
+                    is PlaylistCoverChange.Image -> change.uri.toString()
+                }
+                Artwork(preview, MaterialTheme.colorScheme.primary, Modifier.size(96.dp), corner = 12.dp)
+                androidx.compose.material3.TextButton(onClick = { coverChange = PlaylistCoverChange.Default; coverFailed = false }, enabled = !saving) {
+                    Text(appString(R.string.playlist_cover_default))
+                }
+                androidx.compose.material3.TextButton(onClick = { imagePicker.launch("image/*") }, enabled = !saving) {
+                    Text(appString(R.string.playlist_cover_pick_image))
+                }
+                if (trackCovers.isNotEmpty()) {
+                    Text(appString(R.string.playlist_cover_from_tracks), style = MaterialTheme.typography.labelLarge)
+                    androidx.compose.foundation.lazy.LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        items(trackCovers.size) { index ->
+                            val url = trackCovers[index]
+                            Artwork(url, MaterialTheme.colorScheme.primary, Modifier.size(64.dp).clip(RoundedCornerShape(8.dp))
+                                .clickable(enabled = !saving) { coverChange = PlaylistCoverChange.Url(url); coverFailed = false }, corner = 8.dp)
+                        }
+                    }
+                }
+                if (coverFailed) {
+                    Text(appString(R.string.playlist_cover_import_failed), color = MaterialTheme.colorScheme.error,
+                        style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(top = 8.dp))
+                }
+                Spacer(Modifier.height(12.dp))
                 androidx.compose.material3.OutlinedTextField(value = name, onValueChange = { name = it; failed = false }, label = { Text(appString(R.string.text_name_709a23)) }, singleLine = true, enabled = !saving)
                 Spacer(Modifier.height(10.dp))
                 androidx.compose.material3.OutlinedTextField(value = desc, onValueChange = { desc = it; failed = false }, label = { Text(appString(R.string.text_description_55f8eb)) }, enabled = !saving)
@@ -505,7 +566,26 @@ private fun EditPlaylistDialog(initialName: String, initialDesc: String, onSave:
                 failed = false
                 scope.launch {
                     try {
-                        if (onSave(name.trim(), desc.trim())) onDismiss() else failed = true
+                        val fieldsChanged = name.trim() != initialName || desc.trim() != initialDesc
+                        val fieldsSaved = onSave(name.trim(), desc.trim())
+                        if (fieldsChanged && !fieldsSaved) {
+                            failed = true
+                            return@launch
+                        }
+                        try {
+                            when (val change = coverChange) {
+                                PlaylistCoverChange.Keep -> Unit
+                                PlaylistCoverChange.Default -> onSetCover(change)
+                                is PlaylistCoverChange.Url -> onSetCover(change)
+                                is PlaylistCoverChange.Image -> onSetCover(change)
+                            }
+                        } catch (e: kotlinx.coroutines.CancellationException) {
+                            throw e
+                        } catch (_: Exception) {
+                            coverFailed = true
+                            return@launch
+                        }
+                        onDismiss()
                     } finally {
                         saving = false
                     }

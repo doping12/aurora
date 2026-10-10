@@ -78,6 +78,7 @@ class MusicRepository(
     private val smartEngine: SmartPlaylistEngine? = null,
     private val cachedSongsProvider: () -> List<Song> = { emptyList() },
     private val coverUrl: (String, String, String, String, Int) -> String = { original, _, _, _, _ -> original },
+    private val playlistCoverStore: PlaylistCoverStore? = null,
 ) {
     private val backend: MediaBackend? get() = backendProvider()
     private val offline: Boolean get() = offlineProvider() && backend?.supportsOfflineBrowsing != true
@@ -112,6 +113,9 @@ class MusicRepository(
 
     private fun artwork(song: Song): Song = song.copy(artworkUrl = coverUrl(song.artworkUrl, song.artist, song.album, song.title, song.durationSec))
     private fun artwork(album: Album): Album = album.copy(artworkUrl = coverUrl(album.artworkUrl, album.artist, album.title, "", 0))
+    private fun playlist(playlist: Playlist): Playlist = playlistCoverStore
+        ?.get(currentServerIdProvider(), playlist.id)?.takeIf { it.isNotBlank() }
+        ?.let { playlist.copy(coverUrl = it) } ?: playlist
 
     private fun tag(song: Song, source: MediaBackend): Song {
         val identity = if (downloadedCopy(song) != null || song.playbackSource != null) playbackSourceIdentity(song)
@@ -253,11 +257,13 @@ class MusicRepository(
         recentlyPlayed = data.recentlyPlayed.map { artwork(it) },
         mostPlayed = data.mostPlayed.map { artwork(it) },
         random = data.random.map { artwork(it) },
+        playlists = data.playlists.map(::playlist),
         starred = data.starred.map { tag(it, source) },
         sections = data.sections.map { section -> section.copy(items = section.items.map {
             when (it) {
                 is HomeFeedItem.Track -> HomeFeedItem.Track(tag(it.song, source))
                 is HomeFeedItem.Record -> HomeFeedItem.Record(artwork(it.album))
+                is HomeFeedItem.Collection -> HomeFeedItem.Collection(playlist(it.playlist))
                 else -> it
             }
         }) },
@@ -270,7 +276,7 @@ class MusicRepository(
         if (offline) emptyList() else backend?.allArtists().orEmpty()
 
     suspend fun allPlaylists(): List<Playlist> =
-        if (offline) emptyList() else backend?.allPlaylists().orEmpty()
+        if (offline) emptyList() else backend?.allPlaylists().orEmpty().map(::playlist)
 
     suspend fun allSongs(): List<Song> =
         if (offline) offlineSongs() else sourceSongs { it.allSongs() }
@@ -357,7 +363,7 @@ class MusicRepository(
             return SearchResults(songs = songs, albums = albums, artists = emptyList())
         }
         val source = backend ?: return SearchResults()
-        return source.search(query, sourceId).let { it.copy(songs = it.songs.map { song -> tag(song, source) }, albums = it.albums.map { album -> artwork(album) }) }
+        return source.search(query, sourceId).let { it.copy(songs = it.songs.map { song -> tag(song, source) }, albums = it.albums.map { album -> artwork(album) }, playlists = it.playlists.map(::playlist)) }
     }
 
     suspend fun scrobble(id: String) {
@@ -410,7 +416,7 @@ class MusicRepository(
         val expectedProvider = source.playbackSourceIdentity(song.copy(id = id, playbackSource = null, streamUrl = ""))?.providerId
         if (song.playbackSource?.providerId != null && song.playbackSource.providerId != expectedProvider) return null
         return PlaylistMembershipEditor(source, id, isActive = { !offline && backend === source },
-            onChanged = { playlistChangeEvents.tryEmit(it) })
+            onChanged = { playlistChangeEvents.tryEmit(it) }, transform = ::playlist)
     }
 
     suspend fun addToPlaylist(playlistId: String, trackIds: List<String>): Boolean {
@@ -463,9 +469,31 @@ class MusicRepository(
         return updated
     }
 
+    fun playlistCover(id: String): String? = playlistCoverStore?.get(currentServerIdProvider(), id)
+
+    suspend fun setPlaylistCoverFromUrl(id: String, url: String) {
+        requireNotNull(playlistCoverStore) { "Playlist cover storage is unavailable." }
+            .setUrl(currentServerIdProvider(), id, url)
+        playlistChangeEvents.tryEmit(id)
+    }
+
+    suspend fun setPlaylistCoverFromImage(id: String, uri: Uri) {
+        requireNotNull(playlistCoverStore) { "Playlist cover storage is unavailable." }
+            .setImage(currentServerIdProvider(), id, uri)
+        playlistChangeEvents.tryEmit(id)
+    }
+
+    fun clearPlaylistCover(id: String) {
+        playlistCoverStore?.clear(currentServerIdProvider(), id)
+        playlistChangeEvents.tryEmit(id)
+    }
+
     suspend fun deletePlaylist(id: String): Boolean {
         val deleted = backend?.deletePlaylist(id) ?: false
-        if (deleted) playlistChangeEvents.tryEmit(id)
+        if (deleted) {
+            playlistCoverStore?.remove(currentServerIdProvider(), id)
+            playlistChangeEvents.tryEmit(id)
+        }
         return deleted
     }
 
@@ -498,7 +526,8 @@ class MusicRepository(
                 "playlist" -> downloadManager.collections.value.firstOrNull { it.id == id }?.let { col ->
                     val byId = downloadManager.downloads.value
                     val tracks = col.trackIds.mapNotNull { byId[it]?.toSong() }
-                    DetailData(DetailInfo(col.title, col.subtitle, fileUri(col.coverPath), accentFor(id), false, tracks.size, "Playlist"), tracks)
+                    val art = playlistCoverStore?.get(currentServerIdProvider(), id)?.takeIf { it.isNotBlank() } ?: fileUri(col.coverPath)
+                    DetailData(DetailInfo(col.title, col.subtitle, art, accentFor(id), false, tracks.size, "Playlist"), tracks)
                 }
                 else -> null
             }
@@ -509,7 +538,9 @@ class MusicRepository(
         val tracks = result.tracks.map { tag(it, source) }
         val art = when (kind) {
             "album" -> coverUrl(result.info.artUrl, result.tracks.firstOrNull()?.artist.orEmpty(), result.info.title, "", 0)
-            "playlist", "liked" -> result.info.artUrl.ifBlank { tracks.firstOrNull()?.artworkUrl.orEmpty() }
+            "playlist" -> playlistCoverStore?.get(currentServerIdProvider(), id)?.takeIf { it.isNotBlank() }
+                ?: result.info.artUrl.ifBlank { tracks.firstOrNull()?.artworkUrl.orEmpty() }
+            "liked" -> result.info.artUrl.ifBlank { tracks.firstOrNull()?.artworkUrl.orEmpty() }
             else -> result.info.artUrl
         }
         return result.copy(info = result.info.copy(artUrl = art), tracks = tracks, albums = result.albums.map { artwork(it) })

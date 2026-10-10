@@ -37,3 +37,17 @@ The kernel ran all 79 biquad slots (31 graphic + 12 parametric × 4 sections) pe
 - `PrecisionEffectsKernel` processes only those. When a coefficient change activates a skipped section, its filter history is seeded from the signal that entered it, so the output matches the previous all-slots processing exactly (covered by unit tests against a reference all-slots cascade).
 
 Note: debuggable builds (`assembleDebug`) are several times slower in this per-sample Kotlin code (ART does not inline in debuggable mode). On the test device a debuggable build still underran with the screen off even after this change, while a non-debuggable build using the same code had no underruns and about 10–20 % playback-thread CPU. For daily listening, use a non-debuggable build.
+
+## feature/playlist-cover
+
+### Custom playlist cover
+
+By default a playlist's cover is the artwork of its first track (or whatever the server reports). The *Edit playlist* dialog in the detail screen now has a cover section where you can pick:
+
+- the cover of any track in the playlist,
+- an image from the device (downscaled to 768 px JPEG), or
+- *Use default* to go back to the original behaviour.
+
+The choice is applied when you press *Save*. The override is stored only in the app (`PlaylistCoverStore`: `playlist_covers.json` plus images under `files/playlist-covers/`, keyed by server id + playlist id), so it works with every backend and nothing is sent to the server. It is shown in the detail header, Library, Home, search results and the "add to playlist" sheet, and is removed when the playlist is deleted.
+
+Limitations: overrides are not included in backups, are not synced to other devices (including Navidrome sync), and pinned shortcuts keep the cover captured when they were pinned.

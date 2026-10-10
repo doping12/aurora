@@ -53,6 +53,7 @@ class AppContainer(context: Context) {
         java.io.File(appContext.noBackupFilesDir, "listening_levels.json"), settingsStore.processingRoutes)
     val networkOutput = com.aurora.music.playback.network.NetworkOutputManager(appContext)
     val profileImages = ProfileImages(appContext)
+    val playlistCoverStore = PlaylistCoverStore(appContext)
     val localProfileAppearance = settingsStore.localProfile.map(profileImages::appearance)
         .flowOn(Dispatchers.IO).stateIn(scope, SharingStarted.Eagerly, ProfileAppearance())
     val playHistory = PlayHistoryStore(appContext)
@@ -356,6 +357,7 @@ class AppContainer(context: Context) {
         smartEngine = smartEngine,
         cachedSongsProvider = { audioCache.songs.value },
         coverUrl = com.aurora.music.data.artwork.ArtworkUrls::cover,
+        playlistCoverStore = playlistCoverStore,
     )
 
     private fun recomputeOffline() {
