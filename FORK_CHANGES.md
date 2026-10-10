@@ -110,3 +110,11 @@ Shuffling a collection that the server delivers in pages (more songs than the fi
 Shuffle now keeps different versions of the same song from playing close together. Songs are treated as the same if the first 5 letters/digits of the title match (NFKC-normalised, case/punctuation/whitespace ignored); anything after a version delimiter such as ` (`, `[`, ` - `, ` ~ ` is ignored, so "Song (Live)" and "Song - Remastered" match "Song". After a uniform random shuffle, a single greedy pass places songs so that matching titles are at least 6 positions apart where that is possible (best effort; never drops songs). Small CPU/memory cost, no analysis of audio or tags.
 
 Applied to: shuffle play, turning shuffle on in an existing queue, songs appended to a shuffled queue, network (DLNA) output and the alarm queue. Not applied to smart-playlist "random" sorting or radio. Code: `playback/SmartShuffle.kt`.
+
+## fix/screen-off-audio
+
+### Wake lock during playback
+
+Audio could become choppy/distorted with the screen off (both Bluetooth and wired). The app declared `WAKE_LOCK` but never asked ExoPlayer to hold a wake lock, so the CPU (and, for streams, the Wi-Fi radio) could power-save between decode/feed cycles. The playback players now use `setWakeMode`: `WAKE_MODE_NETWORK` (CPU + Wi-Fi lock) for streamed items (`http`, `https`, `aurora-yt`, `aurora-extension`) and `WAKE_MODE_LOCAL` (CPU lock) for local files, updated on every media-item change. ExoPlayer holds the locks only while playing. Code: `playback/WakeModes.kt`, `PlaybackService`, `MixPlayer`.
+
+This is separate from the Custom-DSP CPU fix in `fix/dsp-screen-off-underrun`; underruns are still reported in the signal-path screen, which can be used to check whether glitches remain.

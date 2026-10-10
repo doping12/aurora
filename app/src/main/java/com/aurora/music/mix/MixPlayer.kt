@@ -96,6 +96,7 @@ class MixPlayer(
             }
             val p = ExoPlayer.Builder(context, factory).setMediaSourceFactory(sources)
                 .setAudioAttributes(AudioAttributes.DEFAULT, false)
+                .setWakeMode(androidx.media3.common.C.WAKE_MODE_NETWORK)
                 .setLoadControl(DefaultLoadControl.Builder().setBufferDurationsMs(5000, 20000, 500, 1000).build())
                 .build()
             p.volume = 0f
