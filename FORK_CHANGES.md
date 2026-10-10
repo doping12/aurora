@@ -98,3 +98,15 @@ By default a playlist's cover is the artwork of its first track (or whatever the
 The choice is applied when you press *Save*. The override is stored only in the app (`PlaylistCoverStore`: `playlist_covers.json` plus images under `files/playlist-covers/`, keyed by server id + playlist id), so it works with every backend and nothing is sent to the server. It is shown in the detail header, Library, Home, search results and the "add to playlist" sheet, and is removed when the playlist is deleted.
 
 Limitations: overrides are not included in backups, are not synced to other devices (including Navidrome sync), and pinned shortcuts keep the cover captured when they were pinned.
+
+## feature/smart-shuffle
+
+### Whole-collection shuffle
+
+Shuffling a collection that the server delivers in pages (more songs than the first page, e.g. large Navidrome/Spotify/Plex/YouTube Music playlists) used to shuffle only the already-loaded songs and then append the remaining pages in page order, so the result was not a shuffle of the whole playlist. Now the remaining pages are fetched first (up to 10,000 songs, with a 1.2 s budget so playback still starts quickly) and the whole list is shuffled once. If the server is slow or the fetch is incomplete, playback starts with a shuffle of the loaded songs and later pages are not appended.
+
+### Smart shuffle (versions are kept apart)
+
+Shuffle now keeps different versions of the same song from playing close together. Songs are treated as the same if the first 5 letters/digits of the title match (NFKC-normalised, case/punctuation/whitespace ignored); anything after a version delimiter such as ` (`, `[`, ` - `, ` ~ ` is ignored, so "Song (Live)" and "Song - Remastered" match "Song". After a uniform random shuffle, a single greedy pass places songs so that matching titles are at least 6 positions apart where that is possible (best effort; never drops songs). Small CPU/memory cost, no analysis of audio or tags.
+
+Applied to: shuffle play, turning shuffle on in an existing queue, songs appended to a shuffled queue, network (DLNA) output and the alarm queue. Not applied to smart-playlist "random" sorting or radio. Code: `playback/SmartShuffle.kt`.

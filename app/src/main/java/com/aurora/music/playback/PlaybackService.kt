@@ -39,6 +39,7 @@ import com.aurora.music.data.SignalPath
 import com.aurora.music.data.SignalFormat
 import com.aurora.music.data.SignalPathFacts
 import com.aurora.music.data.PlaybackPathKind
+import com.aurora.music.model.Song
 import com.aurora.music.data.buildSignalPath
 import com.aurora.music.data.usesFloatPcmPath
 import com.aurora.music.data.monoProcessingLocation
@@ -1309,7 +1310,10 @@ class PlaybackService : MediaLibraryService() {
                     }
                     if (reason != null) return Futures.immediateFuture(SessionResult(androidx.media3.session.SessionError.ERROR_BAD_VALUE,
                         Bundle().apply { putString("reason", reason); putInt("count", active.mediaItemCount) }))
-                    active.addMediaItems(if (args.getBoolean("prepend")) 0 else count, requireNotNull(items))
+                    val prepend = args.getBoolean("prepend")
+                    val validItems = requireNotNull(items)
+                    active.addMediaItems(if (prepend) 0 else count, validItems)
+                    if (!prepend && active === player) shuffleQueue.shuffleAppended(validItems)
                     return Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
                 }
                 CMD_EXIT_MIX -> stopMix()
@@ -1797,7 +1801,7 @@ class PlaybackService : MediaLibraryService() {
             if (xfadeActive) endXfade() else clearPrepared()
             shuffleQueue.originalOrder = null
             player.shuffleModeEnabled = false
-            val ordered = songs.shuffled()
+            val ordered = SmartShuffle.shuffle(songs, Song::title)
             player.setMediaItems(ordered.map { libraryBrowser.songItem(it) }, 0, 0L)
             player.repeatMode = Player.REPEAT_MODE_ALL
             player.prepare()

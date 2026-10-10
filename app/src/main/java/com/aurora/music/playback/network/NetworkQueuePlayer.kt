@@ -8,6 +8,7 @@ import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.common.SimpleBasePlayer
 import androidx.media3.common.util.UnstableApi
+import com.aurora.music.playback.SmartShuffle
 import com.google.common.util.concurrent.Futures
 import com.google.common.util.concurrent.ListenableFuture
 import com.google.common.util.concurrent.SettableFuture
@@ -261,7 +262,13 @@ class NetworkQueuePlayer(
                 remaining.firstOrNull { it.item.mediaId == id }?.also { remaining.remove(it) }?.uid
             }?.plus(remaining.map { it.uid }) ?: queue.map { it.uid }
             val before = queue.take(index + 1)
-            queue = (before + queue.drop(index + 1).shuffled()).toMutableList()
+            val priorTitles = before.map { it.item.mediaMetadata.title?.toString().orEmpty() }
+            val rest = SmartShuffle.shuffle(
+                queue.drop(index + 1),
+                { it.item.mediaMetadata.title?.toString().orEmpty() },
+                recentTitles = priorTitles,
+            )
+            queue = (before + rest).toMutableList()
         } else if (!enable && original != null) {
             val remaining = queue.toMutableList()
             queue = (original!!.mapNotNull { uid -> remaining.firstOrNull { it.uid == uid }?.also { remaining.remove(it) } } + remaining).toMutableList()
@@ -330,7 +337,20 @@ class NetworkQueuePlayer(
         require(queue.size + mediaItems.size <= 10000) { "Queue is too large." }
         queueLimitRejected = false
         val current = queue.getOrNull(this.index)
-        queue.addAll(index, mediaItems.map { Entry(it) })
+        val appendAtEnd = index >= queue.size
+        val additions = mediaItems.map { Entry(it) }
+        queue.addAll(index, additions)
+        if (appendAtEnd && original != null) {
+            original = original!! + additions.map { it.uid }
+            val recentTitles = queue.take(index).takeLast(SmartShuffle.DEFAULT_MIN_GAP)
+                .map { it.item.mediaMetadata.title?.toString().orEmpty() }
+            val shuffled = SmartShuffle.shuffle(
+                additions,
+                { it.item.mediaMetadata.title?.toString().orEmpty() },
+                recentTitles = recentTitles,
+            )
+            queue = (queue.take(index) + shuffled + queue.drop(index + additions.size)).toMutableList()
+        }
         this.index = queue.indexOf(current).coerceAtLeast(0)
         if ((current == null && queue.isNotEmpty()) || receiver.ownsQueue) load()
         return Futures.immediateVoidFuture()
