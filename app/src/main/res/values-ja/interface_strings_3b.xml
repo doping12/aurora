@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_loudness_59e6cf" formatted="false">"ラウドネス"</string>
+    <string name="text_low_a12494" formatted="false">"低"</string>
+    <string name="text_low_crossover_cbf2b7" formatted="false">"低域クロスオーバー"</string>
+    <string name="text_low_cut_67dd29" formatted="false">"ローカット"</string>
+    <string name="text_lrclib_lyrics_d22392" formatted="false">"LRCLIBの歌詞"</string>
+    <string name="text_lyrics_8670cb" formatted="false">"歌詞"</string>
+    <string name="text_lyrics_metadata_eb9a3c" formatted="false">"歌詞 &amp; メタデータ"</string>
+    <string name="text_magenta_ff6912" formatted="false">"マゼンタ"</string>
+    <string name="text_magnitude_correction_only_phase_is_not_fitted_885ea8" formatted="false">"振幅のみを補正します。位相はフィッティングされません。"</string>
+    <string name="text_magnitude_curves_selected_95d402">"振幅カーブ。選択中: %1$s。%2$s"</string>
+    <string name="text_magnitude_db_573817" formatted="false">"振幅（dB）"</string>
+    <string name="text_magnitude_f2c18d" formatted="false">"振幅"</string>
+    <string name="text_magnitude_phase_and_group_delay_for_this_stage_b32404" formatted="false">"この段階の振幅、位相、群遅延"</string>
+    <string name="text_make_room_for_your_own_mix_7600ed" formatted="false">"自分らしいミックスを楽しみましょう"</string>
+    <string name="text_make_up_gain_5dc858" formatted="false">"メイクアップゲイン"</string>
+    <string name="text_make_yourself_at_home_3ea2e2" formatted="false">"自分らしく使いましょう。"</string>
+    <string name="text_makeup_21c25b" formatted="false">"メイクアップ"</string>
+    <string name="text_makeup_ae8f55">"メイクアップ %1$s"</string>
+    <string name="text_makeup_gain_bced0d" formatted="false">"メイクアップゲイン"</string>
+    <string name="text_manage_bf58d1" formatted="false">"管理"</string>
+    <string name="text_manual_alignment_no_automatic_phase_correction_f49cec" formatted="false">"手動で位置を合わせます。位相は自動補正されません。"</string>
+    <string name="text_manual_presets_pause_automatic_switching_76e93a" formatted="false">"手動プリセットを選ぶと、自動切り替えは一時停止します。"</string>
+    <string name="text_mark_all_read_8958e2" formatted="false">"すべて既読にする"</string>
+    <string name="text_master_controls_1c46ae" formatted="false">"マスターコントロール"</string>
+    <string name="text_master_level_2293c4" formatted="false">"マスターレベル"</string>
+    <string name="text_match_033520" formatted="false">"一致"</string>
+    <string name="text_match_close_tempos_up_to_6_8b3c61" formatted="false">"テンポが近い曲を合わせる（差が最大6%まで）"</string>
+    <string name="text_match_mean_200_2000_hz_b8838a" formatted="false">"200–2000 Hzの平均に合わせる"</string>
+    <string name="text_match_mean_levels_over_200_2000_hz_31a6ab" formatted="false">"200–2000 Hzの平均レベルに合わせる"</string>
+    <string name="text_match_metadata_f9f1d7" formatted="false">"メタデータを照合"</string>
+    <string name="text_match_pitch_to_speed_ccd7ca" formatted="false">"再生速度にピッチを合わせる"</string>
+    <string name="text_match_previous_track_s_tempo_70bf60" formatted="false">"前のトラックのテンポに合わせる"</string>
+    <string name="text_matched_of_tracks_09b8b1">"全%2$s曲中%1$s曲が一致"</string>
+    <string name="text_matches_current_playback_124000" formatted="false">"現在の再生内容と一致します。"</string>
+    <string name="text_matches_ee2dbd" formatted="false">"一致項目"</string>
+    <string name="text_matching_stereo_rms_over_the_same_selection_within_0_1_db_b1073d" formatted="false">"同じ選択範囲のステレオRMSを比較（差は0.1 dB以内）"</string>
+    <string name="text_material_you_needs_android_12_falling_back_to_the_preset_accent_8c9a77" formatted="false">"Material YouにはAndroid 12以降が必要です。プリセットのアクセントカラーを使用します。"</string>
+    <string name="text_matrix_polarity_and_mono_bass_f23368" formatted="false">"マトリクス、極性、モノラル低音"</string>
+    <string name="text_maximum_a8df2f" formatted="false">"最大"</string>
+    <string name="text_maximum_boost_db_015774" formatted="false">"最大ブースト · dB"</string>
+    <string name="text_maximum_boost_db_520502">"%1$sの最大ブースト · dB"</string>
+    <string name="text_maximum_change_cd4bd5" formatted="false">"最大変化量"</string>
+    <string name="text_maximum_cut_db_38d770" formatted="false">"最大カット · dB"</string>
+    <string name="text_maximum_cut_db_eaff3a">"%1$sの最大カット · dB"</string>
+    <string name="text_maximum_fitting_frequency_hz_8350af" formatted="false">"最大フィッティング周波数 · Hz"</string>
+    <string name="text_maximum_hz_77f953" formatted="false">"最大Hz"</string>
+    <string name="text_maximum_q_b3dc54">"最大Q %1$s"</string>
+    <string name="text_maximum_q_b595c7" formatted="false">"最大Q"</string>
+    <string name="text_maximum_treble_boost_db_bfd6e9" formatted="false">"最大高域ブースト · dB"</string>
+    <string name="text_maximum_treble_cut_db_384290" formatted="false">"最大高域カット · dB"</string>
+    <string name="text_maximum_treble_q_659c12" formatted="false">"最大高域Q"</string>
+    <string name="text_may_re_ask_on_reconnect_aurora_re_requests_automatically_when_bit_23facf" formatted="false">"再接続時に再確認する場合があります。bit-perfectが有効なときはAuroraが自動で再要求します。"</string>
+    <string name="text_me_b4d362" formatted="false">"ME"</string>
+    <string name="text_measure_loudness_ebu_r128_to_level_playback_volume_30f01c" formatted="false">"再生音量をそろえるためにラウドネスを測定（EBU R128）"</string>
+    <string name="text_measured_955037" formatted="false">"測定済み"</string>
+    <string name="text_measured_android_volume_points_e77c92" formatted="false">"測定済みAndroid音量ポイント"</string>
+    <string name="text_measured_attenuation_after_the_dac_gain_use_0_for_a_verified_fixe_5ff94a" formatted="false">"DACゲイン後の減衰量を測定します。固定出力を確認済みの場合は0を指定してください。"</string>
+    <string name="text_measured_headphone_spatial_filters_use_true_stereo_wav_impulses_f68789" formatted="false">"測定済みのヘッドホン空間フィルターには、真のステレオWAVインパルスを使用します。"</string>
+    <string name="text_measured_presets_for_wired_and_bluetooth_headphones_earbuds_and_s_dbd541" formatted="false">"有線・Bluetoothヘッドホン、イヤホン、スピーカー向けの測定済みプリセットです。"</string>
+    <string name="text_measured_rms_a_b_difference_db_afeb51">"測定RMS: A=%1$s、B=%2$s、差=%3$s dB"</string>
+    <string name="text_measured_speaker_correction_from_spinorama_including_bluetooth_mo_beaf02" formatted="false">"Spinoramaのスピーカー測定補正データです。Bluetoothモデルも含みます。設置場所や部屋の音響特性によって結果は変わります。"</string>
+    <string name="text_measured_target_level_offsets_640c07">"測定値 / 目標値のオフセット: %1$s / %2$s"</string>
+    <string name="text_measurement_details_edeee9" formatted="false">"測定の詳細"</string>
+    <string name="text_measurement_name_18f280" formatted="false">"測定名"</string>
+    <string name="text_measurement_text_must_be_512_kib_or_smaller_36d9de" formatted="false">"測定データは512 KiB以下にしてください。"</string>
+    <string name="text_measurement_tuning_815052" formatted="false">"測定チューニング"</string>
+    <string name="text_measurements_target_b6da10" formatted="false">"測定 &amp; 目標"</string>
+    <string name="text_measurements_targets_and_saved_correction_projects_d6f94e" formatted="false">"測定値、目標値、保存済み補正プロジェクト"</string>
+    <string name="text_merge_all_sources_004b13" formatted="false">"すべてのソースを統合"</string>
+    <string name="text_metadata_lookups_af4cbd" formatted="false">"メタデータ検索"</string>
+    <string name="text_metadata_updated_38fc70" formatted="false">"メタデータを更新しました"</string>
+    <string name="text_mid_9a6af7" formatted="false">"中域"</string>
+    <string name="text_min_5c8f84">"%1$s分"</string>
+    <string name="text_min_listened_plays_e46cc3">"%1$s分再生 · %2$s回再生"</string>
+    <string name="text_min_plays_a8ae99">"%1$s分 · %2$s回再生"</string>
+    <string name="text_minimum_fitting_frequency_hz_357d9e" formatted="false">"最小フィッティング周波数 · Hz"</string>
+    <string name="text_minimum_hz_c8ccab" formatted="false">"最小Hz"</string>
+    <string name="text_minimum_phase_500a84" formatted="false">"最小位相"</string>
+    <string name="text_minimum_q_270623">"最小Q %1$s"</string>
+    <string name="text_minimum_q_e71a56" formatted="false">"最小Q"</string>
+    <string name="text_miniplayer_4adff2" formatted="false">"ミニプレーヤー"</string>
+    <string name="text_minutes_092f99" formatted="false">"分"</string>
+    <string name="text_minutes_listened_c66ef9" formatted="false">"再生時間（分）"</string>
+    <string name="text_minutes_of_your_listening_time_3f3db1">"%1$s分 · 再生時間の%2$s%%"</string>
+    <string name="text_minutes_overall_than_the_previous_6ad2de">"前回の%3$sと比べ、合計再生時間は%1$s %2$s分です。"</string>
+    <string name="text_mirror_74adc5" formatted="false">"ミラー"</string>
+    <string name="text_mirror_bars_b4cfbc" formatted="false">"ミラーバー"</string>
+    <string name="text_missing_impulse_7f47dc" formatted="false">"インパルス応答がありません"</string>
+    <string name="text_mix_ba4dbe">"%1$sのミックス"</string>
+    <string name="text_mix_eq_and_pitch_controls_use_processed_audio_through_your_select_253b70" formatted="false">"ミックスのEQとピッチコントロールには、選択したAndroid出力を通した処理済み音声を使用します。"</string>
+    <string name="text_mix_fd7391" formatted="false">"ミックス"</string>
+    <string name="text_mix_name_dff04e" formatted="false">"ミックス名"</string>
+    <string name="text_mix_playhead_dc2dd4" formatted="false">"ミックスの再生位置"</string>
+    <string name="text_mix_ready_tracks_use_gentle_fades_retry_auto_mix_to_analyze_them_b474b2">"ミックスの準備完了。%1$s曲には緩やかなフェードを適用します。解析するには自動ミックスを再試行してください。"</string>
+    <string name="text_mix_saved_afa087" formatted="false">"ミックスを保存しました"</string>
+    <string name="text_mix_studio_668363" formatted="false">"ミックススタジオ"</string>
+    <string name="text_mix_studio_cdc446" formatted="false">"ミックススタジオ"</string>
+    <string name="text_mix_tracklist_a8a9ff" formatted="false">"ミックスの曲一覧"</string>
+    <string name="text_mode_a7b93d" formatted="false">"モード"</string>
+    <string name="text_modulation_f3c1a2" formatted="false">"変調"</string>
+    <string name="text_mono_audio_b977b4" formatted="false">"モノラル音声"</string>
+    <string name="text_mono_audio_channel_processing_and_tone_6a5bfe" formatted="false">"モノラル音声、チャンネル処理、音色"</string>
+    <string name="text_mono_bass_b1ddea" formatted="false">"モノラル低音"</string>
+    <string name="text_mono_bass_cutoff_605472" formatted="false">"モノラル低音のカットオフ"</string>
+    <string name="text_mono_c5c553" formatted="false">"モノラル"</string>
+    <string name="text_monthly_d31edb" formatted="false">"毎月"</string>
+    <string name="text_more_4bab2d" formatted="false">"その他"</string>
+    <string name="text_more_music_same_aurora_3ae62e" formatted="false">"もっと音楽を。Auroraはそのまま。"</string>
+    <string name="text_more_recommendations_5fd054" formatted="false">"おすすめをもっと見る"</string>
+    <string name="text_more_than_f9c07b" formatted="false">"以上"</string>
+    <string name="text_most_minutes_0d8b47" formatted="false">"最も長い再生時間"</string>
+    <string name="text_most_played_14202e" formatted="false">"最も再生された曲"</string>
+    <string name="text_motion_quality_364852" formatted="false">"動き &amp; 音質"</string>
+    <string name="text_move_down_260ff8" formatted="false">"下へ移動"</string>
+    <string name="text_move_down_533269">"%1$sを下へ移動"</string>
+    <string name="text_move_up_a55bd8">"%1$sを上へ移動"</string>
+    <string name="text_move_up_b4f57c" formatted="false">"上へ移動"</string>
+    <string name="text_ms_1191ce">"%1$s ms"</string>
+    <string name="text_ms_delay_3db8d0">"%1$s msの遅延"</string>
+    <string name="text_multiband_compressor_07d886" formatted="false">"マルチバンドコンプレッサー"</string>
+    <string name="text_music_131260" formatted="false">"音楽"</string>
+    <string name="text_music_on_this_device_21b6e9" formatted="false">"このデバイスの音楽"</string>
+    <string name="text_music_source_cb3c75" formatted="false">"音楽ソース"</string>
+    <string name="text_musicbrainz_and_wikipedia_biographies_73227e" formatted="false">"MusicBrainzとWikipediaのプロフィール"</string>
+    <string name="text_mute_0f0973" formatted="false">"ミュート"</string>
+    <string name="text_muted_b6a778" formatted="false">" · ミュート"</string>
+    <string name="text_name_709a23" formatted="false">"名前"</string>
+    <string name="text_name_for_new_stages_1e46f9" formatted="false">"新しい段階の名前"</string>
+    <string name="text_name_optional_9c9f03" formatted="false">"名前（任意）"</string>
+    <string name="text_name_your_mix_039c07" formatted="false">"ミックスに名前を付ける"</string>
+    <string name="text_native_4fc6e7" formatted="false">"ネイティブ"</string>
+    <string name="text_nebula_drift_4aee62" formatted="false">"星雲の漂流"</string>
+    <string name="text_neon_line_af89a0" formatted="false">"ネオンライン"</string>
+    <string name="text_network_audio_3f82b9" formatted="false">"ネットワークオーディオ"</string>
+    <string name="text_network_playback_5d5a8a" formatted="false">"ネットワーク再生"</string>
+    <string name="text_new_6403f2" formatted="false">"新規"</string>
+    <string name="text_new_code_6499c7" formatted="false">"新しいコード"</string>
+    <string name="text_new_cover_staged_ac4238" formatted="false">"新しいカバーを準備しました"</string>
+    <string name="text_new_mix_48ef4a" formatted="false">"新しいミックス"</string>
+    <string name="text_new_parametric_band_0bc727" formatted="false">"新しいパラメトリックバンド"</string>
+    <string name="text_new_playlist_a5474a" formatted="false">"新しいプレイリスト"</string>
+    <string name="text_new_ready_for_you_40a13e">"新しい%2$sが%1$s件あります。"</string>
+    <string name="text_new_release_f0ec22" formatted="false">"新着リリース"</string>
+    <string name="text_new_release_hero_c354b3" formatted="false">"新着リリースのメイン画像"</string>
+    <string name="text_new_releases_3cdd02" formatted="false">"新着リリース"</string>
+    <string name="text_new_releases_recommendations_02976f" formatted="false">"新着リリース &amp; おすすめ"</string>
+    <string name="text_new_smart_playlist_ee2a2d" formatted="false">"新しいスマートプレイリスト"</string>
+    <string name="text_new_tuning_project_97a69f" formatted="false">"新しいチューニングプロジェクト"</string>
+    <string name="text_news_34c808" formatted="false">"ニュース"</string>
+    <string name="text_next_15c20d">"次: %1$s"</string>
+    <string name="text_next_bc9819" formatted="false">"次へ"</string>
+    <string name="text_no_acoustid_match_a72740" formatted="false">"AcoustIDに一致しません"</string>
+    <string name="text_no_active_audio_3c1032">"%1$s · 音声は再生されていません"</string>
+    <string name="text_no_active_streak_7f1a27" formatted="false">"連続記録なし"</string>
+    <string name="text_no_browser_available_to_open_github_7ec2eb" formatted="false">"GitHubを開けるブラウザーがありません。"</string>
+    <string name="text_no_correction_needed_within_these_limits_0fdcba" formatted="false">"この上限内では補正は不要です。"</string>
+    <string name="text_no_document_picker_is_available_a8fedf" formatted="false">"ドキュメント選択機能を利用できません。"</string>
+    <string name="text_no_downloads_yet_9647c1" formatted="false">"ダウンロードはまだありません"</string>
+    <string name="text_no_duplicates_found_across_tracks_8af6bb">"%1$s曲に重複は見つかりませんでした"</string>
+    <string name="text_no_episodes_38e050" formatted="false">"エピソードはありません"</string>
+    <string name="text_no_extensions_installed_83afbc" formatted="false">"拡張機能はインストールされていません。"</string>
+    <string name="text_no_file_picker_is_available_enable_a_files_app_and_try_again_3fdf0a" formatted="false">"ファイル選択機能を利用できません。ファイルアプリを有効にして、もう一度お試しください。"</string>
+    <string name="text_no_file_picker_is_available_fb12a4" formatted="false">"ファイル選択機能を利用できません。"</string>
+    <string name="text_no_generated_correction_1d3dac" formatted="false">"生成済みの補正はありません"</string>
+    <string name="text_no_impulse_response_selected_a643d4" formatted="false">"インパルス応答が選択されていません"</string>
+    <string name="text_no_listening_recorded_in_this_period_choose_another_date_or_play_ed4ba2" formatted="false">"この期間の再生記録はありません。別の日付を選ぶか、音楽を再生してください。"</string>
+    <string name="text_no_lyrics_found_75127a" formatted="false">"歌詞が見つかりません"</string>
+    <string name="text_no_match_3518df" formatted="false">"一致なし"</string>
+    <string name="text_no_matches_found_a68d28" formatted="false">"一致する項目が見つかりません"</string>
+    <string name="text_no_matching_rule_6426f8" formatted="false">"一致するルールがありません"</string>
+    <string name="text_no_measured_presets_found_try_another_model_name_or_device_catego_06b64c" formatted="false">"測定済みプリセットが見つかりません。別のモデル名またはデバイスカテゴリをお試しください。"</string>
+    <string name="text_no_measurement_imported_1dca9a" formatted="false">"測定値はインポートされていません"</string>
+    <string name="text_no_output_8ffd4d" formatted="false">"出力なし"</string>
+    <string name="text_no_public_release_is_available_yet_54a115" formatted="false">"公開リリースはまだありません。"</string>
+    <string name="text_no_receivers_found_ec71c6" formatted="false">"レシーバーが見つかりません。"</string>
+    <string name="text_no_replacement_rules_b1f9fb" formatted="false">"置換ルールはありません"</string>
+    <string name="text_no_results_b993b0" formatted="false">"結果なし"</string>
+    <string name="text_no_saved_impulse_responses_5d3fa1" formatted="false">"保存済みのインパルス応答はありません。"</string>
+    <string name="text_no_saved_presets_yet_a819ff" formatted="false">"保存済みプリセットはまだありません"</string>
+    <string name="text_no_saved_projects_7102b1" formatted="false">"保存済みプロジェクトはありません。"</string>
+    <string name="text_no_saved_subchains_27969b" formatted="false">"保存済みサブチェーンはありません。"</string>
+    <string name="text_no_saved_targets_dd2df6" formatted="false">"保存済みの目標値はありません。"</string>
+    <string name="text_no_shows_found_2f293b" formatted="false">"番組が見つかりません"</string>
+    <string name="text_no_songs_e6bbe2" formatted="false">"曲がありません"</string>
+    <string name="text_no_songs_found_try_another_search_or_check_your_library_connectio_b6d0ed" formatted="false">"曲が見つかりません。検索条件を変えるか、ライブラリへの接続を確認してください。"</string>
+    <string name="text_no_stable_release_available_b2aba2" formatted="false">"安定版リリースはありません。"</string>
+    <string name="text_no_stations_found_173164" formatted="false">"放送局が見つかりません"</string>
+    <string name="text_no_tracks_found_in_that_file_754434" formatted="false">"このファイルにトラックが見つかりません"</string>
+    <string name="text_no_usb_dac_connected_446f5b" formatted="false">"USB DACが接続されていません"</string>
+    <string name="text_noise_shaped_c7a434" formatted="false">"ノイズシェーピング"</string>
+    <string name="text_none_6eef66" formatted="false">"なし"</string>
+    <string name="text_normalization_off_3e378d" formatted="false">"ノーマライズ無効"</string>
+    <string name="text_normalize_peak_to_1_db_06fc92" formatted="false">"ピークを−1 dBにノーマライズ"</string>
+    <string name="text_normalized_coefficients_a0_1_values_stay_fixed_when_the_sample_ra_d8bac7" formatted="false">"係数を正規化し、a0 = 1にします。サンプリングレートを変更しても値は固定されます。"</string>
+    <string name="text_normalized_coefficients_eb7bc6" formatted="false">"正規化係数"</string>
+    <string name="text_not_connected_8b02f3" formatted="false">"未接続"</string>
+    <string name="text_not_enough_analyzed_tracks_run_sonic_analysis_in_settings_007d98" formatted="false">"解析済みの曲が足りません。設定でSonic解析を実行してください"</string>
+    <string name="text_not_set_93039e" formatted="false">"未設定"</string>
+    <string name="text_not_supported_on_this_device_a07536" formatted="false">"このデバイスではサポートされていません"</string>
+    <string name="text_nothing_here_yet_e89225" formatted="false">"ここにはまだ何もありません"</string>
+    <string name="text_nothing_in_this_folder_d2a003" formatted="false">"このフォルダーは空です"</string>
+    <string name="text_nothing_matched_f74d36">"「%1$s」に一致するものはありません"</string>
+    <string name="text_nothing_played_yet_9503da" formatted="false">"まだ再生されていません"</string>
+    <string name="text_nothing_playing_13ae37" formatted="false">"再生中の曲はありません"</string>
+    <string name="text_nothing_to_export_7faf33" formatted="false">"エクスポートするものがありません"</string>
+    <string name="text_nothing_to_save_a5dbc6" formatted="false">"保存するものがありません"</string>
+    <string name="text_nothing_up_next_295357" formatted="false">"次の曲はありません"</string>
+    <string name="text_notifications_753a22" formatted="false">"通知"</string>
+    <string name="text_notifications_background_alarms_and_dac_eac2dd" formatted="false">"通知、バックグラウンド、アラーム、DAC"</string>
+    <string name="text_now_playing_586fa7" formatted="false">"再生中"</string>
+    <string name="text_now_playing_controls_downloads_alarms_1b631c" formatted="false">"再生中の操作、ダウンロード、アラーム"</string>
+    <string name="text_number_b1c1ba" formatted="false">"番号…"</string>
+    <string name="text_off_e3de5a" formatted="false">"オフ"</string>
+    <string name="text_off_leaves_replaygain_disabled_56fb0f" formatted="false">"オフにするとReplayGainは無効になります。"</string>
+    <string name="text_offline_e01fa7" formatted="false">"オフライン"</string>
+    <string name="text_offline_mode_66cf31" formatted="false">"オフラインモード"</string>
+    <string name="text_older_plays_use_estimated_listening_time_from_track_lengths_768fa0" formatted="false">"過去の再生時間は、トラックの長さから推定されます。"</string>
+    <string name="text_on_cellular_188845" formatted="false">"モバイル通信時"</string>
+</resources>

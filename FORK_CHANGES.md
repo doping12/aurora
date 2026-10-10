@@ -130,3 +130,11 @@ Settings → Loudness → Volume leveling has a fourth option, **Auto**, next to
 - The estimate is cached per track (`AutoLevelStore`, `auto_levels.json`, up to 5,000 entries) once at least 10 s were measured, so the next play is leveled from the first second.
 
 Limits: Auto only estimates on the Android PCM paths with a level meter (16-bit, or the Custom DSP float path); with native USB output (player volume is ignored) it has no effect, and MixPlayer / network output use tags only. Quiet tracks are not boosted. Code: `playback/LoudnessEstimator.kt`, `data/AutoLevelStore.kt`, `PlaybackService.updateAutoLevel`.
+
+## feature/ja-locale
+
+### Japanese instead of Russian
+
+The app's second language is now Japanese. The Russian resources (`values-ru`) were removed and a complete Japanese translation was added in `app/src/main/res/values-ja/` (all strings and plurals, including the ones that upstream's Russian translation lacked). The language picker (Settings → Language) offers *System default*, *English* and *日本語*; `locales_config.xml` lists `en` and `ja`. A device set to Japanese uses it automatically. Anyone who had picked Russian in the app falls back to English.
+
+`LocalizationResourcesTest` now checks that `values-ja` has exactly the keys of `values` (strings and plurals, minus `app_name`) with matching format specifiers; this also resolves the earlier known failure caused by missing Russian strings. When adding a string, add it to both `values/` and `values-ja/`.

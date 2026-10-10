@@ -212,7 +212,7 @@ fun SettingsScreen(
                     SettingsNavRow(Icons.Filled.Language,
                         androidx.compose.ui.res.stringResource(com.aurora.music.R.string.language_title),
                         subtitle = when (androidx.appcompat.app.AppCompatDelegate.getApplicationLocales().get(0)?.language) {
-                            "ru" -> "Русский"
+                            "ja" -> "日本語"
                             "en" -> "English"
                             else -> androidx.compose.ui.res.stringResource(com.aurora.music.R.string.language_system)
                         }, onClick = onOpenLanguage)

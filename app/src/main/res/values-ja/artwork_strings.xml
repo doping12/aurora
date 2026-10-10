@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="artwork_title">カバーアート</string>
+    <string name="artwork_lookup">見つからないカバーを検索</string>
+    <string name="artwork_description">カバーアートのない曲やアルバムを照合します。</string>
+    <string name="artwork_provider">アーティスト名、アルバム名、トラック名を使って MusicBrainz と Cover Art Archive からカバーを検索します。既存のアートワークが優先されます。</string>
+    <string name="artwork_cache_usage">アートワークのキャッシュ：64 MB 中 %.1f MB。キャッシュ済みのカバーはオフラインでも利用できます。</string>
+    <string name="artwork_clear">アートワークのキャッシュを消去</string>
+    <string name="artwork_clear_failed">アートワークのキャッシュを消去できませんでした。もう一度お試しください。</string>
+</resources>

@@ -20,10 +20,10 @@ class LocalizationDeviceTest {
         setLocales(LocaleList(Locale.forLanguageTag(language)))
     }
 
-    @Test fun russianUsesTheCorrectCountForms() {
-        val resources = context.createConfigurationContext(configuration("ru")).resources
-        val expected = mapOf(0 to "0 треков", 1 to "1 трек", 2 to "2 трека", 5 to "5 треков",
-            11 to "11 треков", 21 to "21 трек", 22 to "22 трека", 25 to "25 треков", 101 to "101 трек")
+    @Test fun japaneseUsesTheCorrectCountForm() {
+        val resources = context.createConfigurationContext(configuration("ja")).resources
+        val japaneseOther = "%1$d件のトラック"
+        val expected = listOf(0, 1, 2, 5).associateWith { japaneseOther.replace("%1$d", it.toString()) }
         expected.forEach { (count, text) ->
             assertEquals(text, resources.getQuantityString(R.plurals.track_count, count, count))
         }
@@ -42,13 +42,13 @@ class LocalizationDeviceTest {
             val accent = AccentPresets.first().name
             assertEquals("Home", navigation.first().label)
             assertEquals("Albums", filter.label)
-            AppStrings.useConfiguration(configuration("ru"))
-            assertEquals("Главная", navigation.first().label)
-            assertEquals("Альбомы", filter.label)
-            assertEquals("О приложении Aurora", destination.label)
+            AppStrings.useConfiguration(configuration("ja"))
+            assertEquals("ホーム", navigation.first().label)
+            assertEquals("アルバム", filter.label)
+            assertEquals("Auroraについて", destination.label)
             assertNotEquals(accent, AccentPresets.first().name)
             assertEquals("Single", releaseTypeLabel("single"))
-            assertEquals("Сингл", releaseTypeLabel("single").localizedMediaType())
+            assertEquals("シングル", releaseTypeLabel("single").localizedMediaType())
         } finally {
             AppStrings.useConfiguration(original)
         }
@@ -56,14 +56,14 @@ class LocalizationDeviceTest {
 
     @Test fun translationsRetainFormattingArguments() {
         val english = context.createConfigurationContext(configuration("en")).resources
-        val russian = context.createConfigurationContext(configuration("ru")).resources
+        val japanese = context.createConfigurationContext(configuration("ja")).resources
         val format = Regex("(?<!%)%(?:[0-9]+\\$)?[-+0-9.]*[sdf]")
         val fields = R.string::class.java.fields.filter { it.name.startsWith("text_") }
         assertTrue(fields.size > 2000)
         fields.forEach { field ->
             val id = field.getInt(null)
             assertEquals(field.name, format.findAll(english.getString(id)).map { it.value }.sorted().toList(),
-                format.findAll(russian.getString(id)).map { it.value }.sorted().toList())
+                format.findAll(japanese.getString(id)).map { it.value }.sorted().toList())
         }
     }
 }
