@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="playlist_cover">プレイリストのカバー</string>
+    <string name="playlist_cover_from_tracks">曲から選択</string>
+    <string name="playlist_cover_pick_image">画像を選択</string>
+    <string name="playlist_cover_default">デフォルトを使用</string>
+    <string name="playlist_cover_import_failed">プレイリストのカバーを保存できませんでした。もう一度お試しください。</string>
+</resources>

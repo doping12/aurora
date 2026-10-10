@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auto_volume_description" formatted="false">ReplayGainタグがある場合はそれを使い、ない場合は各曲の冒頭数秒を測定して、音量の大きい曲を共通のレベルに近づけるよう下げます。減衰のみです。</string>
+</resources>

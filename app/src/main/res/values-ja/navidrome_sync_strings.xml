@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="navidrome_sync_title">Navidrome同期</string>
+    <string name="navidrome_sync_destination_description">Navidromeのプレイリストをフォルダに同期</string>
+    <string name="navidrome_sync_account">アカウント</string>
+    <string name="navidrome_sync_automatic_account">自動（アクティブなNavidromeアカウント）</string>
+    <string name="navidrome_sync_destination">保存先フォルダ</string>
+    <string name="navidrome_sync_not_set">未設定</string>
+    <string name="navidrome_sync_choose_folder">フォルダを選択</string>
+    <string name="navidrome_sync_sync_mode">同期モード</string>
+    <string name="navidrome_sync_manual">手動</string>
+    <string name="navidrome_sync_automatic">自動</string>
+    <string name="navidrome_sync_automatic_unavailable">Wi-Fi接続時にAuroraを開くと自動同期する機能はまだ利用できません。手動で同期してください。</string>
+    <string name="navidrome_sync_playlists">プレイリスト</string>
+    <string name="navidrome_sync_refresh">更新</string>
+    <string name="navidrome_sync_loading">読み込み中…</string>
+    <string name="navidrome_sync_refresh_failed">Navidromeのプレイリストを読み込めませんでした。</string>
+    <string name="navidrome_sync_song_count">%d曲</string>
+    <string name="navidrome_sync_internal_storage">内部ストレージ</string>
+    <string name="navidrome_sync_sync">同期</string>
+    <string name="navidrome_sync_sync_now">今すぐ同期</string>
+    <string name="navidrome_sync_cancel">キャンセル</string>
+    <string name="navidrome_sync_folder_permission_failed">このフォルダへのアクセス権を取得できませんでした。以前の保存先を維持しました。</string>
+    <string name="navidrome_sync_nothing_selected">同期する前に、プレイリストを1つ以上選択してください。</string>
+    <string name="navidrome_sync_all_playlists_missing">選択したプレイリストがすべてサーバーにありません。ファイルは変更されていません。</string>
+    <string name="navidrome_sync_mirror_subtitle">Navidrome同期</string>
+    <string name="navidrome_sync_downloading">ダウンロード中</string>
+    <string name="navidrome_sync_fetching">プレイリストを取得中</string>
+    <string name="navidrome_sync_preparing">準備中</string>
+    <string name="navidrome_sync_covers">アートワークをダウンロード中</string>
+    <string name="navidrome_sync_playlists_phase">プレイリストを書き込み中</string>
+    <string name="navidrome_sync_cleanup">クリーンアップ中</string>
+    <string name="navidrome_sync_library">ライブラリを更新中</string>
+    <string name="navidrome_sync_finished_summary">ダウンロード%d · 最新%d · 削除%d · 失敗%d</string>
+    <string name="navidrome_sync_finished_at">完了: %s</string>
+    <string name="navidrome_sync_warnings">警告</string>
+    <string name="navidrome_sync_advanced">詳細設定</string>
+    <string name="navidrome_sync_server_root_path">サーバーの音楽フォルダ</string>
+    <string name="navidrome_sync_server_root_path_description">サーバー上の絶対パスを任意で指定します。空欄の場合、末尾2階層のフォルダとファイル名を保持します。</string>
+    <string name="navidrome_sync_tag_paths">Navidromeからタグに基づくパスが報告されています。Navidromeの「設定」→「プレーヤー」を開き、AuroraSyncを探して「Report Real Path」を有効にしてください（またはND_SUBSONIC_DEFAULTREPORTREALPATH=trueを指定してNavidromeを起動してください）。次回の同期から元のファイル名が使われます。</string>
+    <string name="navidrome_sync_download_failed">%sをダウンロードできませんでした: %s</string>
+    <string name="navidrome_sync_cover_failed">%sのアートワークをダウンロードできませんでした。</string>
+    <string name="navidrome_sync_mirror_unsupported">このストレージプロバイダではプレイリストのミラーリングを利用できません。</string>
+    <string name="navidrome_sync_mirror_unavailable">Auroraのライブラリへのアクセス権またはスキャン機能を利用できません。</string>
+    <string name="navidrome_sync_not_configured">先に保存先フォルダを選択してください。</string>
+    <string name="navidrome_sync_no_account">利用可能なNavidromeアカウントがありません。</string>
+    <string name="navidrome_sync_account_unavailable">選択したNavidromeアカウントを利用できません。</string>
+    <string name="navidrome_sync_permission_lost">保存先フォルダへのアクセス権が失われました。</string>
+    <string name="navidrome_sync_server_error">Navidromeへのリクエストに失敗しました: %s</string>
+    <string name="navidrome_sync_unexpected">同期に失敗しました: %s</string>
+</resources>

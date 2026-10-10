@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="detail_sort_original" formatted="false">元の順序</string>
+    <string name="detail_sort_name" formatted="false">名前</string>
+    <string name="detail_sort_release_date" formatted="false">リリース日</string>
+    <string name="detail_sort_artist" formatted="false">アーティスト名</string>
+    <string name="detail_sort_album" formatted="false">アルバム名</string>
+    <string name="detail_sort_date_added" formatted="false">追加日</string>
+    <string name="detail_sort_button_desc" formatted="false">曲を並べ替え</string>
+    <string name="scrollbar_desc" formatted="false">スクロールバー</string>
+</resources>
