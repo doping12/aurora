@@ -249,7 +249,7 @@ class MixPlayer(
         if (sleepLengthMs > 0 && now >= sleepEndMs) { wanted = false; sleepLengthMs = 0; master = 0f; invalidateState() }
         val levels = MixMath.gains(project, position).mapIndexed { index, gain ->
             val song = project.clips[index].song
-            val db = when (globalConfig.replayGain) { 1 -> song.replayGainTrack; 2 -> song.replayGainAlbum; else -> 0f }
+            val db = when (globalConfig.replayGain) { 1, 3 -> song.replayGainTrack; 2 -> song.replayGainAlbum; else -> 0f }
             gain * master * if (db.isFinite()) MixMath.amplitude(db).coerceIn(0.1f, 1f) else 1f
         }
         val levelById = project.clips.mapIndexed { i, c -> c.id to levels[i] }.toMap()

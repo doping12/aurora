@@ -1,0 +1,3 @@
+<resources>
+    <string name="auto_volume_description" formatted="false">Uses ReplayGain tags when available, otherwise measures the first seconds of each track and lowers loud tracks toward a common level. Attenuation only.</string>
+</resources>

@@ -175,7 +175,7 @@ fun EqualizerScreen(contentPadding: PaddingValues, onBack: () -> Unit, onOpenLou
             item { SettingsSectionTitle(appString(R.string.text_related_settings_661f04)) }
             item {
                 SettingsGroup {
-                    val mode = listOf(appString(R.string.text_off_e3de5a), appString(R.string.text_track_b1c5a7), appString(R.string.text_album_dfb4c9))[prefs.replayGain.coerceIn(0, 2)]
+                    val mode = listOf(appString(R.string.text_off_e3de5a), appString(R.string.text_track_b1c5a7), appString(R.string.text_album_dfb4c9), appString(R.string.text_auto_c614ba))[prefs.replayGain.coerceIn(0, 3)]
                     SettingsDestinationRow(Icons.Filled.VolumeUp, SettingsDestinations.loudness, "ReplayGain · $mode", onClick = onOpenLoudness)
                 }
             }

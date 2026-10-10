@@ -60,6 +60,7 @@ class AppContainer(context: Context) {
     val queueStore = QueueStore(appContext)
 
     val replayGainStore = ReplayGainStore(appContext)
+    val autoLevelStore = AutoLevelStore(appContext)
 
     val localLibrary = LocalLibrary(appContext, gainProvider = { path -> replayGainStore.gainsFor(path) },
         separatorsProvider = { settingsStore.artistSeparators.first() })

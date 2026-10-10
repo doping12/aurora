@@ -14,6 +14,8 @@ data class PcmLevels(
     val invalidSamples: Long,
     val presentationEndUs: Long?,
     val measuredAtNanos: Long,
+    val leftMeanSquare: Double = leftRms * leftRms,
+    val rightMeanSquare: Double = rightRms * rightRms,
 )
 
 data class AudioMeasurements(

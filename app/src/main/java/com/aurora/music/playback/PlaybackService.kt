@@ -89,6 +89,13 @@ class PlaybackService : MediaLibraryService() {
     private var audioEffects: AudioEffectsController? = null
     @Volatile private var crossfadeMs: Int = 0
     @Volatile private var replayGainMode: Int = 0
+    private var autoLevelKey: String? = null
+    private var autoLevelEstimator = LoudnessEstimator()
+    private var autoLevelLastMeterAt = 0L
+    private var autoLevelTrackStartedAtNanos = 0L
+    private var autoLevelAppliedDb = 0.0
+    private var autoLevelLastTickMs = 0L
+    private var autoLevelSaved = false
     @Volatile private var monoAudioPref: Boolean = false
     @Volatile private var lastAudioPrefs: AudioPrefs? = null
     private val listeningHistory by lazy { PlaybackListeningHistory(container.playHistory, container.discord) }
@@ -448,7 +455,10 @@ class PlaybackService : MediaLibraryService() {
                 // any timeline change so the latch can never get stuck if the advance didn't yield a transition.
                 if (events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION) ||
                     events.contains(Player.EVENT_TIMELINE_CHANGED)
-                ) xfadeBpPending = false
+                ) {
+                    if (events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION)) finishAutoLevel()
+                    xfadeBpPending = false
+                }
                 if (events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION) ||
                     events.contains(Player.EVENT_MEDIA_METADATA_CHANGED) ||
                     events.contains(Player.EVENT_IS_PLAYING_CHANGED) ||
@@ -1074,6 +1084,7 @@ class PlaybackService : MediaLibraryService() {
     private fun tickAudio() {
         if (mediaSession?.player !== player) return
         val now = android.os.SystemClock.elapsedRealtime()
+        updateAutoLevel(now)
         var master = 1f
         if (sleepFadeActive) {
             val t = ((now - sleepFadeStartMs).toFloat() / sleepFadeMs.coerceAtLeast(1)).coerceIn(0f, 1f)
@@ -1254,9 +1265,77 @@ class PlaybackService : MediaLibraryService() {
 
     private fun replayGainMultiplier(item: MediaItem? = player.currentMediaItem): Float {
         if (replayGainMode == 0) return 1f
-        val extras = item?.mediaMetadata?.extras ?: return 1f
-        val db = if (replayGainMode == 2) extras.getFloat("rgAlbum", 0f) else extras.getFloat("rgTrack", 0f)
+        val extras = item?.mediaMetadata?.extras
+        val trackDb = extras?.getFloat("rgTrack", 0f) ?: 0f
+        if (replayGainMode == 3 && trackDb.isFinite() && trackDb != 0f)
+            return Math.pow(10.0, trackDb / 20.0).toFloat().coerceIn(0.1f, 1f)
+        if (replayGainMode == 3) {
+            val key = autoLevelCacheKey(item)
+            if (key != null && key == autoLevelKey)
+                return Math.pow(10.0, autoLevelAppliedDb / 20.0).toFloat().coerceIn(0.000001f, 1f)
+            val cached = key?.let(container.autoLevelStore::get)
+            if (cached != null) return Math.pow(10.0, minOf(0.0, LoudnessEstimator.TARGET_DBFS - cached) / 20.0).toFloat().coerceIn(0.000001f, 1f)
+            return 1f
+        }
+        val db = if (replayGainMode == 2) extras?.getFloat("rgAlbum", 0f) ?: 0f else trackDb
         return if (db.isFinite()) Math.pow(10.0, db / 20.0).toFloat().coerceIn(0.1f, 1f) else 1f
+    }
+
+    private fun autoLevelCacheKey(item: MediaItem?): String? {
+        item ?: return null
+        val extras = item.mediaMetadata.extras
+        val scope = extras?.getString("aurora.rules.provider").orEmpty()
+        return "$scope|${item.mediaId}".takeIf { item.mediaId.isNotBlank() }
+    }
+
+    private fun updateAutoLevel(nowMs: Long) {
+        if (replayGainMode != 3 || xfadeActive || !player.isPlaying) return
+        val item = player.currentMediaItem ?: return
+        val tag = item.mediaMetadata.extras?.getFloat("rgTrack", 0f) ?: 0f
+        if (tag.isFinite() && tag != 0f) return
+        val key = autoLevelCacheKey(item) ?: return
+        if (key != autoLevelKey) {
+            finishAutoLevel()
+            autoLevelKey = key
+            autoLevelEstimator = LoudnessEstimator()
+            autoLevelLastMeterAt = 0L
+            autoLevelTrackStartedAtNanos = System.nanoTime()
+            autoLevelAppliedDb = container.autoLevelStore.get(key)?.let { minOf(0.0, LoudnessEstimator.TARGET_DBFS - it) } ?: 0.0
+            autoLevelLastTickMs = nowMs
+            autoLevelSaved = false
+        }
+        val elapsed = ((nowMs - autoLevelLastTickMs).coerceAtLeast(0L) / 1000.0).coerceAtMost(1.0)
+        autoLevelLastTickMs = nowMs
+        val evidence = sinkEvidence[player]
+        val meter = if (evidence?.precisionSink?.precisionActive == true) evidence.precisionAfterMeter else evidence?.afterMeter
+        val snapshot = meter?.snapshot()
+        if (snapshot != null && snapshot.measuredAtNanos >= autoLevelTrackStartedAtNanos &&
+            snapshot.measuredAtNanos != autoLevelLastMeterAt) {
+            autoLevelLastMeterAt = snapshot.measuredAtNanos
+            val blockSeconds = snapshot.windowFrames.toDouble() / snapshot.sampleRate.coerceAtLeast(1)
+            autoLevelEstimator.addBlock(snapshot.leftMeanSquare, snapshot.rightMeanSquare, blockSeconds)
+            if (autoLevelEstimator.isComplete) saveAutoLevelEstimate()
+        }
+        val target = autoLevelEstimator.targetGainDb()
+        if (target != null) autoLevelAppliedDb = LoudnessEstimator.slew(autoLevelAppliedDb, target, elapsed)
+    }
+
+    private fun finishAutoLevel() {
+        if (autoLevelEstimator.measuredSeconds >= LoudnessEstimator.SAVE_MIN_SECONDS) saveAutoLevelEstimate()
+        autoLevelKey = null
+        autoLevelLastMeterAt = 0L
+        autoLevelTrackStartedAtNanos = 0L
+        autoLevelEstimator = LoudnessEstimator()
+        autoLevelAppliedDb = 0.0
+        autoLevelSaved = false
+    }
+
+    private fun saveAutoLevelEstimate() {
+        if (autoLevelSaved) return
+        val key = autoLevelKey ?: return
+        val estimate = autoLevelEstimator.estimateDb() ?: return
+        autoLevelSaved = true
+        scope.launch(Dispatchers.IO) { container.autoLevelStore.put(key, estimate) }
     }
 
     private inner class MediaCallback : MediaLibrarySession.Callback {

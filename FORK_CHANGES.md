@@ -37,3 +37,15 @@ The kernel ran all 79 biquad slots (31 graphic + 12 parametric × 4 sections) pe
 - `PrecisionEffectsKernel` processes only those. When a coefficient change activates a skipped section, its filter history is seeded from the signal that entered it, so the output matches the previous all-slots processing exactly (covered by unit tests against a reference all-slots cascade).
 
 Note: debuggable builds (`assembleDebug`) are several times slower in this per-sample Kotlin code (ART does not inline in debuggable mode). On the test device a debuggable build still underran with the screen off even after this change, while a non-debuggable build using the same code had no underruns and about 10–20 % playback-thread CPU. For daily listening, use a non-debuggable build.
+
+## feature/auto-volume
+
+### "Auto" volume leveling
+
+Settings → Loudness → Volume leveling has a fourth option, **Auto**, next to Off / Track / Album. It uses the track's ReplayGain tag when there is one (same as Track). For tracks without tags (most streamed tracks, local files that were never scanned) it measures the loudness itself and lowers loud tracks toward a common level:
+
+- While the track plays, the PCM level meter's ~100 ms blocks are averaged (silence below −60 dBFS ignored). After 3 s there is an estimate (plain RMS in dBFS, no K-weighting); the first 20 s are used.
+- Gain = −18 dBFS − estimate, attenuation only (never boosts, so no clipping), applied through the existing player-volume path and slewed at no more than 2 dB per second.
+- The estimate is cached per track (`AutoLevelStore`, `auto_levels.json`, up to 5,000 entries) once at least 10 s were measured, so the next play is leveled from the first second.
+
+Limits: Auto only estimates on the Android PCM paths with a level meter (16-bit, or the Custom DSP float path); with native USB output (player volume is ignored) it has no effect, and MixPlayer / network output use tags only. Quiet tracks are not boosted. Code: `playback/LoudnessEstimator.kt`, `data/AutoLevelStore.kt`, `PlaybackService.updateAutoLevel`.

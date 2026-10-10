@@ -10,7 +10,7 @@ class ProcessingPresetTest {
         id = UUID.randomUUID().toString(), name = "Speakers", createdAtMs = 123456L,
         audio = AudioPrefs(
             eqEnabled = true, eqPreset = 3, eqBands = listOf(-123, 456), bassBoost = 123,
-            virtualizer = 321, loudnessGain = 99, replayGain = 2, dspMode = DspMode.CUSTOM,
+            virtualizer = 321, loudnessGain = 99, replayGain = 3, dspMode = DspMode.CUSTOM,
             dspGraphicBands = listOf(-1.25f, 2.5f),
             dspParametric = listOf(ParamBand(80f, -3.5f, 0.71f, BandType.LOW_SHELF), ParamBand(12000f, 2f, 1.4f, BandType.HIGH_SHELF)),
             dspPreampDb = -4f, dspBalance = -0.2f, dspWidth = 1.4f, dspCrossfeed = 0.3f,
@@ -35,6 +35,12 @@ class ProcessingPresetTest {
         val read = ProcessingPresetCodec.decode(ProcessingPresetCodec.encode(listOf(preset)))
         assertNull(read.error)
         assertEquals(listOf(preset), read.presets)
+    }
+
+    @Test fun autoReplayGainPresetRoundTripsAndUnsupportedModeIsRejected() {
+        val preset = fixture().copy(audio = fixture().audio.copy(replayGain = 3))
+        assertEquals(3, ProcessingPresetCodec.decode(ProcessingPresetCodec.encode(listOf(preset))).presets.single().audio.replayGain)
+        assertNotNull(ProcessingPresetCodec.decode(changedJson { it.getAsJsonObject("audio").addProperty("replayGain", 4) }).error)
     }
 
     @Test fun missingEnvelopeFieldsNeverCreateGsonZeroDefaults() {

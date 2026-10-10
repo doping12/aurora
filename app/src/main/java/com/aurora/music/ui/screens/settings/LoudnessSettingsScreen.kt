@@ -40,7 +40,7 @@ fun LoudnessSettingsScreen(
         LazyColumn(Modifier.fillMaxWidth(), contentPadding = PaddingValues(bottom = contentPadding.calculateBottomPadding() + 24.dp)) {
             item { SettingsSectionTitle("ReplayGain") }
             item {
-                SegmentedRow(appString(R.string.text_volume_leveling_a9df98), listOf(appString(R.string.text_off_e3de5a), appString(R.string.text_track_b1c5a7), appString(R.string.text_album_dfb4c9)), prefs.replayGain.coerceIn(0, 2)) { mode ->
+                SegmentedRow(appString(R.string.text_volume_leveling_a9df98), listOf(appString(R.string.text_off_e3de5a), appString(R.string.text_track_b1c5a7), appString(R.string.text_album_dfb4c9), appString(R.string.text_auto_c614ba)), prefs.replayGain.coerceIn(0, 3)) { mode ->
                     scope.launch { store.setReplayGain(mode) }
                 }
             }
@@ -49,8 +49,9 @@ fun LoudnessSettingsScreen(
                     when (prefs.replayGain) {
                         1 -> appString(R.string.text_track_mode_uses_each_track_s_gain_tag_to_reduce_volume_difference_c08f12)
                         2 -> appString(R.string.text_album_mode_uses_album_gain_tags_to_preserve_relative_levels_withi_99c44e)
+                        3 -> appString(R.string.auto_volume_description)
                         else -> appString(R.string.text_off_leaves_replaygain_disabled_56fb0f)
-                    } + appString(R.string.text_aurora_currently_applies_attenuation_only_missing_or_positive_gai_20c829),
+                    } + if (prefs.replayGain == 3) "" else appString(R.string.text_aurora_currently_applies_attenuation_only_missing_or_positive_gai_20c829),
                     Modifier.padding(horizontal = 20.dp, vertical = 10.dp),
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
