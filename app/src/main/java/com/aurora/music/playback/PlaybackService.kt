@@ -318,6 +318,7 @@ class PlaybackService : MediaLibraryService() {
         val playerBuilder = ExoPlayer.Builder(this, renderersFactory)
             .setMediaSourceFactory(mediaSourceFactory)
             .setAudioAttributes(audioAttributes, /* handleAudioFocus = */ true)
+            .setWakeMode(C.WAKE_MODE_LOCAL)
             .setHandleAudioBecomingNoisy(true)
         if (bitPerfectUsb) {
             // stop exoplayer reading the file while the native flac engine handles decode + usb
@@ -328,6 +329,7 @@ class PlaybackService : MediaLibraryService() {
             )
         }
         player = playerBuilder.build()
+        updateWakeMode(player)
         // Keep paired YouTube video buffered in audio mode so revealing it does not reconfigure playback.
         attachSignalEvidence(player, initialEvidence)
         if (bitPerfectUsb) usbSink?.attachToPlayer(player)
@@ -403,6 +405,9 @@ class PlaybackService : MediaLibraryService() {
     }
 
     private fun serviceListener(owner: ExoPlayer) = object : Player.Listener {
+            override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
+                updateWakeMode(owner)
+            }
             override fun onPlayWhenReadyChanged(playWhenReady: Boolean, reason: Int) {
                 if (owner === player && bitPerfect && playWhenReady && player.playerError != null) player.prepare()
             }
@@ -422,6 +427,10 @@ class PlaybackService : MediaLibraryService() {
                 } else if (usbFallback == UsbFallbackPolicy.PAUSE) player.pause()
             }
             override fun onEvents(p: Player, events: Player.Events) {
+                if (events.contains(Player.EVENT_TIMELINE_CHANGED) ||
+                    events.contains(Player.EVENT_MEDIA_ITEM_TRANSITION) ||
+                    events.contains(Player.EVENT_PLAYBACK_STATE_CHANGED)
+                ) updateWakeMode(owner)
                 if (p !== player) return
                 if (xfadeActive && (events.contains(Player.EVENT_IS_PLAYING_CHANGED) || events.contains(Player.EVENT_PLAY_WHEN_READY_CHANGED))) {
                     fadePlayer?.playWhenReady = p.isPlaying
@@ -554,6 +563,10 @@ class PlaybackService : MediaLibraryService() {
         }
         // USB engine and volume/fade changes need snapshots even without a Media3 track event.
         scope.launch { while (isActive) { delay(500); updateSignalPath() } }
+    }
+
+    private fun updateWakeMode(owner: ExoPlayer) {
+        owner.setWakeMode(wakeModeFor(owner.currentMediaItem?.localConfiguration?.uri?.scheme))
     }
 
     // runtime-switchable via volatile flags no rebuild the two eq engines are mutually exclusive so they never stack
@@ -1140,6 +1153,7 @@ class PlaybackService : MediaLibraryService() {
             incoming.playbackParameters = player.playbackParameters
             incoming.skipSilenceEnabled = player.skipSilenceEnabled
             incoming.setMediaItems((0 until player.mediaItemCount).map { player.getMediaItemAt(it) }, next, 0)
+            updateWakeMode(incoming)
             incoming.prepare()
             preparedKey = key
         }
@@ -1239,6 +1253,7 @@ class PlaybackService : MediaLibraryService() {
         return ExoPlayer.Builder(this, factory)
             .setMediaSourceFactory(musicSourceFactory)
             .setAudioAttributes(player.audioAttributes, false)
+            .setWakeMode(C.WAKE_MODE_LOCAL)
             .setHandleAudioBecomingNoisy(true)
             .build().also {
                 it.trackSelectionParameters = it.trackSelectionParameters.buildUpon()
@@ -1516,7 +1531,11 @@ class PlaybackService : MediaLibraryService() {
             mediaSession?.player = player
             shuffleQueue.originalOrder = shuffleOrder
             player.repeatMode = repeat
-            if (items.isNotEmpty()) { player.setMediaItems(items, index.coerceAtMost(items.lastIndex), position); player.prepare() }
+            if (items.isNotEmpty()) {
+                player.setMediaItems(items, index.coerceAtMost(items.lastIndex), position)
+                updateWakeMode(player)
+                player.prepare()
+            }
             else player.clearMediaItems()
             player.playWhenReady = false
             container.networkOutput.update { it.copy(receiverName = null, receiverKind = null, preparing = false, detail = "", error = null) }
@@ -1800,6 +1819,7 @@ class PlaybackService : MediaLibraryService() {
             val ordered = songs.shuffled()
             player.setMediaItems(ordered.map { libraryBrowser.songItem(it) }, 0, 0L)
             player.repeatMode = Player.REPEAT_MODE_ALL
+            updateWakeMode(player)
             player.prepare()
             player.volume = 0f
             wakeFadeMs = 30_000

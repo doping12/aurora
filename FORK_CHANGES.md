@@ -37,3 +37,11 @@ The kernel ran all 79 biquad slots (31 graphic + 12 parametric × 4 sections) pe
 - `PrecisionEffectsKernel` processes only those. When a coefficient change activates a skipped section, its filter history is seeded from the signal that entered it, so the output matches the previous all-slots processing exactly (covered by unit tests against a reference all-slots cascade).
 
 Note: debuggable builds (`assembleDebug`) are several times slower in this per-sample Kotlin code (ART does not inline in debuggable mode). On the test device a debuggable build still underran with the screen off even after this change, while a non-debuggable build using the same code had no underruns and about 10–20 % playback-thread CPU. For daily listening, use a non-debuggable build.
+
+## fix/screen-off-audio
+
+### Wake lock during playback
+
+Audio could become choppy/distorted with the screen off (both Bluetooth and wired). The app declared `WAKE_LOCK` but never asked ExoPlayer to hold a wake lock, so the CPU (and, for streams, the Wi-Fi radio) could power-save between decode/feed cycles. The playback players now use `setWakeMode`: `WAKE_MODE_NETWORK` (CPU + Wi-Fi lock) for streamed items (`http`, `https`, `aurora-yt`, `aurora-extension`) and `WAKE_MODE_LOCAL` (CPU lock) for local files, updated on every media-item change. ExoPlayer holds the locks only while playing. Code: `playback/WakeModes.kt`, `PlaybackService`, `MixPlayer`.
+
+This is separate from the Custom-DSP CPU fix in `fix/dsp-screen-off-underrun`; underruns are still reported in the signal-path screen, which can be used to check whether glitches remain.
