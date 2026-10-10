@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="setup_source_plex">Plex</string>
+    <string name="setup_source_plex_detail">Plex Media Server の音楽。</string>
+    <string name="plex_connect_title">Plex に接続</string>
+    <string name="plex_token_detail">このサーバーへのアクセス権がある Plex 認証トークンを使用します。</string>
+    <string name="plex_token_label">Plex トークン</string>
+    <string name="plex_token_help">Plex トークンの確認方法</string>
+    <string name="plex_token_show">トークンを表示</string>
+    <string name="plex_token_hide">トークンを非表示</string>
+    <string name="plex_token_rejected">Plex がこのトークンを拒否しました。このサーバーへのアクセス権があるか確認してください。</string>
+    <string name="plex_server_detail">Plex Media Server のアドレスを使用します。通常はポート 32400 です。</string>
+    <string name="plex_sources_stream_detail">Navidrome、Jellyfin、または Plex からストリーミングします。</string>
+    <string name="plex_sources_empty_detail">ここに含めるには、設定 → アカウントから Navidrome、Jellyfin、Plex、または YouTube Music のアカウントを追加してください。</string>
+</resources>

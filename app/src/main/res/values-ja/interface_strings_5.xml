@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="text_set_the_redirect_uri_to_exactly_aurora_spotify_407b7c" formatted="false">"Spotify の Redirect URI を次のとおり正確に設定してください：  aurora://spotify"</string>
+<string name="text_set_up_your_spotify_app_de4e3c" formatted="false">"Spotify アプリを設定"</string>
+<string name="text_setting_saved_ac1563" formatted="false">"設定を保存しました。"</string>
+<string name="text_settings_c7f73b" formatted="false">"設定"</string>
+<string name="text_settings_racks_presets_impulse_responses_playlists_and_history_22c4f0" formatted="false">"設定、ラック、プリセット、インパルス応答、プレイリスト、履歴"</string>
+<string name="text_shape_your_sound_with_aurora_s_eq_and_audio_effects_0b9ed1" formatted="false">"Aurora の EQ とオーディオエフェクトでサウンドを整えましょう。"</string>
+<string name="text_share_your_current_track_and_artwork_11d20a" formatted="false">"再生中のトラックとアートワークを共有"</string>
+<string name="text_shared_secret_4e19fd" formatted="false">"共有シークレット"</string>
+<string name="text_sharp_cf3e9a" formatted="false">"急峻"</string>
+<string name="text_show_20_more_3b05ec" formatted="false">"さらに20件表示"</string>
+<string name="text_show_album_b04b79" formatted="false">"アルバムを表示"</string>
+<string name="text_show_albums_artists_playlists_from_your_local_files_and_every_inc_4ea040" formatted="false">"ローカルファイルとすべてのソースのアルバム、アーティスト、プレイリストを1つのライブラリにまとめて表示"</string>
+<string name="text_show_artwork_in_radial_styles_100355" formatted="false">"アートワークを放射状スタイルで表示"</string>
+<string name="text_show_less_4c852b" formatted="false">"折りたたむ"</string>
+<string name="text_show_more_25911d" formatted="false">"もっと見る"</string>
+<string name="text_show_pairing_code_921392" formatted="false">"ペアリングコードを表示"</string>
+<string name="text_show_password_044b85" formatted="false">"パスワードを表示"</string>
+<string name="text_show_the_alarm_full_screen_over_the_lock_screen_1d1cfb" formatted="false">"ロック画面の上にアラームを全画面表示"</string>
+<string name="text_showing_the_latest_60_samples_596144" formatted="false">"最新60サンプルを表示しています。"</string>
+<string name="text_shows_episodes_526d46" formatted="false">"番組・エピソード"</string>
+<string name="text_shuffle_5b772b" formatted="false">"シャッフル"</string>
+<string name="text_shuffle_all_7e388b" formatted="false">"すべてシャッフル"</string>
+<string name="text_shuffle_folder_681a21" formatted="false">"フォルダをシャッフル"</string>
+<string name="text_sibilance_cutoff_6da1b4" formatted="false">"歯擦音カットオフ"</string>
+<string name="text_side_265283" formatted="false">"サイド"</string>
+<string name="text_sign_in_failed_49b78c" formatted="false">"ログインに失敗しました。"</string>
+<string name="text_sign_in_on_google_s_page_then_choose_your_youtube_music_profile_n_0b2a03" formatted="false">"Google のページでログインし、YouTube Music のプロフィールを選択してください。開発者向けの設定は不要です。"</string>
+<string name="text_sign_in_with_google_4a0b72" formatted="false">"Google でログイン"</string>
+<string name="text_sign_into_navidrome_jellyfin_or_youtube_music_settings_accounts_t_7337d3" formatted="false">"Navidrome、Jellyfin、YouTube Music にログイン（設定 → アカウント）すると、ソースを統合できます。ローカルファイルは常に含まれます。"</string>
+<string name="text_signal_path_c3e29b" formatted="false">"信号経路"</string>
+<string name="text_signal_path_report_copied_ecc24d" formatted="false">"信号経路レポートをコピーしました"</string>
+<string name="text_signed_in_as_a02107" formatted="false">"ログイン中："</string>
+<string name="text_silent_aa9330" formatted="false">"無音"</string>
+<string name="text_silk_veil_fa6add" formatted="false">"シルクのベール"</string>
+<string name="text_single_dd1186" formatted="false">"シングル"</string>
+<string name="text_skip_silence_3d4da2" formatted="false">"無音部分をスキップ"</string>
+<string name="text_skip_silences_015ea3" formatted="false">"無音部分をスキップ"</string>
+<string name="text_sky_b3d97f" formatted="false">"空"</string>
+<string name="text_sleep_timer_e90613" formatted="false">"スリープタイマー"</string>
+<string name="text_slope_638d02" formatted="false">"傾斜"</string>
+<string name="text_slow_spin_for_radial_combo_be2e95" formatted="false">"放射状／コンボの回転を遅くする"</string>
+<string name="text_smart_playlist_f77ad7" formatted="false">"スマートプレイリスト"</string>
+<string name="text_smart_playlist_rule_60c810">"スマートプレイリスト • %1$s件のルール%2$s"</string>
+<string name="text_smooth_2b083f" formatted="false">"なめらか"</string>
+<string name="text_smooth_7f93ca" formatted="false">"なめらか"</string>
+<string name="text_smoothing_dcc490" formatted="false">"スムージング"</string>
+<string name="text_smoothing_width_octaves_52255d" formatted="false">"スムージング幅 · オクターブ"</string>
+<string name="text_soft_gradients_custom_accents_rounded_cards_d3f466" formatted="false">"ソフトなグラデーション · カスタムアクセント · 角丸カード"</string>
+<string name="text_solo_6d717d" formatted="false">" · ソロ"</string>
+<string name="text_solo_9fc93a" formatted="false">"ソロ"</string>
+<string name="text_solo_band_3fb8b7" formatted="false">"バンドのみ"</string>
+<string name="text_some_tracks_are_unavailable_reconnect_to_the_library_and_retry_6b688e" formatted="false">"一部のトラックを利用できません。ライブラリに再接続して、もう一度お試しください。"</string>
+<string name="text_song_bd1189" formatted="false">"曲"</string>
+<string name="text_songs_9b614d">"%1$s曲"</string>
+<string name="text_songs_d8fb7b">"%1$s%2$s曲"</string>
+<string name="text_songs_e1404b" formatted="false">"曲"</string>
+<string name="text_songs_from_your_server_appear_here_e4db53" formatted="false">"サーバーの曲がここに表示されます。"</string>
+<string name="text_sonic_radio_9b7bff" formatted="false">"ソニックラジオ"</string>
+<string name="text_sonic_radio_compares_the_actual_sound_of_your_tracks_timbre_harmo_001cdd" formatted="false">"ソニックラジオは、トラックの実際のサウンド（音色、和声、エネルギー、テンポ）を比較します。"</string>
+<string name="text_sonic_radio_similar_tracks_653156">"ソニックラジオ · 類似トラック%1$s件"</string>
+<string name="text_sort_by_a2a5bd" formatted="false">"並べ替え"</string>
+<string name="text_sound_b4e3ef" formatted="false">"サウンド"</string>
+<string name="text_soundtrack_5ea1bb" formatted="false">"サウンドトラック"</string>
+<string name="text_source_6da13a" formatted="false">"ソース"</string>
+<string name="text_source_author_f7d881" formatted="false">"ソース／作成者"</string>
+<string name="text_source_below_that_has_it_reorder_to_taste_f0910c" formatted="false">"該当するソースは下にあります。好みに合わせて並べ替えてください。"</string>
+<string name="text_source_ddb023" formatted="false">" · ソース"</string>
+<string name="text_source_e9f395">"ソース：%1$s"</string>
+<string name="text_source_priority_and_unified_library_5d9b2c" formatted="false">"ソースの優先順位と統合ライブラリ"</string>
+<string name="text_source_spectrum_5d8903" formatted="false">"ソーススペクトラム"</string>
+<string name="text_spaced_e2dd97" formatted="false">"間隔あり"</string>
+<string name="text_spatial_729ac1" formatted="false">"空間"</string>
+<string name="text_speak_to_search_91f0aa" formatted="false">"話して検索"</string>
+<string name="text_speaker_7c23b0" formatted="false">"スピーカー"</string>
+<string name="text_speakers_bluetooth_6dc246" formatted="false">"スピーカー／Bluetooth"</string>
+<string name="text_spectral_river_b18902" formatted="false">"スペクトルの川"</string>
+<string name="text_spectrum_9620cf" formatted="false">"スペクトラム"</string>
+<string name="text_spectrum_bars_6379ce" formatted="false">"スペクトラムバー"</string>
+<string name="text_spectrum_curve_f0b0b0" formatted="false">"スペクトラム曲線"</string>
+<string name="text_spectrum_waveform_radial_and_particles_145442" formatted="false">"スペクトラム、波形、放射状表示、パーティクル"</string>
+<string name="text_speed_2d2cb0" formatted="false">"速度"</string>
+<string name="text_speed_lyrics_queue_row_814225" formatted="false">"速度 · 歌詞 · キューの行"</string>
+<string name="text_speed_x_72da98">"速度 %1$s倍"</string>
+<string name="text_sports_2fec45" formatted="false">"スポーツ"</string>
+<string name="text_spotify_sign_in_failed_try_again_dc8110" formatted="false">"Spotify のログインに失敗しました。もう一度お試しください。"</string>
+<string name="text_spotify_uses_the_connect_button_not_this_form_17d56a" formatted="false">"Spotify ではこのフォームではなく、接続ボタンを使います"</string>
+<string name="text_squig_measurement_text_1ab632" formatted="false">"Squig 測定テキスト"</string>
+<string name="text_src_delay_ms_165eac">"SRC遅延：%1$s ms"</string>
+<string name="text_stage_ca6d0e" formatted="false">"ステージ"</string>
+<string name="text_stage_inputs_c5a9f4" formatted="false">"ステージ入力"</string>
+<string name="text_stage_meters_50fb37" formatted="false">"ステージメーター"</string>
+<string name="text_stages_8e34a7">"%1$s · %2$sステージ"</string>
+<string name="text_stages_b02622">"%1$sステージ"</string>
+<string name="text_stages_run_from_top_to_bottom_008582" formatted="false">"ステージは上から下へ処理されます。"</string>
+<string name="text_standard_2dfa66" formatted="false">"標準"</string>
+<string name="text_standard_mode_stays_active_select_rack_mode_later_to_use_the_adde_5a9ebc" formatted="false">"標準モードが有効です。追加した補正を使うには、後でラックモードを選択してください。"</string>
+<string name="text_starred_5f1f99" formatted="false">"お気に入り"</string>
+<string name="text_start_a_b_6348cf" formatted="false">"A/Bを開始"</string>
+<string name="text_start_abx_d3d188" formatted="false">"ABXを開始"</string>
+<string name="text_start_at_seconds_d4e717" formatted="false">"開始位置（秒）"</string>
+<string name="text_start_frame_71c6c5" formatted="false">"開始フレーム"</string>
+<string name="text_start_from_queue_237018" formatted="false">"キューから開始"</string>
+<string name="text_start_included_end_excluded_a1dbff" formatted="false">"開始位置は含み、終了位置は含みません。"</string>
+<string name="text_start_listening_without_an_account_2e734d" formatted="false">"アカウントなしで再生を開始"</string>
+<string name="text_starting_download_43a6a6" formatted="false">"ダウンロードを開始しています…"</string>
+<string name="text_starting_points_8df66e" formatted="false">"開始ポイント"</string>
+<string name="text_starts_in_mix_0762f2" formatted="false">"ミックスに含める"</string>
+<string name="text_starts_with_2e2ec9" formatted="false">"で始まる"</string>
+<string name="text_stereo_delay_d3073c" formatted="false">"ステレオディレイ"</string>
+<string name="text_stereo_f4f390" formatted="false">"ステレオ"</string>
+<string name="text_stereo_linked_6e3759" formatted="false">"ステレオ連動。"</string>
+<string name="text_stereo_phase_05d1da" formatted="false">"ステレオ位相"</string>
+<string name="text_stereo_trim_63a03b" formatted="false">"ステレオ・トリム"</string>
+<string name="text_stereo_width_336051" formatted="false">"ステレオ幅"</string>
+<string name="text_stop_9e2534" formatted="false">"停止"</string>
+<string name="text_stop_casting_1f7a2c" formatted="false">"キャストを停止"</string>
+<string name="text_stop_mix_and_return_to_queue_eeb40f" formatted="false">"ミックスを停止してキューに戻る"</string>
+<string name="text_strange_attractor_70352b" formatted="false">"ストレンジアトラクター"</string>
+<string name="text_stream_df0638" formatted="false">"ストリーム"</string>
+<string name="text_stream_from_navidrome_jellyfin_6c07f0" formatted="false">"Navidrome／Jellyfinからストリーミング"</string>
+<string name="text_stream_from_server_1f8520" formatted="false">"サーバーからストリーミング"</string>
+<string name="text_stream_url_e25c5b" formatted="false">"ストリームURL"</string>
+<string name="text_streaming_0247ce" formatted="false">"ストリーミング中"</string>
+<string name="text_streaming_1e8325" formatted="false">"ストリーミング"</string>
+<string name="text_streaming_quality_7a2799" formatted="false">"ストリーミング品質"</string>
+<string name="text_streaming_quality_crossfade_gapless_and_speed_602d35" formatted="false">"ストリーミング品質、クロスフェード、ギャップレス再生、速度"</string>
+<string name="text_strength_24d3e4" formatted="false">"強さ"</string>
+<string name="text_style_99a0ef" formatted="false">"スタイル"</string>
+<string name="text_subscribe_d6981f" formatted="false">"登録"</string>
+<string name="text_subscribed_dd1242" formatted="false">"登録済み"</string>
+<string name="text_subsonic_compatible_b4584c" formatted="false">"Subsonic互換"</string>
+<string name="text_subtle_vibration_on_play_skip_navigation_d6940c" formatted="false">"再生、スキップ、ナビゲーション時に軽く振動"</string>
+<string name="text_swipe_artwork_to_change_track_7a762f" formatted="false">"アートワークをスワイプしてトラックを変更"</string>
+<string name="text_swipe_down_to_dismiss_575cb1" formatted="false">"下にスワイプして閉じる"</string>
+<string name="text_swipe_haptics_and_private_session_19567f" formatted="false">"スワイプ、触覚フィードバック、プライベートセッション"</string>
+<string name="text_swipe_the_player_artwork_left_right_fd3460" formatted="false">"プレーヤーのアートワークを左右にスワイプ"</string>
+<string name="text_switch_account_a28b02" formatted="false">"アカウントを切り替え"</string>
+<string name="text_switch_between_saved_logins_dfa5ef" formatted="false">"保存済みログインを切り替え"</string>
+<string name="text_switch_gain_between_boost_and_cut_ec1830" formatted="false">"ゲインをブーストとカットで切り替え"</string>
+<string name="text_switch_presets_by_track_and_output_546392" formatted="false">"トラックや出力に応じてプリセットを切り替え"</string>
+<string name="text_switch_to_home_42c520">"%1$sのホームに切り替え"</string>
+<string name="text_switched_to_c57200">"%1$sに切り替えました"</string>
+<string name="text_switching_servers_stops_playback_from_the_previous_one_cbfa45" formatted="false">"サーバーを切り替えると、前のサーバーでの再生は停止します。"</string>
+<string name="text_synced_lyrics_when_your_server_has_none_b4054e" formatted="false">"サーバーに歌詞がない場合は同期歌詞を表示"</string>
+<string name="text_system_bc0792" formatted="false">"システム"</string>
+<string name="text_system_effects_d5a44a" formatted="false">"システムエフェクト"</string>
+<string name="text_system_equalizer_be209a" formatted="false">"システムイコライザー"</string>
+<string name="text_tags_saved_521155" formatted="false">"タグを保存しました"</string>
+<string name="text_tap_a_value_to_enter_an_exact_time_cue_points_refer_to_the_source_842e53" formatted="false">"値をタップして正確な時刻を入力します。キューポイントは元の曲を基準にします。"</string>
+<string name="text_tap_the_graph_or_adjust_the_frequency_slider_to_inspect_a_point_f_1ff543" formatted="false">"グラフをタップするか周波数スライダーを調整して、ポイントを確認します。周波数は対数目盛です。"</string>
+<string name="text_tap_to_allow_bit_perfect_access_to_c08d14">"タップして%1$sへのビットパーフェクトアクセスを許可"</string>
+<string name="text_tape_c51c55" formatted="false">"テープ"</string>
+<string name="text_taps_estimated_memory_mib_88d38b">"%1$sタップ · 推定メモリ %2$s MiB"</string>
+<string name="text_target_61ad50" formatted="false">"ターゲット"</string>
+<string name="text_target_library_45e3b8" formatted="false">"ターゲットライブラリ"</string>
+<string name="text_target_rig_6556f6">"ターゲット機器：%1$s"</string>
+<string name="text_target_saved_79a16c" formatted="false">"ターゲットを保存しました。"</string>
+<string name="text_target_shape_57174c" formatted="false">"ターゲット形状"</string>
+<string name="text_teal_df0ad3" formatted="false">"青緑"</string>
+<string name="text_technology_d018b0" formatted="false">"テクノロジー"</string>
+<string name="text_tempo_899658" formatted="false">"テンポ"</string>
+<string name="text_tempo_preserves_pitch_eq_boosts_reserve_headroom_before_processin_2b088a" formatted="false">"テンポ変更では音程を維持します。EQのブーストでは処理前にヘッドルームを確保します。"</string>
+<string name="text_terrain_flyover_ba8ceb" formatted="false">"地形のフライオーバー"</string>
+<string name="text_test_interrupted_ae8398" formatted="false">"テストが中断されました"</string>
+<string name="text_text_61e2d5">"%1$s · テキスト"</string>
+<string name="text_text_6fc726" formatted="false">"テキスト…"</string>
+<string name="text_that_token_could_not_be_verified_check_it_and_try_again_6668f1" formatted="false">"トークンを確認できませんでした。確認してもう一度お試しください。"</string>
+<string name="text_the_android_volume_range_is_unavailable_577138" formatted="false">"Androidの音量範囲を利用できません。"</string>
+<string name="text_the_apk_is_not_from_aurora_s_releases_d728ee" formatted="false">"APKはAuroraのリリースから取得されたものではありません。"</string>
+<string name="text_the_download_could_not_be_verified_please_try_again_95c71d" formatted="false">"ダウンロードを検証できませんでした。もう一度お試しください。"</string>
+<string name="text_the_download_is_incomplete_please_try_again_96c9cd" formatted="false">"ダウンロードが不完全です。もう一度お試しください。"</string>
+<string name="text_the_download_isn_t_a_valid_app_update_d50721" formatted="false">"ダウンロードは有効なアプリの更新ではありません。"</string>
+<string name="text_the_download_was_removed_try_again_867dcc" formatted="false">"ダウンロードが削除されました。もう一度お試しください。"</string>
+<string name="text_the_downloaded_update_is_missing_download_it_again_8a84fc" formatted="false">"ダウンロードした更新ファイルが見つかりません。もう一度ダウンロードしてください。"</string>
+<string name="text_the_line_in_the_arrangement_shows_this_track_s_volume_envelope_ma_689eda" formatted="false">"アレンジ画面の線はこのトラックの音量エンベロープを示します。マスターヘッドルームで重なるトラックの音量を調整します。"</string>
+<string name="text_the_next_track_prepares_in_advance_fades_pause_with_playback_and_ed5667" formatted="false">"次のトラックは事前に準備されます。フェードは再生の一時停止に合わせて止まり、バッファリングを待ちます。ヘッドルームがオフの場合、等電力クロスフェードで音量が大きくなることがあります。"</string>
+<string name="text_the_player_is_still_connecting_e52aa9" formatted="false">"プレーヤーはまだ接続中です。"</string>
+<string name="text_the_rack_does_not_have_enough_space_reduce_the_fit_s_band_budget_f8764d" formatted="false">"ラックの空き容量が足りません。まずフィットのバンド数上限を下げるか、ラックのステージを削除してください。"</string>
+<string name="text_the_rack_is_still_loading_0720e5" formatted="false">"ラックを読み込み中です。"</string>
+<string name="text_the_rack_stays_inactive_until_you_select_rack_mode_44737b" formatted="false">"ラックモードを選択するまで、ラックは無効のままです。"</string>
+<string name="text_the_receiver_plays_the_source_aurora_s_effects_are_bypassed_e273f5" formatted="false">"レシーバーはソースを再生します。Aurora のエフェクトはバイパスされます。"</string>
+<string name="text_the_release_apk_is_empty_38a3c2" formatted="false">"リリースAPKが空です。"</string>
+<string name="text_the_release_has_no_version_745070" formatted="false">"リリースにバージョン情報がありません。"</string>
+<string name="text_the_release_version_is_not_supported_0ce4b4" formatted="false">"リリースのバージョンはサポートされていません。"</string>
+<string name="text_the_same_total_as_the_previous_5949c2">"前回と同じ合計：%1$s。"</string>
+<string name="text_the_selected_output_changed_the_comparison_stopped_602724" formatted="false">"選択した出力が変更されたため、比較を停止しました。"</string>
+<string name="text_the_sign_in_page_could_not_load_check_your_connection_and_reload_a45e09" formatted="false">"ログインページを読み込めませんでした。接続を確認して再読み込みしてください。"</string>
+<string name="text_the_songs_artists_and_moments_that_made_your_days_641b13" formatted="false">"あなたの日々を彩った曲、アーティスト、思い出。"</string>
+<string name="text_the_sound_of_your_b28338">"あなたの%1$sのサウンド"</string>
+<string name="text_theme_a797e3" formatted="false">"テーマ"</string>
+<string name="text_theme_accent_and_layout_cb0657" formatted="false">"テーマ、アクセント、レイアウト"</string>
+<string name="text_these_filters_cannot_be_represented_in_the_eq_text_format_025451" formatted="false">"これらのフィルターはEQテキスト形式で表現できません。"</string>
+<string name="text_these_settings_belong_to_this_stage_the_original_eq_gain_saturati_989a35" formatted="false">"これらの設定はこのステージに属します。元のEQ → ゲイン → サチュレーション → ステレオ → ダイナミクス → ディレイの順序を維持します。"</string>
+<string name="text_these_settings_match_4e8e86" formatted="false">"これらの設定は一致しています"</string>
+<string name="text_third_column_is_phase_bf98b7" formatted="false">"第3列は位相"</string>
+<string name="text_this_collection_exceeds_the_10_000_track_mix_limit_b8885f" formatted="false">"このコレクションはミックスの上限である10,000トラックを超えています。"</string>
+<string name="text_this_collection_needs_at_least_two_tracks_to_mix_142509" formatted="false">"ミックスするには、このコレクションに少なくとも2曲必要です。"</string>
+<string name="text_this_device_fa5a6d" formatted="false">"このデバイス"</string>
+<string name="text_this_file_is_not_a_valid_preset_archive_or_it_is_damaged_choose_a_fc090e" formatted="false">"このファイルは有効なプリセットアーカイブではないか、破損しています。Auroraのプリセットエクスポートを選択してください。"</string>
+<string name="text_this_ir_is_no_longer_in_the_library_7118f3" formatted="false">"このIRはライブラリにありません。"</string>
+<string name="text_this_is_the_eq_s_group_delay_it_does_not_measure_device_or_playba_31e689" formatted="false">"これはEQの群遅延です。デバイスや再生の遅延を測定するものではありません。"</string>
+<string name="text_this_link_cannot_open_here_finish_verification_using_another_meth_0d1c6a" formatted="false">"このリンクはここでは開けません。別の方法で確認を完了してから、「YouTube Musicに進む」をタップしてください。"</string>
+<string name="text_this_mix_has_reached_10_000_tracks_115af4" formatted="false">"このミックスは10,000トラックに達しました。"</string>
+<string name="text_this_project_940087" formatted="false">"このプロジェクト"</string>
+<string name="text_this_project_is_no_longer_saved_33a1db" formatted="false">"このプロジェクトは保存されていません。"</string>
+<string name="text_this_rack_is_active_appended_stages_will_affect_playback_92bdc8" formatted="false">"このラックは有効です。追加したステージは再生に反映されます。"</string>
+<string name="text_this_rack_is_currently_inactive_f790d2" formatted="false">"このラックは現在無効です"</string>
+<string name="text_this_release_s_apk_has_incompatible_version_information_please_ch_71cb07" formatted="false">"このリリースAPKのバージョン情報には互換性がありません。GitHubのリリースを確認してください。"</string>
+<string name="text_this_removes_the_saved_mix_your_songs_stay_in_your_library_1951d2" formatted="false">"保存したミックスを削除します。曲はライブラリに残ります。"</string>
+<string name="text_this_removes_the_stage_and_its_settings_from_this_rack_03575f" formatted="false">"このラックからステージとその設定を削除します。"</string>
+<string name="text_this_replaces_the_current_rack_saved_presets_stay_available_19c825" formatted="false">"現在のラックを置き換えます。保存済みプリセットは引き続き利用できます。"</string>
+<string name="text_this_stage_has_nonzero_graphic_eq_settings_that_the_text_file_wil_878b50" formatted="false">"このステージにはゼロでないGraphic EQ設定があり、テキストファイルには含まれません。"</string>
+<string name="text_this_style_includes_its_own_colors_and_corners_your_aurora_custom_9b4b82" formatted="false">"このスタイルには独自の色と角丸が含まれます。Auroraのカスタマイズは保存されます。"</string>
+<string name="text_this_update_doesn_t_match_the_installed_app_s_signing_key_install_5af2e9" formatted="false">"この更新はインストール済みアプリの署名鍵と一致しません。同じ配布元から更新をインストールしてください。"</string>
+<string name="text_three_linked_stereo_bands_8f36e9" formatted="false">"連動する3つのステレオバンド"</string>
+<string name="text_threshold_c51f7b" formatted="false">"しきい値"</string>
+<string name="text_tilt_db_octave_9349c9" formatted="false">"傾斜 · dB/オクターブ"</string>
+<string name="text_time_to_wake_up_0b1ade" formatted="false">"起床時刻"</string>
+<string name="text_timers_841cd0" formatted="false">"タイマー"</string>
+<string name="text_timing_098024" formatted="false">"タイミング"</string>
+<string name="text_title_768e0c" formatted="false">"タイトル"</string>
+<string name="text_title_artist_over_the_visual_ff75a3" formatted="false">"ビジュアライザー上にタイトルとアーティストを表示"</string>
+<string name="text_to_e8d7f8">"%1$sから%2$s"</string>
+<string name="text_today_24345a" formatted="false">"今日"</string>
+<string name="text_toggle_layout_6169e7" formatted="false">"レイアウトを切り替え"</string>
+<string name="text_tone_376990" formatted="false">"音色"</string>
+<string name="text_tone_engine_79c7e5" formatted="false">"トーンエンジン"</string>
+<string name="text_tone_shaping_is_bypassed_choose_system_or_custom_above_to_enable_1cdd7c" formatted="false">"トーン調整はバイパスされています。上の「システム」または「カスタム」を選択してEQを有効にしてください。"</string>
+<string name="text_tone_shaping_off_37d5aa" formatted="false">"トーン調整オフ"</string>
+<string name="text_too_long_at_khz_trim_first_79c65a">"%1$s kHzでは長すぎます。先にトリミングしてください。"</string>
+<string name="text_top_albums_4dfdc0" formatted="false">"トップアルバム"</string>
+<string name="text_top_artists_4920f8" formatted="false">"トップアーティスト"</string>
+<string name="text_top_artists_by_plays_a34fe4" formatted="false">"トップアーティスト · 再生回数順"</string>
+<string name="text_top_songs_ad7864" formatted="false">"人気曲"</string>
+<string name="text_top_songs_by_plays_6be796" formatted="false">"人気曲 · 再生回数順"</string>
+<string name="text_total_bands_boost_db_cut_db_2d77f8">"合計%1$sバンド · %2$s\n%3$s–%4$s · ブースト ≤ %5$s dB · カット ≤ %6$s dB"</string>
+<string name="text_total_listening_all_artists_a37e88" formatted="false">"合計再生時間 · 全アーティスト"</string>
+<string name="text_total_parametric_band_budget_6a6f38" formatted="false">"パラメトリックバンドの合計上限"</string>
+<string name="text_track_4c2135" formatted="false">"トラック番号"</string>
+<string name="text_track_b1c5a7" formatted="false">"トラック"</string>
+<string name="text_track_info_2bad97" formatted="false">"トラック情報"</string>
+<string name="text_track_level_d1a7fd" formatted="false">"トラックレベル"</string>
+<string name="text_track_mode_uses_each_track_s_gain_tag_to_reduce_volume_difference_c08f12" formatted="false">"トラックモードでは各曲のゲインタグを使って、曲間の音量差を抑えます。"</string>
+<string name="text_track_replaygain_ddc5fd" formatted="false">"トラック ReplayGain"</string>
+<string name="text_track_starts_length_7f84c5">"トラック%1$s：開始位置 %2$s、長さ %3$s"</string>
+<string name="text_track_title_artist_album_and_duration_may_be_sent_to_lrclib_to_fi_c268c3" formatted="false">"一致する歌詞を探すため、トラック名、アーティスト名、アルバム名、再生時間がLRCLIBに送信される場合があります。"</string>
+<string name="text_tracks_3dd1a4" formatted="false">"トラック"</string>
+<string name="text_tracks_7bac8f">"%1$sトラック · %2$s"</string>
+<string name="text_tracks_analysed_tap_to_rescan_7fa1f5">"%1$sトラックを分析しました — タップして再スキャン"</string>
+<string name="text_tracks_analyzed_3d39e3">"%1$sトラックを分析しました"</string>
+<string name="text_tracks_unavailable_tap_analyze_library_to_retry_dc5b2d">"%1$sトラックを利用できません。「ライブラリを分析」をタップして再試行してください。"</string>
+<string name="text_transition_around_track_choose_a_track_from_all_tracks_f3487f">"トラック%1$sの前後をつなぐ · 「すべてのトラック」から曲を選択"</string>
+<string name="text_transition_envelope_from_to_dc4235">"%1$s、%2$sから%3$sまでのトランジションエンベロープ"</string>
+<string name="text_transition_f70dd0">"トランジション · %1$s — %2$s"</string>
+<string name="text_transition_from_previous_track_80635a" formatted="false">"前のトラックからのトランジション"</string>
+<string name="text_transitions_ready_every_transition_is_editable_a2170c">"%1$s件のトランジションを準備しました。すべて編集できます。"</string>
+<string name="text_treble_f66bec" formatted="false">"高音"</string>
+<string name="text_treble_limit_abf8ab" formatted="false">"高音の上限"</string>
+<string name="text_treble_start_hz_614974" formatted="false">"高音開始 · Hz"</string>
+<string name="text_tremolo_cd439d" formatted="false">"トレモロ"</string>
+<string name="text_trial_guess_x_e02d03">"試行%1$s：予想=%2$s、X=%3$s"</string>
+<string name="text_trial_of_1d28cf">"%2$s回中%1$s回目の試行"</string>
+<string name="text_tried_the_server_lrclib_aeac0e" formatted="false">"サーバーとLRCLIBを試しました"</string>
+<string name="text_trim_and_delay_d38388" formatted="false">"トリムとディレイ"</string>
+<string name="text_trim_l_r_d8c438">"トリム：L %1$s、R %2$s"</string>
+<string name="text_trim_range_in_source_frames_d2159a" formatted="false">"ソースフレームでのトリム範囲"</string>
+<string name="text_trim_this_response_before_selecting_it_c65802" formatted="false">"選択する前にこのインパルス応答をトリミングしてください。"</string>
+<string name="text_true_black_surfaces_saves_power_on_oled_screens_2481a8" formatted="false">"完全な黒の背景 — OLED画面の消費電力を抑えます。"</string>
+<string name="text_true_crime_7a3f06" formatted="false">"犯罪実録"</string>
+<string name="text_try_again_042c86" formatted="false">"もう一度お試しください"</string>
+<string name="text_tube_419868">"チューブ %1$s%%"</string>
+<string name="text_tube_8315d0" formatted="false">"チューブ"</string>
+<string name="text_tube_saturation_8c63f8" formatted="false">"チューブサチュレーション"</string>
+<string name="text_tuning_listening_b4bf76" formatted="false">"チューニングとリスニング"</string>
+<string name="text_tuning_project_fe107d" formatted="false">"チューニングプロジェクト"</string>
+<string name="text_tuning_projects_e28bb7" formatted="false">"チューニングプロジェクト"</string>
+<string name="text_turn_off_daily_alarm_6c0180" formatted="false">"毎日のアラームをオフにする"</string>
+<string name="text_unbind_e40303" formatted="false">"バインド解除"</string>
+<string name="text_undefined_0646f4" formatted="false">"未定義"</string>
+<string name="text_undefined_at_response_null_7b5427" formatted="false">"応答がnullの場合は未定義"</string>
+<string name="text_under_apis_tick_web_api_and_android_61207d" formatted="false">"「APIs」で「Web API」（および「Android」）にチェックを入れてください。"</string>
+<string name="text_undo_39fc72" formatted="false">"元に戻す"</string>
+<string name="text_undo_edit_7e5f02" formatted="false">"編集を元に戻す"</string>
+<string name="text_undo_last_rack_append_babadf" formatted="false">"最後に追加したラックステージを元に戻す"</string>
+<string name="text_unfavorite_de9bba" formatted="false">"お気に入りを解除"</string>
+<string name="text_unified_library_f888ae" formatted="false">"統合ライブラリ"</string>
+<string name="text_unique_songs_5af512" formatted="false">"重複を除いた曲"</string>
+<string name="text_unknown_album_feeeda" formatted="false">"不明なアルバム"</string>
+<string name="text_unknown_bc7819" formatted="false">"不明"</string>
+<string name="text_unknown_format_13526e" formatted="false">"不明な形式"</string>
+<string name="text_unknown_means_the_active_playback_path_cannot_report_that_detail_c0b60e" formatted="false">"不明とは、現在の再生経路からその詳細を取得できないことを意味します。対応形式や要求形式だけでは、実際にデバイスへ出力される形式は確認できません。"</string>
+<string name="text_unknown_title_bceca3" formatted="false">"不明なタイトル"</string>
+<string name="text_unlabeled_phase_values_must_be_in_degrees_3b36ee" formatted="false">"ラベルのない位相値は度数で指定してください。"</string>
+<string name="text_unlike_e4fc40" formatted="false">"お気に入り解除"</string>
+<string name="text_unpin_from_library_5b3f2e" formatted="false">"ライブラリから固定を解除"</string>
+<string name="text_unsaved_changes_292672" formatted="false">"未保存の変更"</string>
+<string name="text_unsealed_earbuds_and_measured_open_ear_models_including_shokz_c45724" formatted="false">"密閉されていないイヤホンと、Shokzを含む測定済みオープンイヤーモデル。"</string>
+<string name="text_untitled_621521" formatted="false">"無題"</string>
+<string name="text_unwrapped_phase_degrees_7f6535" formatted="false">"アンラップ位相（度）"</string>
+<string name="text_up_2038bd" formatted="false">"上"</string>
+<string name="text_up_next_tracks_6055c6">"次はこちら  •  %1$sトラック"</string>
+<string name="text_up_to_15_seconds_rms_matched_within_0_1_db_shorter_at_high_sample_64e480" formatted="false">"最大15秒、RMSで0.1 dB以内に音量を一致させます。サンプルレートが高いほど短くなります。"</string>
+<string name="text_up_to_eight_tracks_can_overlap_at_once_move_this_track_later_in_t_5644e4" formatted="false">"最大8曲を同時に重ねられます。このトラックをミックス内の後ろへ移動してください。"</string>
+<string name="text_update_available_21f186" formatted="false">"更新があります"</string>
+<string name="text_update_available_6d5dfc">"%1$sの更新があります"</string>
+<string name="text_update_failed_needs_edit_permission_449ec8" formatted="false">"更新に失敗しました — 編集権限が必要です"</string>
+<string name="text_updates_this_track_s_metadata_on_the_server_requires_an_account_w_1127e0" formatted="false">"このトラックのメタデータをサーバー上で更新します（編集権限のあるアカウントが必要です）。カバーアートは変更されません。"</string>
+<string name="text_updating_alarm_221e61" formatted="false">"アラームを更新しています…"</string>
+<string name="text_updating_preset_aae445" formatted="false">"プリセットを更新しています…"</string>
+<string name="text_updating_project_ab05d2" formatted="false">"プロジェクトを更新しています…"</string>
+<string name="text_usb_audio_c9b51c" formatted="false">"USBオーディオ"</string>
+<string name="text_usb_dac_948bb8" formatted="false">"USB DAC"</string>
+<string name="text_usb_dac_output_c6adc2" formatted="false">"USB DAC出力"</string>
+<string name="text_usb_mode_cce5b7" formatted="false">"USBモード"</string>
+<string name="text_usb_transport_39fd7d" formatted="false">"USBトランスポート"</string>
+<string name="text_use_0_if_the_dac_voltage_already_includes_this_gain_8fe45f" formatted="false">"DACの電圧にこのゲインがすでに含まれている場合は、0を使用してください。"</string>
+<string name="text_use_1d4d43" formatted="false">"使用"</string>
+<string name="text_use_5cc455">"%1$sを使用"</string>
+<string name="text_use_9d772b">"%1$sを使用しますか？"</string>
+<string name="text_use_android_audio_output_for_comparison_9b13e7" formatted="false">"比較にはAndroidのオーディオ出力を使用してください。"</string>
+<string name="text_use_as_target_b5e4c2" formatted="false">"ターゲットとして使用"</string>
+<string name="text_use_current_701bc0" formatted="false">"現在の設定を使用"</string>
+<string name="text_use_current_track_5c31d5" formatted="false">"現在のトラックを使用"</string>
+<string name="text_use_flat_ed2b5f" formatted="false">"フラットを使用"</string>
+<string name="text_use_float32_when_supported_restart_aurora_to_apply_79edcd" formatted="false">"対応している場合はfloat32を使用します。反映するにはAuroraを再起動してください。"</string>
+<string name="text_use_lrclib_1d1cb5" formatted="false">"LRCLIBを使用"</string>
+<string name="text_use_notes_415641" formatted="false">"ノートを使用"</string>
+<string name="text_use_settings_39966a" formatted="false">"設定を使用"</string>
+<string name="text_use_standard_impulse_289fd1" formatted="false">"標準インパルスを使用"</string>
+<string name="text_use_standard_settings_4e6ed9" formatted="false">"標準設定を使用"</string>
+<string name="text_use_target_69136c" formatted="false">"ターゲットを使用"</string>
+<string name="text_use_the_replacement_only_for_an_exact_artist_match_da4cc7" formatted="false">"アーティストが完全に一致する場合にのみ置き換えを使用"</string>
+<string name="text_use_the_stage_mix_to_blend_with_the_original_audio_ff5a7b" formatted="false">"ステージミックスを使って元の音声とブレンドします。"</string>
+<string name="text_use_this_library_742704" formatted="false">"このライブラリを使用"</string>
+<string name="text_use_whole_numbers_for_sample_rate_and_band_budget_c979ce" formatted="false">"サンプルレートとバンド数上限には整数を使用してください。"</string>
+<string name="text_use_your_server_account_to_open_your_library_800ff2" formatted="false">"サーバーアカウントを使ってライブラリを開いてください。"</string>
+<string name="text_used_4eb2a7" formatted="false">" 使用済み"</string>
+<string name="text_user_token_a21883" formatted="false">"ユーザートークン"</string>
+<string name="text_username_84c290" formatted="false">"ユーザー名"</string>
+<string name="text_uses_the_previous_track_s_tempo_estimate_falls_back_to_8_seconds_70019c" formatted="false">"前のトラックのテンポ推定値を使用します。分析前は8秒に戻ります。1小節を4拍として扱います。"</string>
+<string name="text_using_your_wallpaper_colors_material_you_33e00d" formatted="false">"壁紙の色を使用（Material You）。"</string>
+<string name="text_uvr_anjok07_aufr33_cached_stems_may_contain_separation_artifacts_1cd68b" formatted="false">"UVR · Anjok07 &amp; aufr33 · キャッシュ済みステムには分離アーティファクトが含まれる場合があります"</string>
+<string name="text_validating_c07434" formatted="false">"検証中…"</string>
+<string name="text_value_8dce17" formatted="false">"値"</string>
+<string name="text_values_separated_by_8db2e6" formatted="false">"| 区切りの値"</string>
+<string name="text_variant_cc91b1" formatted="false">"バリエーション"</string>
+<string name="text_variant_saved_f3c476" formatted="false">"バリエーションを保存しました。"</string>
+<string name="text_variant_selected_b06527" formatted="false">"バリエーションを選択しました"</string>
+<string name="text_verifying_the_download_1e833e" formatted="false">"ダウンロードを検証しています…"</string>
+<string name="text_version_and_app_information_9c9a82" formatted="false">"バージョンとアプリ情報"</string>
+<string name="text_version_app_updates_ebf387">"バージョン %1$s · アプリの更新"</string>
+<string name="text_version_d2f210">"バージョン %1$s"</string>
+<string name="text_vibrato_e4de40" formatted="false">"ビブラート"</string>
+<string name="text_video_bc17c1" formatted="false">"動画"</string>
+<string name="text_view_on_github_0c7799" formatted="false">"GitHubで表示"</string>
+<string name="text_view_profile_b98795" formatted="false">"プロフィールを表示"</string>
+<string name="text_view_queue_827a90" formatted="false">"キューを表示"</string>
+<string name="text_violet_ddcd2f" formatted="false">"紫"</string>
+<string name="text_virtualizer_headphone_widening_fc230c" formatted="false">"バーチャライザー（ヘッドホンの音場拡張）"</string>
+<string name="text_visualizer_7177c7" formatted="false">"ビジュアライザー"</string>
+<string name="text_vocal_separation_failed_please_retry_d89efc" formatted="false">"ボーカル分離に失敗しました。もう一度お試しください。"</string>
+<string name="text_vocals_backing_d8ce42" formatted="false">"ボーカルと伴奏"</string>
+<string name="text_vocals_only_337845" formatted="false">"ボーカルのみ"</string>
+<string name="text_voice_search_9df53f" formatted="false">"音声検索"</string>
+<string name="text_volume_changed_the_comparison_stopped_09aa40" formatted="false">"音量が変更されたため、比較を停止しました。"</string>
+<string name="text_volume_leveling_a9df98" formatted="false">"音量の均一化"</string>
+<string name="text_volume_loudness_0e8ee1" formatted="false">"音量とラウドネス"</string>
+<string name="text_wait_for_the_playback_output_to_be_confirmed_b517cb" formatted="false">"再生出力の確認をお待ちください。"</string>
+<string name="text_waiting_for_a_complete_mono_or_stereo_pcm_window_c07259" formatted="false">"モノラルまたはステレオPCMの完全なウィンドウを待機しています"</string>
+<string name="text_waiting_for_a_connection_128662" formatted="false">"接続を待機しています…"</string>
+<string name="text_waiting_for_audio_samples_e18779" formatted="false">"オーディオサンプルを待機しています。"</string>
+<string name="text_wake_to_music_alarm_40ab13" formatted="false">"音楽アラームで起床"</string>
+<string name="text_wake_to_your_liked_music_e4d8ed" formatted="false">"お気に入りの音楽で起床"</string>
+<string name="text_wav_exported_78ffe9" formatted="false">"WAVを書き出しました。"</string>
+<string name="text_waveform_200f14" formatted="false">"波形"</string>
+<string name="text_waveform_bars_c215c9" formatted="false">"波形バー"</string>
+<string name="text_waveform_ready_tempo_uncertain_df52c4" formatted="false">"波形の準備完了 · テンポ不確定"</string>
+<string name="text_wavelet_graphiceq_correction_230cc2" formatted="false">"Wavelet GraphicEQ · 補正"</string>
+<string name="text_weekly_158f3d" formatted="false">"毎週"</string>
+<string name="text_wet_1df0cd">"%1$s · %2$s%%ウェット"</string>
+<string name="text_wet_76d013">"%1$s%%ウェット"</string>
+<string name="text_wet_dry_6769a1" formatted="false">"ウェット／ドライ"</string>
+<string name="text_when_a_track_is_available_from_more_than_one_place_aurora_plays_i_99eef3" formatted="false">"複数の場所でトラックを利用できる場合、Auroraは最初のソースから再生します"</string>
+<string name="text_whole_word_6171b6" formatted="false">"完全一致"</string>
+<string name="text_width_2f_276839" formatted="false">"幅 %.2f×"</string>
+<string name="text_windows_7_inspired_blue_glass_glossy_panels_27d09a" formatted="false">"Windows 7風 · 青いガラス · 光沢パネル"</string>
+<string name="text_wired_headphones_56e99c" formatted="false">"有線ヘッドホン"</string>
+<string name="text_wormhole_18880e" formatted="false">"ワームホール"</string>
+<string name="text_write_permission_denied_ad9ca7" formatted="false">"書き込み権限がありません"</string>
+<string name="text_writing_tags_edits_the_file_on_your_device_android_may_ask_you_to_a56f12" formatted="false">"タグを書き込むと、デバイス上のファイルが編集されます。Androidで変更の許可を求められる場合があります。"</string>
+<string name="text_wrong_username_or_password_85b465" formatted="false">"ユーザー名またはパスワードが違います。"</string>
+<string name="text_x_is_a_4e9e48" formatted="false">"XはA"</string>
+<string name="text_x_is_b_76d9a9" formatted="false">"XはB"</string>
+<string name="text_year_879e32" formatted="false">"年"</string>
+<string name="text_yearly_7622eb" formatted="false">"毎年"</string>
+<string name="text_yesterday_da2483" formatted="false">"昨日"</string>
+<string name="text_you_can_cancel_and_resume_unavailable_tracks_are_retried_on_the_n_af1eea" formatted="false">"キャンセルして再開できます。利用できないトラックは次回のスキャンで再試行されます。"</string>
+<string name="text_you_can_combine_local_files_server_libraries_and_youtube_music_la_8c6471" formatted="false">"後から「設定」でローカルファイル、サーバーライブラリ、YouTube Musicを組み合わせられます。"</string>
+<string name="text_you_re_up_to_date_5fc157" formatted="false">"最新の状態です"</string>
+<string name="text_your_archive_3a5ad5" formatted="false">"アーカイブ"</string>
+<string name="text_your_collection_and_your_discoveries_together_in_one_player_093361" formatted="false">"コレクションと新しい発見を、1つのプレーヤーで。"</string>
+<string name="text_your_complete_history_990be7" formatted="false">"再生履歴"</string>
+<string name="text_your_complete_processing_settings_ready_to_recall_a6fd9f" formatted="false">"再び呼び出せる、完全なオーディオ処理設定"</string>
+<string name="text_your_familiar_music_space_fab491" formatted="false">"いつもの音楽空間"</string>
+<string name="text_your_favourites_mixes_and_new_discoveries_6c2fa1" formatted="false">"お気に入り、ミックス、新しい発見。"</string>
+<string name="text_your_google_account_playlists_and_mixes_120c0f" formatted="false">"Googleアカウント、プレイリスト、ミックス"</string>
+<string name="text_your_library_fd740f" formatted="false">"ライブラリ"</string>
+<string name="text_your_library_played_through_youtube_a53b5e" formatted="false">"YouTube経由で再生するライブラリ"</string>
+<string name="text_your_listening_days_bf7f7d" formatted="false">"リスニング日数"</string>
+<string name="text_your_listening_recap_2d4efe" formatted="false">"リスニングの振り返り"</string>
+<string name="text_your_listening_revisited_9ea31f" formatted="false">"あなたのリスニングを、\nもう一度。"</string>
+<string name="text_your_media_library_77d854" formatted="false">"メディアライブラリ"</string>
+<string name="text_your_mixes_7e74f6" formatted="false">"ミックス"</string>
+<string name="text_your_music_and_settings_stay_in_place_f17937">"%1$s · 音楽と設定はそのまま引き継がれます。"</string>
+<string name="text_your_music_your_listening_story_2b5397" formatted="false">"あなたの音楽。あなたのリスニングストーリー。"</string>
+<string name="text_your_music_your_way_db5743" formatted="false">"あなたの音楽を、あなたらしく"</string>
+<string name="text_your_playlists_df03eb" formatted="false">"プレイリスト"</string>
+<string name="text_your_recap_all_together_933de3" formatted="false">"振り返りをまとめて表示"</string>
+<string name="text_your_recap_will_appear_here_once_the_period_ends_and_has_some_lis_3906ab">"期間が終了し、振り返れるだけの再生履歴が集まると、%1$sのまとめがここに表示されます。"</string>
+<string name="text_your_recently_played_tracks_will_appear_here_0bdf0b" formatted="false">"最近再生したトラックがここに表示されます"</string>
+<string name="text_your_saved_time_is_d52817">"保存した時間：%1$s。"</string>
+<string name="text_your_server_d2f076" formatted="false">"あなたのサーバー"</string>
+<string name="text_your_stations_d1f54b" formatted="false">"ステーション"</string>
+<string name="text_your_tracks_226210" formatted="false">"あなたのトラック"</string>
+<string name="text_your_will_show_up_once_the_server_has_some_ced31f">"サーバーに%1$sが追加されると、ここに表示されます。"</string>
+<string name="text_your_year_month_by_month_e19b5f" formatted="false">"あなたの1年を、月ごとに"</string>
+<string name="text_youtube_music_adds_catalogue_search_and_a_separate_home_feed_matc_b8a69c" formatted="false">"YouTube Musicではカタログ検索と独立したホームフィードを利用できます。一致した録音は、優先設定に応じてローカル、ダウンロード済み、またはサーバー上のコピーを使います。Spotifyは独立して動作します。"</string>
+<string name="text_youtube_music_uses_google_sign_in_0ba1e7" formatted="false">"YouTube MusicではGoogleログインを使用します。"</string>
+<string name="video_quality">品質</string>
+<string name="video_quality_auto">自動</string>
+<string name="video_fullscreen_enter">全画面表示</string>
+<string name="video_fullscreen_exit">全画面表示を終了</string>
+<string name="video_match_not_found">この曲に一致するYouTube動画はありません。</string>
+</resources>

@@ -37,3 +37,11 @@ The kernel ran all 79 biquad slots (31 graphic + 12 parametric × 4 sections) pe
 - `PrecisionEffectsKernel` processes only those. When a coefficient change activates a skipped section, its filter history is seeded from the signal that entered it, so the output matches the previous all-slots processing exactly (covered by unit tests against a reference all-slots cascade).
 
 Note: debuggable builds (`assembleDebug`) are several times slower in this per-sample Kotlin code (ART does not inline in debuggable mode). On the test device a debuggable build still underran with the screen off even after this change, while a non-debuggable build using the same code had no underruns and about 10–20 % playback-thread CPU. For daily listening, use a non-debuggable build.
+
+## feature/ja-locale
+
+### Japanese instead of Russian
+
+The app's second language is now Japanese. The Russian resources (`values-ru`) were removed and a complete Japanese translation was added in `app/src/main/res/values-ja/` (all strings and plurals, including the ones that upstream's Russian translation lacked). The language picker (Settings → Language) offers *System default*, *English* and *日本語*; `locales_config.xml` lists `en` and `ja`. A device set to Japanese uses it automatically. Anyone who had picked Russian in the app falls back to English.
+
+`LocalizationResourcesTest` now checks that `values-ja` has exactly the keys of `values` (strings and plurals, minus `app_name`) with matching format specifiers; this also resolves the earlier known failure caused by missing Russian strings. When adding a string, add it to both `values/` and `values-ja/`.

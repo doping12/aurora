@@ -1,0 +1,1314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_on_device_file_7d2f79" formatted="false">"端末内のファイル"</string>
+    
+    
+    <string name="text_on_device_music_bac4c1" formatted="false">"端末内の音楽"</string>
+    
+    
+    <string name="text_on_e0049a" formatted="false">"オン"</string>
+    
+    
+    <string name="text_on_this_device_a7f962" formatted="false">"この端末上"</string>
+    
+    
+    <string name="text_on_wi_fi_bb6180" formatted="false">"Wi-Fi接続時"</string>
+    
+    
+    <string name="text_on_your_device_streams_are_read_from_your_server_without_adding_d_4dfc77" formatted="false">"端末上で再生します。ストリームはダウンロードに追加せず、サーバーから読み込みます。"</string>
+    
+    
+    <string name="text_one_gain_for_all_paths_f4bd76" formatted="false">"すべての経路に共通のゲインを使用します。"</string>
+    
+    
+    <string name="text_one_index_db_pair_per_line_0_relative_to_full_output_unlisted_ste_64e7c8">"1行につきindex=dBの組を1つ入力（0–%1$s）。フル出力を基準とし、記載のない段階は使用できません。"</string>
+    
+    
+    <string name="text_one_sided_chance_probability_56287c">"片側の偶然確率： %1$s"</string>
+    
+    
+    <string name="text_only_an_exact_artist_match_is_replaced_capitalization_does_not_ma_0fa2cb" formatted="false">"アーティスト名が完全一致した場合のみ置き換えます。大文字と小文字は区別しません。"</string>
+    
+    
+    <string name="text_only_show_play_downloaded_music_c36019" formatted="false">"ダウンロード済みの音楽のみ表示して再生"</string>
+    
+    
+    <string name="text_open_a_project_with_measurements_first_5f1e78" formatted="false">"先に測定データを含むプロジェクトを開いてください。"</string>
+    
+    
+    <string name="text_open_eq_text_file_33f801" formatted="false">"EQテキストファイルを開く"</string>
+    
+    
+    <string name="text_open_equalizer_apo_text_autoeq_peq_json_or_aurora_eq_json_9a6150" formatted="false">"Equalizer APOのテキスト、AutoEq PEQ JSON、またはAurora EQ JSONを開きます。"</string>
+    
+    
+    <string name="text_open_full_processing_presets_8abd2a" formatted="false">"全処理プリセットを開く"</string>
+    
+    
+    <string name="text_open_measurement_file_30741a" formatted="false">"測定ファイルを開く"</string>
+    
+    
+    <string name="text_open_mix_studio_9ddf16" formatted="false">"ミックススタジオを開く"</string>
+    
+    
+    <string name="text_open_processing_rack_728e5d" formatted="false">"処理ラックを開く"</string>
+    
+    
+    <string name="text_open_signal_path_29e042" formatted="false">"信号経路を開く"</string>
+    
+    
+    <string name="text_open_spotify_dashboard_7a23e4" formatted="false">"Spotifyダッシュボードを開く"</string>
+    
+    
+    <string name="text_open_the_spotify_developer_dashboard_and_create_an_app_20577c" formatted="false">"Spotify Developer Dashboardを開き、アプリを作成します。"</string>
+    
+    
+    <string name="text_open_your_recap_fc027d" formatted="false">"振り返りを開く"</string>
+    
+    
+    <string name="text_opens_acoustid_org_in_your_browser_6e6b1f" formatted="false">"ブラウザでacoustid.orgを開きます"</string>
+    
+    
+    <string name="text_optional_publishes_local_and_private_server_covers_563e93" formatted="false">"任意：ローカルおよびプライベートサーバーのカバーを公開"</string>
+    
+    
+    <string name="text_orb_980143" formatted="false">"オーブ"</string>
+    
+    
+    <string name="text_original_c0a806" formatted="false">"オリジナル"</string>
+    
+    
+    <string name="text_original_effect_order_949d7d" formatted="false">"元のエフェクト順"</string>
+    
+    
+    <string name="text_original_frames_26e777">"元データ：%1$sフレーム · %2$s"</string>
+    
+    
+    <string name="text_original_selected_634e39" formatted="false">"元を選択中"</string>
+    
+    
+    <string name="text_other_branches_align_automatically_at_each_mix_e6de43" formatted="false">"他のブランチは各ミックスで自動的に同期します。"</string>
+    
+    
+    <string name="text_other_dacs_and_rates_up_to_dsd1024_untested_hardware_support_disc_800807" formatted="false">"その他のDACとDSD1024までのレートに対応します。ハードウェアの動作は未確認です。DSDモードを確認するまでヘッドホンを外してください。"</string>
+    
+    
+    <string name="text_other_rack_stages_may_need_extra_headroom_8776c9" formatted="false">"他のラック段には追加のヘッドルームが必要な場合があります。"</string>
+    
+    
+    <string name="text_output_4bed33" formatted="false">"出力"</string>
+    
+    
+    <string name="text_output_default_f4c103" formatted="false">"出力のデフォルト"</string>
+    
+    
+    <string name="text_output_device_709178" formatted="false">"出力デバイス"</string>
+    
+    
+    <string name="text_output_device_hi_res_and_usb_modes_58ec99" formatted="false">"出力デバイス、ハイレゾ、USBモード"</string>
+    
+    
+    <string name="text_output_hz_float_pcm_same_route_and_volume_e7768a">"出力: %1$s Hz float PCM; 出力経路と音量は同じ"</string>
+    
+    
+    <string name="text_output_mix_a04a0e" formatted="false">"出力ミックス"</string>
+    
+    
+    <string name="text_output_mode_ba6e71" formatted="false">"出力モード"</string>
+    
+    
+    <string name="text_output_not_bound_dbaf18" formatted="false">"出力が割り当てられていません"</string>
+    
+    
+    <string name="text_output_presets_8523fd" formatted="false">"出力プリセット"</string>
+    
+    
+    <string name="text_output_rules_unavailable_e638bb" formatted="false">"出力ルールを利用できません。"</string>
+    
+    
+    <string name="text_output_unknown_ef4fdb" formatted="false">"出力不明"</string>
+    
+    
+    <string name="text_over_ear_and_on_ear_headphones_including_studio_and_bluetooth_mod_d79653" formatted="false">"スタジオ用やBluetoothモデルを含む、オーバーイヤー型およびオンイヤー型ヘッドホンです。"</string>
+    
+    
+    <string name="text_overlap_headroom_c1a0a1" formatted="false">"重複時のヘッドルーム"</string>
+    
+    
+    <string name="text_overlay_249450" formatted="false">"オーバーレイ"</string>
+    
+    
+    <string name="text_oversampling_75358a" formatted="false">"オーバーサンプリング"</string>
+    
+    
+    <string name="text_overwrites_current_settings_playlists_40eadc" formatted="false">"現在の設定とプレイリストを上書きします"</string>
+    
+    
+    <string name="text_packet_errors_timeouts_e3e49f">"パケットエラー： %1$s · タイムアウト： %2$s"</string>
+    
+    
+    <string name="text_pair_2537f8" formatted="false">"ペア設定"</string>
+    
+    
+    <string name="text_pair_an_aurora_player_de78d4" formatted="false">"Aurora プレーヤーをペア設定"</string>
+    
+    
+    <string name="text_paired_devices_can_control_playback_86f484" formatted="false">"ペア設定したデバイスから再生を操作できます。"</string>
+    
+    
+    <string name="text_pairing_address_0a7563" formatted="false">"ペア設定アドレス"</string>
+    
+    
+    <string name="text_pairing_code_309e30" formatted="false">"ペア設定コード"</string>
+    
+    
+    <string name="text_pan_left_right_ef4fc7" formatted="false">"パン · 左 / 右"</string>
+    
+    
+    <string name="text_parametric_bands_68b3db">"%1$s パラメトリックバンド · %2$s"</string>
+    
+    
+    <string name="text_parametric_bands_only_use_a_processing_preset_for_routing_and_the_64f11f" formatted="false">"パラメトリックバンドのみです。ルーティングと全ラックを使うには処理プリセットを使用してください。"</string>
+    
+    
+    <string name="text_parametric_bands_preamp_6cb314">"%1$s パラメトリックバンド · プリアンプ %2$s"</string>
+    
+    
+    <string name="text_parametric_eq_02ed4c">"パラメトリックEQ · %1$s %2$s"</string>
+    
+    
+    <string name="text_parametric_eq_6e40f9" formatted="false">"パラメトリックEQ"</string>
+    
+    
+    <string name="text_parametric_eq_text_exported_257cfa" formatted="false">"パラメトリックEQテキストをエクスポートしました。"</string>
+    
+    
+    <string name="text_particles_07cdbc" formatted="false">"パーティクル"</string>
+    
+    
+    <string name="text_password_8be3c9" formatted="false">"パスワード"</string>
+    
+    
+    <string name="text_paste_measurement_text_f87e1b" formatted="false">"測定テキストを貼り付け"</string>
+    
+    
+    <string name="text_paste_token_3c9cd3" formatted="false">"トークンを貼り付け"</string>
+    
+    
+    <string name="text_paste_your_spotify_app_s_client_id_first_f2d13e" formatted="false">"先にSpotifyアプリのClient IDを貼り付けてください。"</string>
+    
+    
+    <string name="text_pause_781961" formatted="false">"一時停止"</string>
+    
+    
+    <string name="text_pause_mix_cf2e8e" formatted="false">"ミックスを一時停止"</string>
+    
+    
+    <string name="text_pause_playback_after_a_set_time_ef485a" formatted="false">"指定時間後に再生を一時停止"</string>
+    
+    
+    <string name="text_paused_c7dfb6" formatted="false">"一時停止中"</string>
+    
+    
+    <string name="text_paused_last_measured_sample_windows_0c768c" formatted="false">"一時停止中 · 最後に測定したサンプル区間"</string>
+    
+    
+    <string name="text_pausing_at_the_end_of_this_track_d79c45" formatted="false">"この曲の終了時に一時停止します"</string>
+    
+    
+    <string name="text_pausing_in_min_fades_out_741f18">"あと%1$s分で一時停止 · フェードアウト"</string>
+    
+    
+    <string name="text_peak_1_db_472a8a" formatted="false">"ピーク −1 dB"</string>
+    
+    
+    <string name="text_peak_1f_dbfs_change_1f_db_e16aea" formatted="false">"ピーク %.1f dBFS · 変化 %.1f dB"</string>
+    
+    
+    <string name="text_peak_6a5678">"%1$s · ピーク %2$s"</string>
+    
+    
+    <string name="text_peak_932437">"ピーク: %1$s"</string>
+    
+    
+    <string name="text_peak_c83dbb" formatted="false">"ピーク"</string>
+    
+    
+    <string name="text_peak_dots_3fb145" formatted="false">"ピークドット"</string>
+    
+    
+    <string name="text_peak_hold_f1bbb5" formatted="false">"ピークホールド"</string>
+    
+    
+    <string name="text_peak_rms_dbfs_95c5fb">"%1$s   ピーク %2$s · RMS %3$s dBFS"</string>
+    
+    
+    <string name="text_peaking_filters_coverage_550db0">"%1$s ピーキングフィルター · カバー範囲 %2$s–%3$s"</string>
+    
+    
+    <string name="text_pearlescent_surfaces_spacious_curves_soft_light_b4c29d" formatted="false">"真珠のような質感 · 広がりのある曲線 · 柔らかな光"</string>
+    
+    
+    <string name="text_permissions_d06d55" formatted="false">"権限"</string>
+    
+    
+    <string name="text_phase_f6371a" formatted="false">"位相"</string>
+    
+    
+    <string name="text_phase_is_saved_but_not_fitted_3bc04a" formatted="false">"位相は保存されていますが、フィッティングされていません。"</string>
+    
+    
+    <string name="text_phaser_1a55bd" formatted="false">"フェイザー"</string>
+    
+    
+    <string name="text_phone_speaker_ae9329" formatted="false">"スマートフォンのスピーカー"</string>
+    
+    
+    <string name="text_picture_saved_32803b" formatted="false">"画像を保存しました"</string>
+    
+    
+    <string name="text_pill_38ea5b" formatted="false">"ピル"</string>
+    
+    
+    <string name="text_pin_to_library_7b01e2" formatted="false">"ライブラリに固定"</string>
+    
+    
+    <string name="text_ping_pong_delay_3982a4" formatted="false">"ピンポンディレイ"</string>
+    
+    
+    <string name="text_pinned_f93121" formatted="false">"固定済み"</string>
+    
+    
+    <string name="text_pitch_a6c2d0" formatted="false">"ピッチ"</string>
+    
+    
+    <string name="text_pitch_follows_speed_like_a_turntable_c2a28f" formatted="false">"ターンテーブルのように速度に合わせてピッチを変更"</string>
+    
+    
+    <string name="text_place_a_limiter_last_to_protect_the_final_output_b017dd" formatted="false">"最終出力を保護するため、最後にリミッターを配置してください。"</string>
+    
+    
+    <string name="text_play_5d12bd" formatted="false">"再生"</string>
+    
+    
+    <string name="text_play_a_matching_on_device_or_downloaded_file_instead_of_streaming_6f069e" formatted="false">"ストリーミングではなく、端末内またはダウンロード済みの一致するファイルを再生します"</string>
+    
+    
+    <string name="text_play_all_ebb2ff" formatted="false">"すべて再生"</string>
+    
+    
+    <string name="text_play_count_50a957" formatted="false">"再生回数"</string>
+    
+    
+    <string name="text_play_fe036e">"%1$s回再生%2$s"</string>
+    
+    
+    <string name="text_play_folder_3f9fd7" formatted="false">"フォルダーを再生"</string>
+    
+    
+    <string name="text_play_here_49df29" formatted="false">"ここから再生"</string>
+    
+    
+    <string name="text_play_mix_7ae7ed" formatted="false">"ミックスを再生"</string>
+    
+    
+    <string name="text_play_next_40d33c" formatted="false">"次に再生"</string>
+    
+    
+    <string name="text_play_on_4bd6fc" formatted="false">"再生先"</string>
+    
+    
+    <string name="text_play_on_a_device_d66db5" formatted="false">"デバイスで再生"</string>
+    
+    
+    <string name="text_play_pause_14a1d0" formatted="false">"再生／一時停止"</string>
+    
+    
+    <string name="text_play_something_to_see_it_react_a6b517" formatted="false">"何か再生すると反応を確認できます"</string>
+    
+    
+    <string name="text_play_through_an_identifiable_headphone_output_to_bind_a_calibrati_2c66fd" formatted="false">"測定結果を紐付けるには、識別可能なヘッドホン出力で再生してください。"</string>
+    
+    
+    <string name="text_play_tracks_back_to_back_with_no_gap_e1d3d9" formatted="false">"曲間を空けずに連続再生"</string>
+    
+    
+    <string name="text_playback_c8e308" formatted="false">"再生"</string>
+    
+    
+    <string name="text_playback_changed_the_comparison_stopped_2af425" formatted="false">"再生状態が変わったため、比較を停止しました。"</string>
+    
+    
+    <string name="text_playback_context_35175d" formatted="false">"再生コンテキスト"</string>
+    
+    
+    <string name="text_playback_controls_5ee1ab" formatted="false">"再生コントロール"</string>
+    
+    
+    <string name="text_playback_engine_0255b8" formatted="false">"再生エンジン"</string>
+    
+    
+    <string name="text_playback_formats_and_processing_no_account_credentials_9d08c4" formatted="false">"再生形式と処理方式。アカウント情報は不要です"</string>
+    
+    
+    <string name="text_playback_may_continue_through_the_speaker_7f06f2" formatted="false">"スピーカーから再生が続くことがあります。"</string>
+    
+    
+    <string name="text_playback_output_or_volume_changed_prepare_the_comparison_again_f65441" formatted="false">"再生、出力、または音量が変わりました。比較を再準備してください。"</string>
+    
+    
+    <string name="text_playback_quality_144407" formatted="false">"再生と音質"</string>
+    
+    
+    <string name="text_playback_size_aeb4ca" formatted="false">"再生サイズ"</string>
+    
+    
+    <string name="text_playback_speed_6ff42b" formatted="false">"再生速度"</string>
+    
+    
+    <string name="text_player_e53407" formatted="false">"プレーヤー"</string>
+    
+    
+    <string name="text_player_gestures_1c6f88" formatted="false">"プレーヤーのジェスチャー"</string>
+    
+    
+    <string name="text_playing_298c39" formatted="false">"再生中"</string>
+    
+    
+    <string name="text_playing_from_5f4dc3" formatted="false">"再生元"</string>
+    
+    
+    <string name="text_playing_next_b23445" formatted="false">"次の曲を再生中"</string>
+    
+    
+    <string name="text_playlist_cd95b4" formatted="false">"プレイリスト"</string>
+    
+    
+    <string name="text_playlist_exported_0efbda" formatted="false">"プレイリストをエクスポートしました"</string>
+    
+    
+    <string name="text_playlist_id_3e9a53" formatted="false">"プレイリスト ID"</string>
+    
+    
+    <string name="text_playlist_name_544f75" formatted="false">"プレイリスト名"</string>
+    
+    
+    <string name="text_playlist_songs_82c76a">"プレイリスト • %1$s songs"</string>
+    
+    
+    <string name="text_playlists_77b69f" formatted="false">"プレイリスト"</string>
+    
+    
+    <string name="text_playlists_dfa62e">"%1$s件のプレイリスト"</string>
+    
+    
+    <string name="text_plays_a6bc73" formatted="false">"再生"</string>
+    
+    
+    <string name="text_plays_count_after_30_seconds_or_half_of_a_shorter_song_private_se_333c7b" formatted="false">"再生回数は、30秒以上または短い曲の半分以上を再生するとカウントされます。プライベートセッションは対象外です。"</string>
+    
+    
+    <string name="text_plays_songs_active_day_24b41c">"再生%1$s回  ·  %2$s曲  ·  アクティブ日数%3$s日%4$s"</string>
+    
+    
+    <string name="text_plays_your_liked_music_or_downloaded_songs_when_liked_music_is_un_58abcb" formatted="false">"お気に入りの音楽を再生します。利用できない場合はダウンロード済みの曲を再生します。音量は30秒かけて徐々に上がります。端末または接続中のライブラリで音楽を利用できる状態にしてください。"</string>
+    
+    
+    <string name="text_podcast_bafb6e" formatted="false">"ポッドキャスト"</string>
+    
+    
+    <string name="text_podcasts_fd52b4" formatted="false">"ポッドキャスト"</string>
+    
+    
+    <string name="text_points_d46e78">"%1$sポイント · %2$s～%3$s"</string>
+    
+    
+    <string name="text_points_ee82a2">"%1$s · %2$sポイント\n%3$s～%4$s"</string>
+    
+    
+    <string name="text_policy_bb9cf1" formatted="false">"ポリシー"</string>
+    
+    
+    <string name="text_popular_9bc2c5" formatted="false">"人気"</string>
+    
+    
+    <string name="text_popular_worldwide_b0f24f" formatted="false">"世界で人気"</string>
+    
+    
+    <string name="text_position_calibration_notes_57c1cf" formatted="false">"位置、キャリブレーション、メモ"</string>
+    
+    
+    <string name="text_power_c2b6b5" formatted="false">"電源"</string>
+    
+    
+    <string name="text_powers_sonic_radio_auto_dj_and_mix_transitions_4e309b" formatted="false">"Sonicラジオ、Auto DJ、ミックスの切り替えを実現します。"</string>
+    
+    
+    <string name="text_pre_amp_7b79c8" formatted="false">"プリアンプ"</string>
+    
+    
+    <string name="text_pre_amp_db_84974b">"プリアンプ %1$s dB"</string>
+    
+    
+    <string name="text_pre_delay_966730" formatted="false">"プリディレイ"</string>
+    
+    
+    <string name="text_preamp_covers_this_fit_only_other_stages_may_add_gain_7864ec" formatted="false">"このフィッティングではプリアンプのみを対象とします。他の段でゲインが加わる場合があります。"</string>
+    
+    
+    <string name="text_preamp_fa89ca" formatted="false">"プリアンプ"</string>
+    
+    
+    <string name="text_preamp_limiter_and_other_effect_gain_controls_32ddcd" formatted="false">"プリアンプ、リミッター、その他のエフェクトのゲイン調整"</string>
+    
+    
+    <string name="text_precision_android_and_processed_usb_applies_when_output_reopens_bf3f55" formatted="false">"高精度Android出力および処理済みUSBに適用されます。出力を再度開いたときに反映されます。"</string>
+    
+    
+    <string name="text_predicted_a49225" formatted="false">"予測値"</string>
+    
+    
+    <string name="text_prefer_hi_res_android_output_e20fb4" formatted="false">"ハイレゾAndroid出力を優先"</string>
+    
+    
+    <string name="text_prefer_local_copies_a74911" formatted="false">"ローカルコピーを優先"</string>
+    
+    
+    <string name="text_preferred_output_device_7cecb0" formatted="false">"優先する出力デバイス"</string>
+    
+    
+    <string name="text_prepare_impulse_828a45" formatted="false">"インパルス応答を準備"</string>
+    
+    
+    <string name="text_prepared_19d34e" formatted="false">" · 準備完了"</string>
+    
+    
+    <string name="text_preparing_and_validating_backup_d53752" formatted="false">"バックアップを準備して検証中…"</string>
+    
+    
+    <string name="text_preparing_audio_63cde6" formatted="false">"音声を準備中…"</string>
+    
+    
+    <string name="text_preparing_both_presets_04bd1f" formatted="false">"両方のプリセットを準備中…"</string>
+    
+    
+    <string name="text_preparing_mix_83b489" formatted="false">"ミックスを準備中"</string>
+    
+    
+    <string name="text_preparing_the_comparison_timed_out_fe2312" formatted="false">"比較の準備がタイムアウトしました。"</string>
+    
+    
+    <string name="text_preparing_update_4a0bb6" formatted="false">"アップデートを準備中"</string>
+    
+    
+    <string name="text_preparing_vocals_f38a5a" formatted="false">"ボーカルを準備中"</string>
+    
+    
+    <string name="text_presence_89a8a3" formatted="false">"プレゼンス"</string>
+    
+    
+    <string name="text_preset_bca788" formatted="false">"プリセット"</string>
+    
+    
+    <string name="text_preset_exported_with_its_saved_settings_and_any_impulse_response_58728a" formatted="false">"保存済みの設定とインパルス応答を含むプリセットをエクスポートしました。"</string>
+    
+    
+    <string name="text_preset_name_eb39e1" formatted="false">"プリセット名"</string>
+    
+    
+    <string name="text_preset_rules_c9d4d1" formatted="false">"プリセットルール"</string>
+    
+    
+    <string name="text_preset_rules_unavailable_2c7cba" formatted="false">"プリセット rules unavailable."</string>
+    
+    
+    <string name="text_presets_e709e7" formatted="false">"プリセット"</string>
+    
+    
+    <string name="text_presets_showing_72ab09">"%1$s件のプリセット · %2$s件を表示"</string>
+    
+    
+    <string name="text_presets_unavailable_d18129" formatted="false">"プリセット unavailable"</string>
+    
+    
+    <string name="text_preview_artist_tag_ed9b03" formatted="false">"プレビュー artist tag"</string>
+    
+    
+    <string name="text_preview_f1fbb2" formatted="false">"プレビュー"</string>
+    
+    
+    <string name="text_previous_50f942" formatted="false">"前へ"</string>
+    
+    
+    <string name="text_previous_stage_252786" formatted="false">"前の段"</string>
+    
+    
+    <string name="text_previously_played_bf618e">"前に再生  •  %1$s"</string>
+    
+    
+    <string name="text_primary_a9a96e" formatted="false">"メイン"</string>
+    
+    
+    <string name="text_primary_player_since_creation_a2795e" formatted="false">"作成時からのメインプレーヤー"</string>
+    
+    
+    <string name="text_priority_0168ee">"優先度 %1$s · %2$s"</string>
+    
+    
+    <string name="text_priority_1000_to_1000_eb6c32" formatted="false">"優先度（-1000～1000）"</string>
+    
+    
+    <string name="text_private_session_ec7cef" formatted="false">"プライベートセッション"</string>
+    
+    
+    <string name="text_processed_8291b2" formatted="false">"処理済み"</string>
+    
+    
+    <string name="text_processed_playback_uses_the_current_effects_when_each_track_start_23b137" formatted="false">"処理済み再生では、各曲の開始時に現在のエフェクトが適用されます。再生速度の変更とクロスフェードは利用できません。"</string>
+    
+    
+    <string name="text_processing_e63451" formatted="false">"処理"</string>
+    
+    
+    <string name="text_processing_mode_7f4d30" formatted="false">"処理モード"</string>
+    
+    
+    <string name="text_processing_rack_f7dff1" formatted="false">"処理ラック"</string>
+    
+    
+    <string name="text_processing_tuning_and_extensions_d9a2fc" formatted="false">"処理、チューニング、拡張機能"</string>
+    
+    
+    <string name="text_profile_ff4fc0" formatted="false">"プロフィール"</string>
+    
+    
+    <string name="text_progress_1b9027" formatted="false">"進行状況"</string>
+    
+    
+    <string name="text_project_exported_4c0502" formatted="false">"プロジェクトをエクスポートしました。"</string>
+    
+    
+    <string name="text_project_files_playback_3c21f3" formatted="false">"Project Files &amp; 再生"</string>
+    
+    
+    <string name="text_project_name_ab9773" formatted="false">"プロジェクト名"</string>
+    
+    
+    <string name="text_project_notes_7b2dc5" formatted="false">"プロジェクトのメモ"</string>
+    
+    
+    <string name="text_project_saved_3a58a0" formatted="false">"プロジェクトを保存しました"</string>
+    
+    
+    <string name="text_project_saved_bebad7" formatted="false">"プロジェクトを保存しました。"</string>
+    
+    
+    <string name="text_projects_keep_their_saved_target_copy_f1d9a0" formatted="false">"プロジェクトには保存時のターゲットのコピーが保持されます。"</string>
+    
+    
+    <string name="text_prominent_4b3579" formatted="false">"目立たせる"</string>
+    
+    
+    <string name="text_proposed_preamp_3473b1">"Proposed プリアンプ: %1$s"</string>
+    
+    
+    <string name="text_protocol_fixed_trials_independent_random_x_per_trial_8b5cae">"プロトコル：固定試行 %1$s回、各試行で独立したランダムX"</string>
+    
+    
+    <string name="text_provider_7ceee3" formatted="false">"プロバイダー"</string>
+    
+    
+    <string name="text_published_483bf2" formatted="false">"公開済み"</string>
+    
+    
+    <string name="text_pull_down_on_the_player_sheets_to_close_them_36e776" formatted="false">"プレーヤーとシートを下にスワイプして閉じます"</string>
+    
+    
+    <string name="text_pulse_rings_0a7012" formatted="false">"パルスリング"</string>
+    
+    
+    <string name="text_purpose_listening_setup_observations_16e335" formatted="false">"目的、試聴環境、所見"</string>
+    
+    
+    <string name="text_push_notifications_03be2f" formatted="false">"プッシュ通知"</string>
+    
+    
+    <string name="text_queue_d325fc" formatted="false">"キュー"</string>
+    
+    
+    <string name="text_r_6b99ea">"R %1$s%%"</string>
+    
+    
+    <string name="text_r_peak_rms_dbfs_885a75">"R   ピーク %1$s · RMS %2$s dBFS"</string>
+    
+    
+    <string name="text_rack_f93caa" formatted="false">"ラック"</string>
+    
+    
+    <string name="text_rack_inactive_preview_only_41e71b" formatted="false">"ラック inactive · preview only"</string>
+    
+    
+    <string name="text_rack_mode_stays_active_this_changes_playback_5703ec" formatted="false">"ラックモードは有効のまま、再生内容を変更します。"</string>
+    
+    
+    <string name="text_rack_restored_64ad64" formatted="false">"ラックを復元しました。"</string>
+    
+    
+    <string name="text_radial_spectrum_477a35" formatted="false">"放射状スペクトラム"</string>
+    
+    
+    <string name="text_radial_wave_03beca" formatted="false">"放射状波形"</string>
+    
+    
+    <string name="text_radio_b11bf1" formatted="false">"ラジオ"</string>
+    
+    
+    <string name="text_radio_started_31fe2c" formatted="false">"ラジオ started"</string>
+    
+    
+    <string name="text_random_58d888" formatted="false">"ランダム"</string>
+    
+    
+    <string name="text_rate_3a9c73" formatted="false">"レート"</string>
+    
+    
+    <string name="text_rate_unknown_7e2d67" formatted="false">"レート不明"</string>
+    
+    
+    <string name="text_ratio_794f65" formatted="false">"比率"</string>
+    
+    
+    <string name="text_raw_dsd_requires_a_supported_dac_and_stops_if_unavailable_c1bf89" formatted="false">"Raw DSDには対応DACが必要です。利用できない場合は停止します。"</string>
+    
+    
+    <string name="text_read_local_audio_for_the_library_playback_sonic_analysis_5d975b" formatted="false">"ライブラリ、再生、音響解析のためにローカル音声を読み込みます"</string>
+    
+    
+    <string name="text_read_only_library_ac6b49" formatted="false">"読み取り専用ライブラリ"</string>
+    
+    
+    <string name="text_reading_audio_0b406f">"音声を読み込み中 · %1$s%%"</string>
+    
+    
+    <string name="text_reading_project_68617b" formatted="false">"プロジェクトを読み込み中…"</string>
+    
+    
+    <string name="text_ready_20c7c5" formatted="false">"準備完了"</string>
+    
+    
+    <string name="text_ready_to_install_0bd33d" formatted="false">"インストール準備完了"</string>
+    
+    
+    <string name="text_ready_to_open_3b5015" formatted="false">"開く準備完了"</string>
+    
+    
+    <string name="text_rebuild_timing_and_fades_from_sonic_analysis_keeping_track_order_bb56e7" formatted="false">"曲順を保ったまま、Sonic解析からタイミングとフェードを再構築します。この編集は取り消せます。"</string>
+    
+    
+    <string name="text_recap_69354b">"%1$sの振り返り"</string>
+    
+    
+    <string name="text_recap_picture_preview_with_top_five_artists_and_songs_30bda2" formatted="false">"上位5組のアーティストと曲を含む振り返り画像のプレビュー"</string>
+    
+    
+    <string name="text_receives_title_artist_and_album_when_you_request_a_tag_lookup_dd0b6a" formatted="false">"タグ検索を依頼すると、タイトル、アーティスト、アルバムを送信します。"</string>
+    
+    
+    <string name="text_recent_76eec7" formatted="false">"最近"</string>
+    
+    
+    <string name="text_recently_added_536963" formatted="false">"最近追加"</string>
+    
+    
+    <string name="text_recommended_albums_36271e" formatted="false">"おすすめのアルバム"</string>
+    
+    
+    <string name="text_recommended_order_642c4b" formatted="false">"おすすめ順"</string>
+    
+    
+    <string name="text_record_the_sensitivity_source_and_voltage_measurements_including_71bc84" formatted="false">"感度の出典と電圧の測定値を、負荷を含めて記録します。"</string>
+    
+    
+    <string name="text_recover_the_saved_project_library_before_writing_changes_816728" formatted="false">"変更を書き込む前に、保存済みのプロジェクトライブラリを復元してください。"</string>
+    
+    
+    <string name="text_redo_edit_15178f" formatted="false">"編集をやり直す"</string>
+    
+    
+    <string name="text_reduce_input_gain_when_the_rack_boosts_the_signal_2a95ae" formatted="false">"ラックで信号が増幅される場合は、入力ゲインを下げてください。"</string>
+    
+    
+    <string name="text_reference_volume_38aeb3" formatted="false">"基準音量"</string>
+    
+    
+    <string name="text_reflect_the_spectrum_612298" formatted="false">"スペクトラムを反射"</string>
+    
+    
+    <string name="text_refresh_56e3ba" formatted="false">"更新"</string>
+    
+    
+    <string name="text_related_settings_661f04" formatted="false">"関連設定"</string>
+    
+    
+    <string name="text_relative_to_media_volume_this_is_not_an_spl_estimate_8959bd" formatted="false">"メディア音量を基準とします。SPLの推定値ではありません。"</string>
+    
+    
+    <string name="text_relative_volume_compensation_119ef9" formatted="false">"相対音量補正"</string>
+    
+    
+    <string name="text_release_d41f56" formatted="false">"リリース"</string>
+    
+    
+    <string name="text_release_notes_cd5af7" formatted="false">"リリースノート"</string>
+    
+    
+    <string name="text_reload_cce715" formatted="false">"再読み込み"</string>
+    
+    
+    <string name="text_remove_436e1a">"削除 %1$s?"</string>
+    
+    
+    <string name="text_remove_4d28b5">"削除 %1$s"</string>
+    
+    
+    <string name="text_remove_all_downloads_7bd406" formatted="false">"すべてのダウンロードを削除"</string>
+    
+    
+    <string name="text_remove_band_fb769d" formatted="false">"バンドを削除"</string>
+    
+    
+    <string name="text_remove_download_147742" formatted="false">"ダウンロードを削除"</string>
+    
+    
+    <string name="text_remove_downloads_cbe8be" formatted="false">"ダウンロードを削除"</string>
+    
+    
+    <string name="text_remove_e96390" formatted="false">"削除"</string>
+    
+    
+    <string name="text_remove_from_liked_9d1568" formatted="false">"お気に入りから削除"</string>
+    
+    
+    <string name="text_remove_from_mix_a1651c">"%1$sをミックスから削除"</string>
+    
+    
+    <string name="text_remove_input_d3f475" formatted="false">"入力を削除"</string>
+    
+    
+    <string name="text_remove_rule_e0d4ff" formatted="false">"ルールを削除"</string>
+    
+    
+    <string name="text_remove_separator_8580c6" formatted="false">"セパレーターを削除"</string>
+    
+    
+    <string name="text_removed_download_8ad8f9" formatted="false">"ダウンロードを削除しました"</string>
+    
+    
+    <string name="text_removes_this_library_entry_selected_irs_and_saved_presets_stay_un_0fb84e" formatted="false">"このライブラリエントリを削除します。選択中のIRと保存済みプリセットは変更されません。"</string>
+    
+    
+    <string name="text_rename_d3f4cb" formatted="false">"名前を変更"</string>
+    
+    
+    <string name="text_rename_ir_350160" formatted="false">"IRの名前を変更"</string>
+    
+    
+    <string name="text_rename_preset_52abbe" formatted="false">"プリセット名を変更"</string>
+    
+    
+    <string name="text_rename_project_633018" formatted="false">"プロジェクト名を変更"</string>
+    
+    
+    <string name="text_rename_rack_519beb" formatted="false">"ラック名を変更"</string>
+    
+    
+    <string name="text_rename_stage_1df1d4" formatted="false">"段の名前を変更"</string>
+    
+    
+    <string name="text_renamed_preset_to_5dc3bd">"プリセットの名前を%1$sに変更しました。"</string>
+    
+    
+    <string name="text_renaming_ir_4c7642" formatted="false">"IRの名前を変更中…"</string>
+    
+    
+    <string name="text_renaming_project_8cfc7a" formatted="false">"プロジェクト名を変更中…"</string>
+    
+    
+    <string name="text_reorder_33d997" formatted="false">"並べ替え"</string>
+    
+    
+    <string name="text_repeat_659eba" formatted="false">"リピート"</string>
+    
+    
+    <string name="text_replace_a7cf7b" formatted="false">"置き換え"</string>
+    
+    
+    <string name="text_replace_an_exact_artist_credit_before_last_fm_receives_it_matchin_99a847" formatted="false">"置き換え an exact artist credit before Last.fm receives it. Matching ignores capitalization."</string>
+    
+    
+    <string name="text_replace_measurement_1a74ba" formatted="false">"測定データを置き換え"</string>
+    
+    
+    <string name="text_replace_rack_d12c1a" formatted="false">"ラックを置き換え"</string>
+    
+    
+    <string name="text_replace_this_rack_957859" formatted="false">"このラックを置き換えますか？"</string>
+    
+    
+    <string name="text_replace_unsaved_edits_8ff8f2" formatted="false">"保存されていない編集を置き換えますか？"</string>
+    
+    
+    <string name="text_replacement_rules_will_be_kept_6ce6ce" formatted="false">"置き換えment rules will be kept"</string>
+    
+    
+    <string name="text_replaces_and_clears_the_generated_correction_a7baba">"%1$sを置き換え、生成された補正をクリアします。"</string>
+    
+    
+    <string name="text_replaygain_and_volume_leveling_39af19" formatted="false">"ReplayGainと音量調整"</string>
+    
+    
+    <string name="text_replaygain_off_d67cdc" formatted="false">"ReplayGainオフ"</string>
+    
+    
+    <string name="text_report_plays_to_your_server_262da5" formatted="false">"再生履歴と再生中の情報を音楽ソースと同期"</string>
+    
+    
+    <string name="text_required_for_audio_identification_e2b915" formatted="false">"音声の識別に必要です"</string>
+    
+    
+    <string name="text_reset_defaults_7871b3" formatted="false">"デフォルトに戻す"</string>
+    
+    
+    <string name="text_reset_graphic_eq_ace461" formatted="false">"グラフィックEQをリセット"</string>
+    
+    
+    <string name="text_reset_to_default_39c90e" formatted="false">"デフォルトに戻す"</string>
+    
+    
+    <string name="text_response_6e617e" formatted="false">"応答"</string>
+    
+    
+    <string name="text_restart_aurora_to_activate_the_changed_output_or_engine_settings_b7046b" formatted="false">" 出力またはエンジン設定の変更を反映するにはAuroraを再起動してください。"</string>
+    
+    
+    <string name="text_restart_aurora_to_apply_usb_settings_2757a4" formatted="false">"USB設定を適用するにはAuroraを再起動してください。"</string>
+    
+    
+    <string name="text_restore_backup_a65eaa" formatted="false">"バックアップを復元"</string>
+    
+    
+    <string name="text_result_exported_771e11" formatted="false">"結果をエクスポートしました。"</string>
+    
+    
+    <string name="text_results_612e12" formatted="false">"結果"</string>
+    
+    
+    <string name="text_retro_hi_fi_a68d38" formatted="false">"レトロなHi-Fi"</string>
+    
+    
+    <string name="text_reverb_052ba8" formatted="false">"リバーブ"</string>
+    
+    
+    <string name="text_reverting_correction_6de6e2" formatted="false">"補正を元に戻しています…"</string>
+    
+    
+    <string name="text_review_append_to_rack_8cbb43" formatted="false">"確認してラックに追加"</string>
+    
+    
+    <string name="text_review_what_the_text_file_includes_before_saving_feb089" formatted="false">"保存前にテキストファイルの内容を確認"</string>
+    
+    
+    <string name="text_revoke_0be720" formatted="false">"取り消す"</string>
+    
+    
+    <string name="text_rig_404b11">"測定環境：%1$s"</string>
+    
+    
+    <string name="text_rig_microphone_coupler_ccd9a6" formatted="false">"測定環境 / マイク / カプラー"</string>
+    
+    
+    <string name="text_rig_unspecified_6f488f" formatted="false">"測定環境未指定"</string>
+    
+    
+    <string name="text_right_954daa" formatted="false">"右"</string>
+    
+    
+    <string name="text_right_channel_correction_e4ef15" formatted="false">"右-channel correction."</string>
+    
+    
+    <string name="text_right_channel_only_left_passes_unchanged_6e2bfe" formatted="false">"右 channel only · left passes unchanged"</string>
+    
+    
+    <string name="text_right_delay_ca7838" formatted="false">"右 Delay"</string>
+    
+    
+    <string name="text_right_delay_ms_ffbffc" formatted="false">"右 delay - ms"</string>
+    
+    
+    <string name="text_right_left_0aa851" formatted="false">"右 → Left"</string>
+    
+    
+    <string name="text_right_measurement_fbacf6" formatted="false">"右の測定データ"</string>
+    
+    
+    <string name="text_right_only_ef29b6" formatted="false">"右のみ"</string>
+    
+    
+    <string name="text_right_right_ebb708" formatted="false">"右 → 右"</string>
+    
+    
+    <string name="text_right_trim_cadffb" formatted="false">"右のトリム"</string>
+    
+    
+    <string name="text_right_trim_db_ba0e33" formatted="false">"右のトリム - dB"</string>
+    
+    
+    <string name="text_rms_difference_3f_db_288abf" formatted="false">"RMS差：%.3f dB"</string>
+    
+    
+    <string name="text_rms_fitting_error_db_fc001a">"RMSフィッティング誤差：%1$s → %2$s dB"</string>
+    
+    
+    <string name="text_rose_51ad0e" formatted="false">"バラ"</string>
+    
+    
+    <string name="text_rotate_radial_styles_72016a" formatted="false">"放射状スタイルを回転"</string>
+    
+    
+    <string name="text_rounded_c5aa34" formatted="false">"丸型"</string>
+    
+    
+    <string name="text_routing_7d15dd" formatted="false">"ルーティング"</string>
+    
+    
+    <string name="text_rule_condition_c6d62b" formatted="false">"ルール条件"</string>
+    
+    
+    <string name="text_rules_bb11a8" formatted="false">"ルール"</string>
+    
+    
+    <string name="text_rules_unavailable_4feedc" formatted="false">"ルールを利用できません。"</string>
+    
+    
+    <string name="text_s_3eb314">"%1$s秒"</string>
+    
+    
+    <string name="text_s_crossfade_0fa271">"%1$s秒のクロスフェード"</string>
+    
+    
+    <string name="text_sample_peak_and_rms_before_output_volume_and_android_effects_leve_08e2a4" formatted="false">"出力音量およびAndroidエフェクト適用前のサンプルピークとRMSです。レベル区間は個別に計測し、ペアのスペクトルはPCMのタイムスタンプを一致させます。フルスケールのカウントはシークまたは形式変更時にリセットされます。真のピーク、ラウドネス、音響の測定値ではありません。"</string>
+    
+    
+    <string name="text_sample_peak_control_with_attack_and_release_936da5" formatted="false">"アタックとリリースを備えたサンプルピーク制御"</string>
+    
+    
+    <string name="text_sample_preservation_unknown_7de2de" formatted="false">"サンプル保持状態不明"</string>
+    
+    
+    <string name="text_sample_rate_7a0316" formatted="false">"サンプリングレート"</string>
+    
+    
+    <string name="text_samples_modified_d04e9f" formatted="false">"変更されたサンプル"</string>
+    
+    
+    <string name="text_samples_preserved_091001" formatted="false">"保持されたサンプル"</string>
+    
+    
+    <string name="text_saturation_20a32b" formatted="false">"サチュレーション"</string>
+    
+    
+    <string name="text_save_a_processing_preset_first_6dd1cf" formatted="false">"保存 a processing preset first."</string>
+    
+    
+    <string name="text_save_and_restore_your_audio_settings_6ec6de" formatted="false">"オーディオ設定を保存、復元します"</string>
+    
+    
+    <string name="text_save_as_reusable_target_8c3b0f" formatted="false">"保存 as reusable target"</string>
+    
+    
+    <string name="text_save_calibration_a1068b" formatted="false">"保存 calibration"</string>
+    
+    
+    <string name="text_save_changes_179359" formatted="false">"変更を保存"</string>
+    
+    
+    <string name="text_save_current_settings_0eaab9" formatted="false">"現在の設定を保存"</string>
+    
+    
+    <string name="text_save_details_470658" formatted="false">"詳細を保存"</string>
+    
+    
+    <string name="text_save_e7ced9">"保存 %1$s"</string>
+    
+    
+    <string name="text_save_efc007" formatted="false">"保存"</string>
+    
+    
+    <string name="text_save_eq_effects_loudness_and_output_settings_cfa9ad" formatted="false">"EQ、エフェクト、ラウドネス、出力設定を保存します。"</string>
+    
+    
+    <string name="text_save_export_project_json_9f2b2c" formatted="false">"保存 &amp; export project JSON"</string>
+    
+    
+    <string name="text_save_failed_0a4444" formatted="false">"保存 failed"</string>
+    
+    
+    <string name="text_save_inspect_3831d9" formatted="false">"保存 &amp; Inspect"</string>
+    
+    
+    <string name="text_save_leave_fc9cb3" formatted="false">"保存 &amp; leave"</string>
+    
+    
+    <string name="text_save_level_samples_c79a47" formatted="false">"保存 Level Samples"</string>
+    
+    
+    <string name="text_save_mix_bba953" formatted="false">"ミックスを保存"</string>
+    
+    
+    <string name="text_save_or_append_stages_5f0cc3" formatted="false">"保存 or Append Stages"</string>
+    
+    
+    <string name="text_save_picture_ccdb19" formatted="false">"画像を保存"</string>
+    
+    
+    <string name="text_save_project_2dd802" formatted="false">"プロジェクトを保存"</string>
+    
+    
+    <string name="text_save_project_changes_026247" formatted="false">"プロジェクトを保存 changes?"</string>
+    
+    
+    <string name="text_save_queue_as_playlist_7f09d8" formatted="false">"保存 queue as playlist"</string>
+    
+    
+    <string name="text_save_stages_a0f22f" formatted="false">"段を保存"</string>
+    
+    
+    <string name="text_save_subchain_d43195" formatted="false">"保存 subchain"</string>
+    
+    
+    <string name="text_save_tags_842d99" formatted="false">"タグを保存"</string>
+    
+    
+    <string name="text_save_target_fa5df1" formatted="false">"ターゲットを保存"</string>
+    
+    
+    <string name="text_save_text_file_5aabc3" formatted="false">"テキストファイルを保存"</string>
+    
+    
+    <string name="text_save_this_mix_first_if_you_want_to_keep_your_changes_655e48" formatted="false">"変更を保持するには、先にこのミックスを保存してください。"</string>
+    
+    
+    <string name="text_save_variant_35fac3" formatted="false">"バリエーションを保存"</string>
+    
+    
+    <string name="text_save_your_first_mix_to_find_it_here_9d6680" formatted="false">"最初のミックスを保存すると、ここに表示されます。"</string>
+    
+    
+    <string name="text_saved_290e9d">"保存済み %1$s."</string>
+    
+    
+    <string name="text_saved_bac2cc">"保存済み “%1$s”"</string>
+    
+    
+    <string name="text_saved_c0ae8f" formatted="false">"保存済み"</string>
+    
+    
+    <string name="text_saved_mixes_could_not_be_read_7eab0e" formatted="false">"保存済みミックスを読み込めませんでした。"</string>
+    
+    
+    <string name="text_saved_mixes_fe1986" formatted="false">"保存済みミックス"</string>
+    
+    
+    <string name="text_saved_processing_presets_f22d4b" formatted="false">"保存済みの処理プリセット"</string>
+    
+    
+    <string name="text_saved_projects_could_not_be_loaded_14d15f" formatted="false">"保存済みプロジェクトを読み込めませんでした"</string>
+    
+    
+    <string name="text_saved_subchains_46c948" formatted="false">"保存済み Subchains"</string>
+    
+    
+    <string name="text_saved_tuning_projects_could_not_be_decoded_a1167f" formatted="false">"保存済みのチューニングプロジェクトをデコードできませんでした。"</string>
+    
+    
+    <string name="text_saved_wavs_trimming_and_normalization_732c0c" formatted="false">"保存済みWAV、トリミング、ノーマライズ"</string>
+    
+    
+    <string name="text_saving_56a228" formatted="false">"保存中…"</string>
+    
+    
+    <string name="text_saving_changes_804053" formatted="false">"変更を保存中…"</string>
+    
+    
+    <string name="text_saving_project_69e697" formatted="false">"プロジェクトを保存中…"</string>
+    
+    
+    <string name="text_saving_project_for_export_cf6162" formatted="false">"エクスポート用にプロジェクトを保存中…"</string>
+    
+    
+    <string name="text_saving_selected_ir_1e5b57" formatted="false">"選択したIRを保存中…"</string>
+    
+    
+    <string name="text_saving_target_0672fd" formatted="false">"ターゲットを保存中…"</string>
+    
+    
+    <string name="text_scan_replaygain_d09e86" formatted="false">"ReplayGainをスキャン"</string>
+    
+    
+    <string name="text_scanning_replaygain_c527cc" formatted="false">"ReplayGainをスキャン中…"</string>
+    
+    
+    <string name="text_schedule_0a8ada" formatted="false">"スケジュール"</string>
+    
+    
+    <string name="text_science_d2d066" formatted="false">"科学"</string>
+    
+    
+    <string name="text_scrobble_3d49e2" formatted="false">"再生履歴の同期"</string>
+    
+    
+    <string name="text_scrobble_as_29e5f2">"次の名前でScrobble %1$s"</string>
+    
+    
+    <string name="text_scrobble_as_f81cff" formatted="false">"次の名前でScrobble"</string>
+    
+    
+    <string name="text_scrobble_your_listening_history_e444aa" formatted="false">"再生履歴をScrobble"</string>
+    
+    
+    <string name="text_scrobbling_772be3" formatted="false">"Scrobble中"</string>
+    
+    
+    <string name="text_scrobbling_presence_lyrics_and_metadata_687ea0" formatted="false">"再生履歴、プレゼンス、歌詞、メタデータ"</string>
+    
+    
+    <string name="text_search_bce064" formatted="false">"検索"</string>
+    
+    
+    <string name="text_search_brand_or_model_673f49" formatted="false">"ブランドまたはモデルを検索"</string>
+    
+    
+    <string name="text_search_for_a_show_or_pick_a_topic_above_to_get_started_681552" formatted="false">"番組を検索するか、上のトピックを選んで始めましょう。"</string>
+    
+    
+    <string name="text_search_in_0dcb13">"%1$s内を検索"</string>
+    
+    
+    <string name="text_search_live_iem_measurements_24a92f" formatted="false">"検索 live IEM measurements"</string>
+    
+    
+    <string name="text_search_podcasts_758c3a" formatted="false">"ポッドキャストを検索"</string>
+    
+    
+    <string name="text_search_radio_stations_be278b" formatted="false">"ラジオ局を検索"</string>
+    
+    
+    <string name="text_search_shows_topics_da6b61" formatted="false">"検索 shows &amp; topics"</string>
+    
+    
+    <string name="text_search_stations_3b38bf" formatted="false">"ステーションを検索"</string>
+    
+    
+    <string name="text_search_tracks_8bc43d" formatted="false">"曲を検索"</string>
+    
+    
+    <string name="text_search_unavailable_c32b9f" formatted="false">"検索 unavailable"</string>
+    
+    
+    <string name="text_search_your_library_d9fa3f" formatted="false">"ライブラリを検索"</string>
+    
+    
+    <string name="text_searching_1a6a5b" formatted="false">"検索中…"</string>
+    
+    
+    <string name="text_searching_for_chromecast_devices_13fdbb" formatted="false">"Chromecastデバイスを検索しています…"</string>
+    
+    
+    <string name="text_secondary_025de5" formatted="false">"サブ"</string>
+    
+    
+    <string name="text_see_all_2941c5" formatted="false">"すべて表示"</string>
+    
+    
+    <string name="text_seek_bar_0030d0" formatted="false">"シークバー"</string>
+    
+    
+    <string name="text_select_0fc8ec">"%1$sを選択"</string>
+    
+    
+    <string name="text_select_a_wav_779ee2" formatted="false">"WAVを選択"</string>
+    
+    
+    <string name="text_select_rack_to_use_these_stages_e161dd" formatted="false">"これらのステージを使用するラックを選択してください。"</string>
+    
+    
+    <string name="text_selected_9a976f" formatted="false">"選択済み"</string>
+    
+    
+    <string name="text_selected_audio_file_fd51b5" formatted="false">"選択した音声ファイル"</string>
+    
+    
+    <string name="text_selected_device_disconnected_c2d1b1" formatted="false">"選択したデバイスが切断されました"</string>
+    
+    
+    <string name="text_selected_ir_6a167c" formatted="false">"選択したIR"</string>
+    
+    
+    <string name="text_selected_measurement_frequency_c5919f">"選択済み measurement frequency: %1$s"</string>
+    
+    
+    <string name="text_selected_response_frequency_0f1ae3">"選択済み response frequency. %1$s: %2$s"</string>
+    
+    
+    <string name="text_selecting_ir_cac365" formatted="false">"IRを選択中…"</string>
+    
+    
+    <string name="text_selection_frames_b3c1b7">"選択範囲：%1$sフレーム"</string>
+    
+    
+    <string name="text_send_listens_to_your_open_music_profile_5a7b48" formatted="false">"再生履歴を公開音楽プロフィールに送信"</string>
+    
+    
+    <string name="text_sensitivity_031cfc" formatted="false">"感度"</string>
+    
+    
+    <string name="text_sensitivity_is_usually_specified_at_1_khz_fit_frequency_response_d5a30d" formatted="false">"感度は通常1 kHzで指定されます。フィッティング、周波数特性、負荷によって推定値が変わります。"</string>
+    
+    
+    <string name="text_sensitivity_unit_e9d12c" formatted="false">"感度の単位"</string>
+    
+    
+    <string name="text_separate_correction_per_channel_shares_the_band_budget_acace8" formatted="false">"チャンネルごとに個別補正します。バンド数の上限は共有されます。"</string>
+    
+    
+    <string name="text_separate_limits_require_independent_channels_60e8b3" formatted="false">"個別の上限には独立したチャンネルが必要です。"</string>
+    
+    
+    <string name="text_separate_stages_with_a_final_limiter_after_convolution_32ae6f" formatted="false">"段を分け、コンボリューションの後に最終リミッターを配置します。"</string>
+    
+    
+    <string name="text_separated_audio_ready_switch_between_vocals_backing_and_original_3658bb" formatted="false">"音声の分離が完了しました。ボーカル、伴奏、オリジナルを切り替えられます。"</string>
+    
+    
+    <string name="text_separator_b4b289" formatted="false">"セパレーター"</string>
+    
+    
+    <string name="text_serial_83f8c3" formatted="false">"シリアル番号"</string>
+    
+    
+    <string name="text_server_address_b06792" formatted="false">"サーバーアドレス"</string>
+    
+    
+    <string name="text_server_cb0cb1" formatted="false">"サーバー"</string>
+    
+    
+    <string name="text_server_error_c28ed6">"サーバー error (%1$s)."</string>
+    
+    
+    <string name="text_server_not_found_check_the_address_24bc0a" formatted="false">"サーバーが見つかりません — アドレスを確認してください。"</string>
+    
+    
+    <string name="text_servers_accounts_59e105" formatted="false">"サーバーとアカウント"</string>
+
+
+</resources>
