@@ -1,6 +1,7 @@
 package com.aurora.music.playback
 
 import androidx.media3.common.util.UnstableApi
+import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.ShuffleOrder
 
@@ -33,9 +34,12 @@ internal class LocalShuffleQueue(private val player: ExoPlayer) {
             }
             val ids = currentIds()
             originalOrder = ids
-            val currentId = player.currentMediaItem?.mediaId
-            val rest = ids.filter { it != currentId }.shuffled()
-            val desired = (if (currentId != null) listOf(currentId) else emptyList()) + rest
+            val currentIndex = player.currentMediaItemIndex.takeIf { it in ids.indices }
+            val indices = if (currentIndex == null) ids.indices.toList() else
+                listOf(currentIndex) + ids.indices.filter { it != currentIndex }
+            val desired = SmartShuffle.shuffle(indices, { index ->
+                player.getMediaItemAt(index).mediaMetadata.title?.toString().orEmpty()
+            }, pinFirst = currentIndex != null).map(ids::get)
             applyOrder(desired)
             player.shuffleModeEnabled = true
             pendingNeutralize = true
@@ -50,6 +54,26 @@ internal class LocalShuffleQueue(private val player: ExoPlayer) {
             player.shuffleModeEnabled = false
             originalOrder = null
         }
+    }
+
+    fun shuffleAppended(items: List<MediaItem>) {
+        if (!player.shuffleModeEnabled || items.isEmpty()) return
+        val original = originalOrder ?: currentIds().dropLast(items.size).also { originalOrder = it }
+        val newIds = items.map { it.mediaId }.filter { it !in original }
+        if (newIds.isEmpty()) return // the caller already supplied the complete original order
+        originalOrder = original + newIds
+
+        val start = player.mediaItemCount - items.size
+        val recentTitles = (maxOf(0, start - SmartShuffle.DEFAULT_MIN_GAP) until start)
+            .map { player.getMediaItemAt(it).mediaMetadata.title?.toString().orEmpty() }
+        val shuffled = SmartShuffle.shuffle(
+            items,
+            { it.mediaMetadata.title?.toString().orEmpty() },
+            recentTitles = recentTitles,
+        )
+        val ids = currentIds()
+        val desired = ids.take(start) + shuffled.map { it.mediaId } + ids.drop(start + items.size)
+        applyOrder(desired)
     }
 
     fun maybeNeutralize() {

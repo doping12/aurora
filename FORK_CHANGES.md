@@ -37,3 +37,15 @@ The kernel ran all 79 biquad slots (31 graphic + 12 parametric × 4 sections) pe
 - `PrecisionEffectsKernel` processes only those. When a coefficient change activates a skipped section, its filter history is seeded from the signal that entered it, so the output matches the previous all-slots processing exactly (covered by unit tests against a reference all-slots cascade).
 
 Note: debuggable builds (`assembleDebug`) are several times slower in this per-sample Kotlin code (ART does not inline in debuggable mode). On the test device a debuggable build still underran with the screen off even after this change, while a non-debuggable build using the same code had no underruns and about 10–20 % playback-thread CPU. For daily listening, use a non-debuggable build.
+
+## feature/smart-shuffle
+
+### Whole-collection shuffle
+
+Shuffling a collection that the server delivers in pages (more songs than the first page, e.g. large Navidrome/Spotify/Plex/YouTube Music playlists) used to shuffle only the already-loaded songs and then append the remaining pages in page order, so the result was not a shuffle of the whole playlist. Now the remaining pages are fetched first (up to 10,000 songs, with a 1.2 s budget so playback still starts quickly) and the whole list is shuffled once. If the server is slow or the fetch is incomplete, playback starts with a shuffle of the loaded songs and later pages are not appended.
+
+### Smart shuffle (versions are kept apart)
+
+Shuffle now keeps different versions of the same song from playing close together. Songs are treated as the same if the first 5 letters/digits of the title match (NFKC-normalised, case/punctuation/whitespace ignored); anything after a version delimiter such as ` (`, `[`, ` - `, ` ~ ` is ignored, so "Song (Live)" and "Song - Remastered" match "Song". After a uniform random shuffle, a single greedy pass places songs so that matching titles are at least 6 positions apart where that is possible (best effort; never drops songs). Small CPU/memory cost, no analysis of audio or tags.
+
+Applied to: shuffle play, turning shuffle on in an existing queue, songs appended to a shuffled queue, network (DLNA) output and the alarm queue. Not applied to smart-playlist "random" sorting or radio. Code: `playback/SmartShuffle.kt`.

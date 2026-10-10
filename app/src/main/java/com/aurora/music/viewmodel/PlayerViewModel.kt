@@ -29,6 +29,7 @@ import com.aurora.music.model.Song
 import com.aurora.music.playback.PlaybackService
 import com.aurora.music.playback.PresetContextPublisher
 import com.aurora.music.playback.MediaSearchRequest
+import com.aurora.music.playback.SmartShuffle
 import com.aurora.music.data.PlaybackCollectionIdentity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.CancellationException
@@ -45,6 +46,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withTimeout
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.coroutines.resume
 import kotlin.math.pow
 
@@ -580,15 +582,37 @@ class PlayerViewModel(app: Application) : AndroidViewModel(app) {
         if (leaveMixThen { playCollection(kind, id, loaded, startIndex, total) }) return
         val collection = container.repository.playbackCollectionIdentity(kind, id)
         playAll(loaded, startIndex, collection)
-        fillQueue(kind, id, loaded, total, shuffle = false, collection = collection)
+        fillQueue(kind, id, loaded, total, collection)
     }
 
     fun shuffleCollection(kind: String, id: String, loaded: List<Song>, total: Int) {
         cancelMediaSearch()
         if (leaveMixThen { shuffleCollection(kind, id, loaded, total) }) return
         val collection = container.repository.playbackCollectionIdentity(kind, id)
-        shufflePlay(loaded, collection)
-        fillQueue(kind, id, loaded, total, shuffle = true, collection = collection)
+        val generation = playbackRequestGeneration
+        val account = container.currentAccountKey()
+        val epoch = container.accountEpoch.value
+        viewModelScope.launch {
+            val fullList = withTimeoutOrNull(SHUFFLE_FETCH_BUDGET_MS) {
+                val songs = loaded.toMutableList()
+                var offset = loaded.size
+                val cap = minOf(total, SHUFFLE_COLLECTION_CAP)
+                while (songs.size < cap && offset < total) {
+                    val page = runCatching { container.repository.detailPage(kind, id, offset) }.getOrDefault(emptyList())
+                    ensureActive()
+                    if (page.isEmpty()) return@withTimeoutOrNull null
+                    songs.addAll(page.filter { it.id.isNotEmpty() }.take(cap - songs.size))
+                    offset += page.size
+                    if (offset < total && songs.size < cap) delay(180) // preserve the existing server rate limit
+                }
+                songs
+            }
+            if (generation != playbackRequestGeneration || epoch != container.accountEpoch.value ||
+                account != container.currentAccountKey() || container.sessionReady.value != true) return@launch
+            // A slow or incomplete server gets a quick shuffle of the already loaded songs. We do
+            // not append later pages in this case, since page-wise appends cannot preserve a global shuffle.
+            shufflePlay(fullList ?: loaded, collection)
+        }
     }
 
     private data class QueueDelivery(val songs: List<Song>, val currentIndex: Int)
@@ -674,7 +698,7 @@ class PlayerViewModel(app: Application) : AndroidViewModel(app) {
         return QueueDelivery(initial, 0)
     }
 
-    private fun fillQueue(kind: String, id: String, loaded: List<Song>, total: Int, shuffle: Boolean, collection: PlaybackCollectionIdentity?) {
+    private fun fillQueue(kind: String, id: String, loaded: List<Song>, total: Int, collection: PlaybackCollectionIdentity?) {
         cancelQueueFill()
         if (loaded.size >= total || total <= 0) return
         queueFillJob = viewModelScope.launch {
@@ -690,7 +714,7 @@ class PlayerViewModel(app: Application) : AndroidViewModel(app) {
                 if (page.isEmpty()) break
                 val fresh = page.filter { it.id.isNotEmpty() && have.add(it.id) }
                 if (fresh.isNotEmpty()) {
-                    val toAdd = (if (shuffle) fresh.shuffled() else fresh).map { it.copy(playbackCollection = collection) }
+                    val toAdd = fresh.map { it.copy(playbackCollection = collection) }
                     for (chunk in toAdd.chunked(QUEUE_BATCH)) {
                         if (!appendQueue(c, token, delivered, chunk, waitForInitialQueue = delivered == initialCount)) return@launch
                         delivered += chunk.size
@@ -770,7 +794,7 @@ class PlayerViewModel(app: Application) : AndroidViewModel(app) {
         playingAccountKey = container.currentAccountKey()
         val contextual = songs.map { it.copy(playbackCollection = collection) }
         songById = contextual.associateBy { it.id }
-        val shuffled = contextual.shuffled()
+        val shuffled = SmartShuffle.shuffle(contextual, Song::title)
         val delivery = deliverQueue(shuffled, 0, 0L)
         c.playbackParameters = currentParams()
         c.prepare()
@@ -1023,5 +1047,7 @@ class PlayerViewModel(app: Application) : AndroidViewModel(app) {
         // a binder transaction caps near 1mb, so a few hundred full items can silently get truncated
         // by the session. deliverQueue keeps the initial setMediaItems call well under that.
         const val QUEUE_BATCH = 120
+        const val SHUFFLE_COLLECTION_CAP = 10_000
+        const val SHUFFLE_FETCH_BUDGET_MS = 1_200L
     }
 }
